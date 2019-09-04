@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <style>
+      #container{
+        display: flex;
+        flex-wrap: wrap;
+      }
+
+      #container > div {
+        background-color: black;
+        width: 10px;
+        height:10px;
+        margin: 10px;
+        line-height: 75px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- <form action="/action_page.php"> -->
+      <input type="number" name="quantity" id="myNumber">
+      <input type="submit" value="create squares" id="myBtn">
+    <!-- </form> -->
+    <div id="container">
+
+
+    </div>
+  </body>
+
+
+
+  <script>
+  document.getElementById("myBtn").addEventListener("click", drawThreeSquares);
+
+  function drawSquare() {
+    var node = document.createElement("div");
+    //<div>  </div>
+    document.getElementById("container").appendChild(node);
+  }
+
+  function drawThreeSquares(){
+    var a = document.getElementById ("myNumber").value;
+    for (var i=0; i<a; i++) {
+      drawSquare();
+    }
+  }
+
+
+
+  </script>
+
+</html>
