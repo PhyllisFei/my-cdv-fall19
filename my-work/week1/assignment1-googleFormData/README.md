@@ -1,0 +1,1 @@
+I collected 10 seniors' feelings of the day, exported JASON data with the help of the provided tutorial, then transformed the data into a bar graph. This exercise is based upon what we practiced in class.
