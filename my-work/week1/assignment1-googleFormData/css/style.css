@@ -1,0 +1,16 @@
+body, html{
+  height:100%;
+  width:100%
+}
+
+#summary{
+  margin-left: 40%;
+}
+
+.bar{
+  height: 30px;
+  margin-bottom: 5px;
+  margin-left: 40%;
+  background-color: pink;
+  font-size: 1vw;
+}
