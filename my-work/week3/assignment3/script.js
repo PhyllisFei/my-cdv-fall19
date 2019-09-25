@@ -1,90 +1,90 @@
 // 7 columns * 2 rows:
 function translate1(){
-  let x = 100 + Math.random()*80;
-  let y = 100 + Math.random()*80;
+  let x = 100 + Math.random()*90;
+  let y = 100 + Math.random()*90;
   return "translate (" + x + ", " + y + ")";
 }
 function translate2(){
-  let x = 250+Math.random()*80;
-  let y = 100+Math.random()*80;
+  let x = 250+Math.random()*90;
+  let y = 100+Math.random()*90;
   return "translate (" + x + ", " + y + ")";
 }
 function translate3(){
-  let x = 400+Math.random()*80;
-  let y = 100+Math.random()*80;
+  let x = 400+Math.random()*90;
+  let y = 100+Math.random()*90;
   return "translate (" + x + ", " + y + ")";
 }
 function translate4(){
-  let x = 550+Math.random()*80;
-  let y = 100+Math.random()*80;
+  let x = 550+Math.random()*90;
+  let y = 100+Math.random()*90;
   return "translate (" + x + ", " + y + ")";
 }
 function translate5(){
-  let x = 700+Math.random()*80;
-  let y = 100+Math.random()*80;
+  let x = 700+Math.random()*90;
+  let y = 100+Math.random()*90;
   return "translate (" + x + ", " + y + ")";
 }
 function translate6(){
-  let x = 850+Math.random()*80;
-  let y = 100+Math.random()*80;
+  let x = 850+Math.random()*90;
+  let y = 100+Math.random()*90;
   return "translate (" + x + ", " + y + ")";
 }
 function translate7(){
-  let x = 1000+Math.random()*80;
-  let y = 100+Math.random()*80;
+  let x = 1000+Math.random()*90;
+  let y = 100+Math.random()*90;
   return "translate (" + x + ", " + y + ")";
 }
 function translate8(){
-  let x = 100+Math.random()*80;
-  let y = 300+Math.random()*80;
+  let x = 100+Math.random()*90;
+  let y = 300+Math.random()*90;
   return "translate (" + x + ", " + y + ")";
 }
 function translate9(){
-  let x = 250+Math.random()*80;
-  let y = 300+Math.random()*80;
+  let x = 250+Math.random()*90;
+  let y = 300+Math.random()*90;
   return "translate (" + x + ", " + y + ")";
 }
 function translate10(){
-  let x = 400+Math.random()*80;
-  let y = 300+Math.random()*80;
+  let x = 400+Math.random()*90;
+  let y = 300+Math.random()*90;
   return "translate (" + x + ", " + y + ")";
 }
 function translate11(){
-  let x = 550+Math.random()*80;
-  let y = 300+Math.random()*80;
+  let x = 550+Math.random()*90;
+  let y = 300+Math.random()*90;
   return "translate (" + x + ", " + y + ")";
 }
 function translate12(){
-  let x = 700+Math.random()*80;
-  let y = 300+Math.random()*80;
+  let x = 700+Math.random()*90;
+  let y = 300+Math.random()*90;
   return "translate (" + x + ", " + y + ")";
 }
 function translate13(){
-  let x = 850+Math.random()*80;
-  let y = 300+Math.random()*80;
+  let x = 850+Math.random()*90;
+  let y = 300+Math.random()*90;
   return "translate (" + x + ", " + y + ")";
 }
 function translate14(){
-  let x = 1000+Math.random()*80;
-  let y = 300+Math.random()*80;
+  let x = 1000+Math.random()*90;
+  let y = 300+Math.random()*90;
   return "translate (" + x + ", " + y + ")";
 }
 
 function getColor(datapoint, i){
   if(datapoint.cause == "family"){
-    return "orange";
+    return "red";
   }
   if(datapoint.cause == "friends"){
-    return "lightblue";
-  }
-  if(datapoint.cause == "professors"){
-    return "green";
-  }
-  if(datapoint.cause == "strangers"){
     return "pink";
   }
+  if(datapoint.cause == "professors"){
+    return "lightgreen";
+  }
+  if(datapoint.cause == "strangers"){
+    return "white";
+  }
   if(datapoint.cause == "alone"){
-    return "purple";
+    return "yellow";
   }
 }
 

@@ -52,7 +52,7 @@ function gotData(olddata){
               .append("g")
               .attr("class", "groups")
                 .append("circle")
-                  .attr("r", 2)
+                  .attr("r", 3)
                   .attr("fill", getColor)
                   .attr("transform", getPos)
   ;
