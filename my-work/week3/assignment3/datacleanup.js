@@ -41,7 +41,7 @@ function gotData(olddata){
                   .append("svg")
                       .attr("width", 1500)
                       .attr("height", 800)
-                      .attr("background-color", "black")
+                      .style("background-color", "black")
   ;
 
   let datagroups = viz.selectAll(".groups").data(newdata);

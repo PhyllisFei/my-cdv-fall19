@@ -78,7 +78,7 @@ function getColor(datapoint, i){
     return "lightblue";
   }
   if(datapoint.cause == "professors"){
-    return "lightgreen";
+    return "green";
   }
   if(datapoint.cause == "strangers"){
     return "pink";
@@ -119,7 +119,8 @@ function getPos(datapoint, i){
   if(datapoint.date == "2019-09-18T16:00:00.000Z"){
     return translate10();
   }
-  if(datapoint.date == "2019-09-1916:00:00.000Z"){
+  if(datapoint.date == "2019-09-19T16:00:00.000Z"){
+    console.log(datapoint)
     return translate11();
   }
   if(datapoint.date == "2019-09-20T16:00:00.000Z"){
