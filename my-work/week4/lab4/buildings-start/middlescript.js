@@ -9,7 +9,7 @@ let viz = d3.select("#container")
 ;
 
 let xpadding = 10;
-let xScale = d3.scaleLinear().domain( [0, 100] ).range( [xpadding, 2400-xpadding] );
+let xScale = d3.scaleLinear().domain( [0, 100] ).range( [xpadding, w-xpadding] );
 
 function xPosition(d, i){
   return xScale(i);
