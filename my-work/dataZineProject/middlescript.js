@@ -1,3 +1,36 @@
+let newdata = [];
+
+function gotData(olddata){
+  for (let i=0; i<olddata.length; i++){
+    // console.log(olddata[i]);
+    let d = olddata[i];
+    let date = d.date;
+    let time = d.time;
+
+    for (let j=0; j < d.family; j++){
+      let newd = {date: date, time: time, cause: "family"}
+      newdata.push(newd);
+    }
+    for (let j=0; j < d.friends; j++){
+      let newd = {date: date, time: time, cause: "friends"}
+      newdata.push(newd);
+    }
+    for (let j=0; j < d.professors; j++){
+      let newd = {date: date, time: time, cause: "professors"}
+      newdata.push(newd);
+    }
+    for (let j=0; j < d.strangers; j++){
+      let newd = {date: date, time: time, cause: "strangers"}
+      newdata.push(newd);
+    }
+    for (let j=0; j < d.alone; j++){
+      let newd = {date: date, time: time, cause: "alone"}
+      newdata.push(newd);
+    }
+  }
+  // console.log(newdata);
+  console.log(olddata);
+
 // create svg
   let viz = d3.select("#container")
                   .append("svg")
