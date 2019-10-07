@@ -5,10 +5,11 @@ function gotData(olddata){
   for(let i=0; i<olddata.length; i++){
     let d = olddata[i];
     let date = d.date;
+    let time = d.tine;
 
     for (let j=0; j<d.family; j++){
       let value = d.family;
-      let newd = {date: date, value: value}
+      let newd = {date: date, time: time, value: value}
       newdata.push(newd);
     }
   }
