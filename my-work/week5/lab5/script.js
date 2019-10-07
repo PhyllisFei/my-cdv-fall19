@@ -73,11 +73,11 @@ function filterFunction(d){
     return yearToDateObjectConverter(d.Year);
   });
   // console.log(domainArray);
-  console.log(alternativeDomainArray);
+  // console.log(alternativeDomainArray);
 
   let xPadding = 50;
   let xScale = d3.scaleTime().domain(alternativeDomainArray).range([xPadding, w-(xPadding*2)]);
-  console.log(xScale(yearToDateObjectConverter("2009")));
+  // console.log(xScale(yearToDateObjectConverter("2009")));
 
 
   let xAxis = d3.axisBottom(xScale);
@@ -102,9 +102,7 @@ function filterFunction(d){
   let yAxisGroup = viz.append("g").attr("class", "yaxis");
   yAxisGroup.call(yAxis);
 
-  yAxisGroup.attr("transform", "translate("+xPadding +", 0)");
-
-
+  yAxisGroup.attr("transform", "translate("+ xPadding +", 0)");
 }
 
 
