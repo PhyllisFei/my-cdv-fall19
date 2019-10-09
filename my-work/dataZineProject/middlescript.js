@@ -22,7 +22,7 @@ function gotData(olddata){
     }
     areadata.push({date: timedate, time: time, name: "professors", value: d.professors})
     for (let j=0; j < d.professors; j++){
-      let newd = {date: timedate, time: time, cause: "professors"}
+      let newd = {date: date, time: time, cause: "professors"}
       newdata.push(newd);
     }
     areadata.push({date: timedate, time: time, name: "strangers", value: d.strangers})
@@ -46,6 +46,7 @@ function gotData(olddata){
                       .attr("width", w)
                       .attr("height", h)
                       .style("margin-top", 60)
+                      .style("background-color", "black")
   ;
 
   let datagroups = viz.selectAll(".groups").data(newdata).enter()
@@ -71,7 +72,7 @@ function gotData(olddata){
                     .text("Sep 10th")
                     .attr("font-family", "Mansalva")
                     .attr("font-size", 24)
-                    .attr("fill", "black")
+                    .attr("fill", "white")
                     .attr("x", 65)
                     .attr("y", 315)
   ;
@@ -79,7 +80,7 @@ function gotData(olddata){
                     .text("Sep 11th")
                     .attr("font-family", "Mansalva")
                     .attr("font-size", 24)
-                    .attr("fill", "black")
+                    .attr("fill", "white")
                     .attr("x", 240)
                     .attr("y", 315)
   ;
@@ -87,7 +88,7 @@ function gotData(olddata){
                     .text("Sep 12th")
                     .attr("font-family", "Mansalva")
                     .attr("font-size", 24)
-                    .attr("fill", "black")
+                    .attr("fill", "white")
                     .attr("x", 410)
                     .attr("y", 315)
   ;
@@ -95,7 +96,7 @@ function gotData(olddata){
                     .text("Sep 13th")
                     .attr("font-family", "Mansalva")
                     .attr("font-size", 24)
-                    .attr("fill", "black")
+                    .attr("fill", "white")
                     .attr("x", 570)
                     .attr("y", 315)
   ;
@@ -103,7 +104,7 @@ function gotData(olddata){
                     .text("Sep 14th")
                     .attr("font-family", "Mansalva")
                     .attr("font-size", 24)
-                    .attr("fill", "black")
+                    .attr("fill", "white")
                     .attr("x", 730)
                     .attr("y", 315)
   ;
@@ -111,7 +112,7 @@ function gotData(olddata){
                     .text("Sep 15th")
                     .attr("font-family", "Mansalva")
                     .attr("font-size", 24)
-                    .attr("fill", "black")
+                    .attr("fill", "white")
                     .attr("x", 900)
                     .attr("y", 315)
   ;
@@ -119,7 +120,7 @@ function gotData(olddata){
                     .text("Sep 16th")
                     .attr("font-family", "Mansalva")
                     .attr("font-size", 24)
-                    .attr("fill", "black")
+                    .attr("fill", "white")
                     .attr("x", 1070)
                     .attr("y", 315)
   ;
@@ -127,7 +128,7 @@ function gotData(olddata){
                     .text("Sep 17th")
                     .attr("font-family", "Mansalva")
                     .attr("font-size", 24)
-                    .attr("fill", "black")
+                    .attr("fill", "white")
                     .attr("x", 65)
                     .attr("y", 560)
   ;
@@ -135,7 +136,7 @@ function gotData(olddata){
                     .text("Sep 18th")
                     .attr("font-family", "Mansalva")
                     .attr("font-size", 24)
-                    .attr("fill", "black")
+                    .attr("fill", "white")
                     .attr("x", 240)
                     .attr("y", 560)
   ;
@@ -143,7 +144,7 @@ function gotData(olddata){
                     .text("Sep 19th")
                     .attr("font-family", "Mansalva")
                     .attr("font-size", 24)
-                    .attr("fill", "black")
+                    .attr("fill", "white")
                     .attr("x", 410)
                     .attr("y", 560)
   ;
@@ -151,7 +152,7 @@ function gotData(olddata){
                     .text("Sep 20th")
                     .attr("font-family", "Mansalva")
                     .attr("font-size", 24)
-                    .attr("fill", "black")
+                    .attr("fill", "white")
                     .attr("x", 570)
                     .attr("y", 560)
   ;
@@ -159,7 +160,7 @@ function gotData(olddata){
                     .text("Sep 21st")
                     .attr("font-family", "Mansalva")
                     .attr("font-size", 24)
-                    .attr("fill", "black")
+                    .attr("fill", "white")
                     .attr("x", 730)
                     .attr("y", 560)
   ;
@@ -167,7 +168,7 @@ function gotData(olddata){
                     .text("Sep 22nd")
                     .attr("font-family", "Mansalva")
                     .attr("font-size", 24)
-                    .attr("fill", "black")
+                    .attr("fill", "white")
                     .attr("x", 900)
                     .attr("y", 560)
   ;
@@ -175,7 +176,7 @@ function gotData(olddata){
                     .text("Sep 23th")
                     .attr("font-family", "Mansalva")
                     .attr("font-size", 24)
-                    .attr("fill", "black")
+                    .attr("fill", "white")
                     .attr("x", 1070)
                     .attr("y", 560)
   ;
@@ -197,7 +198,7 @@ function gotData(olddata){
   xAxisGroup.call(xAxis);
 
   let xAxisYPos = h-130;
-  xAxisGroup.attr("transform", "translate(0, "+ xAxisYPos +")");
+  xAxisGroup.attr("transform", "translate(0, "+ xAxisYPos +")").attr("color", "white").attr("font-family", "Mansalva").attr("font-size", 18);
 
   /***** Y-axis *****/
   let yScale = d3.scaleLinear()
@@ -207,7 +208,7 @@ function gotData(olddata){
   let yAxis = d3.axisLeft(yScale);
   let yAxisGroup = viz.append("g").attr("class", "yaxis");
   yAxisGroup.call(yAxis);
-  yAxisGroup.attr("transform", "translate( "+ (xPadding + w/2) +", 0)");
+  yAxisGroup.attr("transform", "translate( "+ (xPadding + w/2) +", 0)").attr("color", "white").attr("font-family", "Mansalva").attr("font-size", 18);
 
   /*****  *****/
   var nestedData = d3.nest()
@@ -230,12 +231,12 @@ function gotData(olddata){
 
   var color = d3.scaleOrdinal()
     .domain(mygroups)
-    .range(['lightblue','pink','lightgreen','orange','gray'])
+    .range(['lightblue','pink','lightgreen','orange'])
   ;
-  var strokeColor = d3.scaleOrdinal()
-    .domain(mygroups)
-    .range(['blue','red','green','orange'])
-  ;
+  // var strokeColor = d3.scaleOrdinal()
+  //   .domain(mygroups)
+  //   .range(['blue','red','green','orange'])
+  // ;
 
   let area = d3.area()
               // .interpolate("basis")     ??????????
@@ -334,16 +335,15 @@ function getColor(datapoint, i){
   if(datapoint.cause == "friends"){
     return "pink";
   }
-  //CANNOT SHOW???
   if(datapoint.cause == "professors"){
     return "lightgreen";
   }
   if(datapoint.cause == "strangers"){
     return "orange";
   }
-  if(datapoint.cause == "alone"){
-    return "gray";
-  }
+  // if(datapoint.cause == "alone"){
+  //   return "gray";
+  // }
 }
 
 function getPos(datapoint, i){
