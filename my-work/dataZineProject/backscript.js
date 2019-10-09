@@ -42,11 +42,11 @@ let content3 = viz.append("text")
                     .attr("y", 280)
 ;
 let content4 = viz.append("text")
-                    .text("in 2 weeks.")
+                    .text("in 2 weeks from Sep 9th to 22nd.")
                     .attr("font-family", "Mansalva")
                     .attr("font-size", 30)
                     .attr("fill", "white")
-                    .attr("x", w/2-70)
+                    .attr("x", w/2-180)
                     .attr("y", 340)
 ;
 let subt1 = viz.append("text")
