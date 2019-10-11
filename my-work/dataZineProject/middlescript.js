@@ -45,8 +45,7 @@ function gotData(olddata){
                   .append("svg")
                       .attr("width", w)
                       .attr("height", h)
-                      .style("margin-top", 60)
-                      .style("background-color", "black")
+                      .style("background-color", "#FAF7E1") //#FFECD4
   ;
 
   let datagroups = viz.selectAll(".groups").data(newdata).enter()
@@ -55,7 +54,7 @@ function gotData(olddata){
   ;
 
   let shapes = datagroups.append("circle")
-      .attr("r", 4)
+      .attr("r", 4.5)
       .attr("fill", getColor)
       .attr("transform", getPos)
   ;
@@ -72,113 +71,113 @@ function gotData(olddata){
                     .text("Sep 10th")
                     .attr("font-family", "Mansalva")
                     .attr("font-size", 24)
-                    .attr("fill", "white")
+                    .attr("fill", "#76767A")
                     .attr("x", 60)
-                    .attr("y", 315)
+                    .attr("y", 355)
   ;
   let text2 = viz.append("text")
                     .text("Sep 11th")
                     .attr("font-family", "Mansalva")
                     .attr("font-size", 24)
-                    .attr("fill", "white")
+                    .attr("fill", "#76767A")
                     .attr("x", 235)
-                    .attr("y", 315)
+                    .attr("y", 355)
   ;
   let text3 = viz.append("text")
                     .text("Sep 12th")
                     .attr("font-family", "Mansalva")
                     .attr("font-size", 24)
-                    .attr("fill", "white")
+                    .attr("fill", "#76767A")
                     .attr("x", 400)
-                    .attr("y", 315)
+                    .attr("y", 355)
   ;
   let text4 = viz.append("text")
                     .text("Sep 13th")
                     .attr("font-family", "Mansalva")
                     .attr("font-size", 24)
-                    .attr("fill", "white")
+                    .attr("fill", "#76767A")
                     .attr("x", 560)
-                    .attr("y", 315)
+                    .attr("y", 355)
   ;
   let text5 = viz.append("text")
                     .text("Sep 14th")
                     .attr("font-family", "Mansalva")
                     .attr("font-size", 24)
-                    .attr("fill", "white")
+                    .attr("fill", "#76767A")
                     .attr("x", 720)
-                    .attr("y", 315)
+                    .attr("y", 355)
   ;
   let text6 = viz.append("text")
                     .text("Sep 15th")
                     .attr("font-family", "Mansalva")
                     .attr("font-size", 24)
-                    .attr("fill", "white")
+                    .attr("fill", "#76767A")
                     .attr("x", 890)
-                    .attr("y", 315)
+                    .attr("y", 355)
   ;
   let text7 = viz.append("text")
                     .text("Sep 16th")
                     .attr("font-family", "Mansalva")
                     .attr("font-size", 24)
-                    .attr("fill", "white")
+                    .attr("fill", "#76767A")
                     .attr("x", 1060)
-                    .attr("y", 315)
+                    .attr("y", 355)
   ;
   let text8 = viz.append("text")
                     .text("Sep 17th")
                     .attr("font-family", "Mansalva")
                     .attr("font-size", 24)
-                    .attr("fill", "white")
+                    .attr("fill", "#76767A")
                     .attr("x", 60)
-                    .attr("y", 560)
+                    .attr("y", 620)
   ;
   let text9 = viz.append("text")
                     .text("Sep 18th")
                     .attr("font-family", "Mansalva")
                     .attr("font-size", 24)
-                    .attr("fill", "white")
+                    .attr("fill", "#76767A")
                     .attr("x", 235)
-                    .attr("y", 560)
+                    .attr("y", 620)
   ;
   let text10 = viz.append("text")
                     .text("Sep 19th")
                     .attr("font-family", "Mansalva")
                     .attr("font-size", 24)
-                    .attr("fill", "white")
+                    .attr("fill", "#76767A")
                     .attr("x", 400)
-                    .attr("y", 560)
+                    .attr("y", 620)
   ;
   let text11 = viz.append("text")
                     .text("Sep 20th")
                     .attr("font-family", "Mansalva")
                     .attr("font-size", 24)
-                    .attr("fill", "white")
+                    .attr("fill", "#76767A")
                     .attr("x", 560)
-                    .attr("y", 560)
+                    .attr("y", 620)
   ;
   let text12 = viz.append("text")
                     .text("Sep 21st")
                     .attr("font-family", "Mansalva")
                     .attr("font-size", 24)
-                    .attr("fill", "white")
+                    .attr("fill", "#76767A")
                     .attr("x", 720)
-                    .attr("y", 560)
+                    .attr("y", 620)
   ;
   let text13 = viz.append("text")
                     .text("Sep 22nd")
                     .attr("font-family", "Mansalva")
                     .attr("font-size", 24)
-                    .attr("fill", "white")
+                    .attr("fill", "#76767A")
                     .attr("x", 890)
-                    .attr("y", 560)
+                    .attr("y", 620)
   ;
   let text14 = viz.append("text")
                     .text("Sep 23th")
                     .attr("font-family", "Mansalva")
                     .attr("font-size", 24)
-                    .attr("fill", "white")
+                    .attr("fill", "#76767A")
                     .attr("x", 1060)
-                    .attr("y", 560)
+                    .attr("y", 620)
   ;
 
 // Area Chart
@@ -202,8 +201,8 @@ function gotData(olddata){
   xAxisGroup.call(xAxis);
 
   let xAxisYPos = h-130;
-  xAxisGroup.attr("transform", "translate(0, "+ xAxisYPos +")")
-            .attr("color", "white")
+  xAxisGroup.attr("transform", "translate(0, "+ (xAxisYPos + 20) + ")")
+            .attr("color", "#76767A")
             .attr("font-family", "Mansalva")
             .attr("font-size", 18)
 ;
@@ -211,13 +210,13 @@ function gotData(olddata){
   /***** Y-axis *****/
   let yScale = d3.scaleLinear()
                     .domain([0, 16])
-                    .range( [xAxisYPos, 80] );
+                    .range( [xAxisYPos+20, 80] );
 
   let yAxis = d3.axisLeft(yScale);
   let yAxisGroup = viz.append("g").attr("class", "yaxis");
   yAxisGroup.call(yAxis);
-  yAxisGroup.attr("transform", "translate( "+ (xPadding + w/2) +", 0)")
-            .attr("color", "white")
+  yAxisGroup.attr("transform", "translate( "+ (xPadding + w/2 ) +", 0)")
+            .attr("color", "#76767A")
             .attr("font-family", "Mansalva")
             .attr("font-size", 18)
 ;
@@ -243,12 +242,8 @@ function gotData(olddata){
 
   var color = d3.scaleOrdinal()
     .domain(mygroups)
-    .range(['lightblue','pink','lightgreen','orange'])
+    .range(['#97B7CC', '#A1C9A5', '#FAC0BE', '#FBC687'])
   ;
-  // var strokeColor = d3.scaleOrdinal()
-  //   .domain(mygroups)
-  //   .range(['blue','red','green','orange'])
-  // ;
 
   let area = d3.area()
               // .interpolate("basis")    /* failed to smooth the line */
@@ -262,8 +257,7 @@ function gotData(olddata){
       .enter()
       .append("path")
         .style("fill", function(d) { name = mygroups[d.key] ;  return color(name); })
-        // .attr("stroke", function(d) { name = mygroups[d.key] ;  return strokeColor(name); })
-        .attr("stroke-width", .5)
+        // .attr("stroke-width", .5)
         .attr("d", area)
   ;
 }
@@ -271,87 +265,89 @@ function gotData(olddata){
 // 7 columns * 2 rows:
 function translate1(){
   let x = 50 + Math.random()*100;
-  let y = 150 + Math.random()*100;
+  let y = 200 + Math.random()*100;
   return "translate (" + x + ", " + y + ")";
 }
 function translate2(){
   let x = 220+Math.random()*100;
-  let y = 150+Math.random()*100;
+  let y = 200+Math.random()*100;
   return "translate (" + x + ", " + y + ")";
 }
 function translate3(){
   let x = 390+Math.random()*100;
-  let y = 150+Math.random()*100;
+  let y = 200+Math.random()*100;
   return "translate (" + x + ", " + y + ")";
 }
 function translate4(){
   let x = 550+Math.random()*100;
-  let y = 150+Math.random()*100;
+  let y = 200+Math.random()*100;
   return "translate (" + x + ", " + y + ")";
 }
 function translate5(){
   let x = 710+Math.random()*100;
-  let y = 150+Math.random()*100;
+  let y = 200+Math.random()*100;
   return "translate (" + x + ", " + y + ")";
 }
 function translate6(){
   let x = 880+Math.random()*100;
-  let y = 150+Math.random()*100;
+  let y = 200+Math.random()*100;
   return "translate (" + x + ", " + y + ")";
 }
 function translate7(){
   let x = 1050+Math.random()*100;
-  let y = 150+Math.random()*100;
+  let y = 200+Math.random()*100;
   return "translate (" + x + ", " + y + ")";
 }
 function translate8(){
   let x = 50+Math.random()*100;
-  let y = 400+Math.random()*100;
+  let y = 460+Math.random()*100;
   return "translate (" + x + ", " + y + ")";
 }
 function translate9(){
   let x = 220+Math.random()*100;
-  let y = 400+Math.random()*100;
+  let y = 460+Math.random()*100;
   return "translate (" + x + ", " + y + ")";
 }
 function translate10(){
   let x = 390+Math.random()*100;
-  let y = 400+Math.random()*100;
+  let y = 460+Math.random()*100;
   return "translate (" + x + ", " + y + ")";
 }
 function translate11(){
   let x = 550+Math.random()*100;
-  let y = 400+Math.random()*100;
+  let y = 460+Math.random()*100;
   return "translate (" + x + ", " + y + ")";
 }
 function translate12(){
   let x = 710+Math.random()*100;
-  let y = 400+Math.random()*100;
+  let y = 460+Math.random()*100;
   return "translate (" + x + ", " + y + ")";
 }
 function translate13(){
   let x = 880+Math.random()*100;
-  let y = 400+Math.random()*100;
+  let y = 460+Math.random()*100;
   return "translate (" + x + ", " + y + ")";
 }
 function translate14(){
   let x = 1050+Math.random()*100;
-  let y = 400+Math.random()*100;
+  let y = 460+Math.random()*100;
   return "translate (" + x + ", " + y + ")";
 }
 
 function getColor(datapoint, i){
   if(datapoint.cause == "family"){
-    return "lightblue";
+    return "#97B7CC"; //blue
   }
   if(datapoint.cause == "friends"){
-    return "pink";
+    // return "#BFCC81"; //green
+    return "#A1C9A5"; //green
   }
   if(datapoint.cause == "professors"){
-    return "lightgreen";
+    return "#FAC0BE"; //pink
+    // return "#CC9797"; //pink brown
   }
   if(datapoint.cause == "strangers"){
-    return "orange";
+    return "#FBC687"; //yellow
   }
   // if(datapoint.cause == "alone"){
   //   return "gray";
