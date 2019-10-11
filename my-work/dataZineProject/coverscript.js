@@ -41,3 +41,9 @@ let text4 = viz.append("text")
                   .attr("x", w-270)
                   .attr("y", h-150)
 ;
+
+// var d = document.getElementById("img");
+// document.body.appendChild(d);
+//   d.style.position = "absolute";
+//   d.style.left = 35+'%';
+//   d.style.top = 18+'%';
