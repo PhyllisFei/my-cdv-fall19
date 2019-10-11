@@ -73,7 +73,7 @@ function gotData(olddata){
                     .attr("font-family", "Mansalva")
                     .attr("font-size", 24)
                     .attr("fill", "white")
-                    .attr("x", 65)
+                    .attr("x", 60)
                     .attr("y", 315)
   ;
   let text2 = viz.append("text")
@@ -81,7 +81,7 @@ function gotData(olddata){
                     .attr("font-family", "Mansalva")
                     .attr("font-size", 24)
                     .attr("fill", "white")
-                    .attr("x", 240)
+                    .attr("x", 235)
                     .attr("y", 315)
   ;
   let text3 = viz.append("text")
@@ -89,7 +89,7 @@ function gotData(olddata){
                     .attr("font-family", "Mansalva")
                     .attr("font-size", 24)
                     .attr("fill", "white")
-                    .attr("x", 410)
+                    .attr("x", 400)
                     .attr("y", 315)
   ;
   let text4 = viz.append("text")
@@ -97,7 +97,7 @@ function gotData(olddata){
                     .attr("font-family", "Mansalva")
                     .attr("font-size", 24)
                     .attr("fill", "white")
-                    .attr("x", 570)
+                    .attr("x", 560)
                     .attr("y", 315)
   ;
   let text5 = viz.append("text")
@@ -105,7 +105,7 @@ function gotData(olddata){
                     .attr("font-family", "Mansalva")
                     .attr("font-size", 24)
                     .attr("fill", "white")
-                    .attr("x", 730)
+                    .attr("x", 720)
                     .attr("y", 315)
   ;
   let text6 = viz.append("text")
@@ -113,7 +113,7 @@ function gotData(olddata){
                     .attr("font-family", "Mansalva")
                     .attr("font-size", 24)
                     .attr("fill", "white")
-                    .attr("x", 900)
+                    .attr("x", 890)
                     .attr("y", 315)
   ;
   let text7 = viz.append("text")
@@ -121,7 +121,7 @@ function gotData(olddata){
                     .attr("font-family", "Mansalva")
                     .attr("font-size", 24)
                     .attr("fill", "white")
-                    .attr("x", 1070)
+                    .attr("x", 1060)
                     .attr("y", 315)
   ;
   let text8 = viz.append("text")
@@ -129,7 +129,7 @@ function gotData(olddata){
                     .attr("font-family", "Mansalva")
                     .attr("font-size", 24)
                     .attr("fill", "white")
-                    .attr("x", 65)
+                    .attr("x", 60)
                     .attr("y", 560)
   ;
   let text9 = viz.append("text")
@@ -137,7 +137,7 @@ function gotData(olddata){
                     .attr("font-family", "Mansalva")
                     .attr("font-size", 24)
                     .attr("fill", "white")
-                    .attr("x", 240)
+                    .attr("x", 235)
                     .attr("y", 560)
   ;
   let text10 = viz.append("text")
@@ -145,7 +145,7 @@ function gotData(olddata){
                     .attr("font-family", "Mansalva")
                     .attr("font-size", 24)
                     .attr("fill", "white")
-                    .attr("x", 410)
+                    .attr("x", 400)
                     .attr("y", 560)
   ;
   let text11 = viz.append("text")
@@ -153,7 +153,7 @@ function gotData(olddata){
                     .attr("font-family", "Mansalva")
                     .attr("font-size", 24)
                     .attr("fill", "white")
-                    .attr("x", 570)
+                    .attr("x", 560)
                     .attr("y", 560)
   ;
   let text12 = viz.append("text")
@@ -161,7 +161,7 @@ function gotData(olddata){
                     .attr("font-family", "Mansalva")
                     .attr("font-size", 24)
                     .attr("fill", "white")
-                    .attr("x", 730)
+                    .attr("x", 720)
                     .attr("y", 560)
   ;
   let text13 = viz.append("text")
@@ -169,7 +169,7 @@ function gotData(olddata){
                     .attr("font-family", "Mansalva")
                     .attr("font-size", 24)
                     .attr("fill", "white")
-                    .attr("x", 900)
+                    .attr("x", 890)
                     .attr("y", 560)
   ;
   let text14 = viz.append("text")
@@ -177,17 +177,21 @@ function gotData(olddata){
                     .attr("font-family", "Mansalva")
                     .attr("font-size", 24)
                     .attr("fill", "white")
-                    .attr("x", 1070)
+                    .attr("x", 1060)
                     .attr("y", 560)
   ;
 
 // Area Chart
-  let dateObjectConverter = d3.timeParse("%Y-%m-%dT%H:%M:%S.%LZ");
+  // for (let i=0;i<areadata.length;i++){
+  //   areadata[i].date = areadata[i].date.toString();
+  // }
 
-  let alternativeDomainArray = d3.extent(newdata, function(d){
-    return dateObjectConverter(d.date);
+  // let dateObjectConverter = d3.timeParse("%Y-%m-%dT%H:%M:%S.%LZ");
+
+  // get time domain in the array
+  let alternativeDomainArray = d3.extent(areadata, function(d){
+    return ((d.date));
   });
-
   console.log(alternativeDomainArray);
 
   /***** X-axis *****/
@@ -198,17 +202,25 @@ function gotData(olddata){
   xAxisGroup.call(xAxis);
 
   let xAxisYPos = h-130;
-  xAxisGroup.attr("transform", "translate(0, "+ xAxisYPos +")").attr("color", "white").attr("font-family", "Mansalva").attr("font-size", 18);
+  xAxisGroup.attr("transform", "translate(0, "+ xAxisYPos +")")
+            .attr("color", "white")
+            .attr("font-family", "Mansalva")
+            .attr("font-size", 18)
+;
 
   /***** Y-axis *****/
   let yScale = d3.scaleLinear()
-                    .domain([0, 18])
+                    .domain([0, 16])
                     .range( [xAxisYPos, 80] );
 
   let yAxis = d3.axisLeft(yScale);
   let yAxisGroup = viz.append("g").attr("class", "yaxis");
   yAxisGroup.call(yAxis);
-  yAxisGroup.attr("transform", "translate( "+ (xPadding + w/2) +", 0)").attr("color", "white").attr("font-family", "Mansalva").attr("font-size", 18);
+  yAxisGroup.attr("transform", "translate( "+ (xPadding + w/2) +", 0)")
+            .attr("color", "white")
+            .attr("font-family", "Mansalva")
+            .attr("font-size", 18)
+;
 
   /*****  *****/
   var nestedData = d3.nest()
@@ -239,7 +251,7 @@ function gotData(olddata){
   // ;
 
   let area = d3.area()
-              // .interpolate("basis")     ??????????
+              // .interpolate("basis")    /* failed to smooth the line */
               .x(function(d, i) { return xScale(new Date(d.data.key)); })
               .y0(function(d) { return yScale(d[0]); })
               .y1(function(d) { return yScale(d[1]); })
