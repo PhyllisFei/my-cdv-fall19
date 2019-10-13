@@ -1,7 +1,5 @@
 ## Feeling Happy Today?
-> Data Zine Project by Phyllis Fei
-
-Data I collected for this project is: how many times I laugh every 2 hour (from 8am to 8pm) in 2 weeks (from Sep 10th to 23rd), and who cause my laughter.
+> Data I collected for this project is: how many times I laugh every 2 hour (from 8am to 8pm) in 2 weeks (from Sep 10th to 23rd), and who cause my laughter.
 
 **I used 2 graphs for data visualization.**
 - The first one is a matrix graph (I would like to call it so) which visualizes _who_ cause my laughter for _how many times_ on _each day_. It also roughly shows how many times I laugh a day in total, and on which day I laugh the most/least.
