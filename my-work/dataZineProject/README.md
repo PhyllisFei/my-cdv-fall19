@@ -7,7 +7,7 @@
 
 1. Screenshots of each page
    - Cover page
-   ![cover](../master/screenshots/cover.png)
+   ![cover](https://github.com/PhyllisFei/my-cdv-fall19/blob/master/my-work/dataZineProject/screenshots/back.png)
    - Middle page
    ![middle](../master/screenshots/middle.png)
    - Back page
