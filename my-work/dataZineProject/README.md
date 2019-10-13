@@ -1,4 +1,4 @@
-**Feeling Happy Today?**
+##Feeling Happy Today?
 > Data Zine Project by Phyllis Fei
 
 Data I collected for this project is: how many times I laugh every 2 hour (from 8am to 8pm) in 2 weeks (from Sep 10th to 23rd), and who cause my laughter.
