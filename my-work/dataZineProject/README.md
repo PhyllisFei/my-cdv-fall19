@@ -7,11 +7,11 @@
 
 1. Screenshots of each page
    - Cover page
-   ![cover](https://github.com/PhyllisFei/my-cdv-fall19/blob/master/my-work/dataZineProject/screenshots/back.png)
+   ![cover](https://github.com/PhyllisFei/my-cdv-fall19/blob/master/my-work/dataZineProject/screenshots/cover.png)
    - Middle page
-   ![middle](../master/screenshots/middle.png)
+   ![middle](https://github.com/PhyllisFei/my-cdv-fall19/blob/master/my-work/dataZineProject/screenshots/middle.png)
    - Back page
-   ![back](../master/screenshots/back.png)
+   ![back](https://github.com/PhyllisFei/my-cdv-fall19/blob/master/my-work/dataZineProject/screenshots/back.png)
 
 2. Challenges
    - Since the data I collected has many detailed information, it was messy and hard for me to get them well organized and ready to use. It was cleaned up the first time by taking out the features I need and putting into a new array. The second time was done by combining "date" and "time" to form new a date object. Thanks Leon for helping me clean my data twice :)
