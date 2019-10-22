@@ -36,13 +36,13 @@ function gotData(incomingData){
   let xDomain = d3.extent(incomingData, function(datapoint){
     return datapoint.x;
   });
-  console.log(xDomain);
+  // console.log(xDomain);
 
 
   let yDomain = d3.extent(incomingData, function(datapoint){
     return datapoint.y;
   })
-  console.log(yDomain);
+  // console.log(yDomain);
 
   // general padding of our visualization
   let padding = 40;
@@ -68,7 +68,7 @@ function gotData(incomingData){
   yAxisGroup.call(yAxis);
   yAxisGroup.attr("transform", "translate("+padding+",0)");
 
-  // group that contains everything to do with graoh (aka the actual shapes)
+  // group that contains everything to do with graph (aka the actual shapes)
   let vizgroup = viz.append("g").attr("class", "vizgroup");
 
   // data to visualize
@@ -120,8 +120,6 @@ function gotData(incomingData){
     });
 
   }
-
-
 
 }
 
