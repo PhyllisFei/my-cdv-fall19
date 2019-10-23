@@ -4,7 +4,7 @@ This dataset ranks representatives from 158 countries in 2015, 157 countries in 
 
 One possible way to build a data story out of this dataset: compare happiness levels among all countries, then group countries according to continents and compare again, then maybe rank factors that influence people's happiness from the most to the least.
 
-### Dataset 2: [Weibo Data about Online Praying via Reposting to the "Koi Fish"7](https://opendata.pku.edu.cn/dataset.xhtml?persistentId=doi:10.18170/DVN/KKGAYB)
+### Dataset 2: [Weibo Data about Online Praying via Reposting to the "Koi Fish"](https://opendata.pku.edu.cn/dataset.xhtml?persistentId=doi:10.18170/DVN/KKGAYB)
 
 This dataset contain Weibo reposting data about the online praying to the Koi Fish, along with the information about the reposters (name, gender, number of followers, number of people they follow, reposting text contents, etc.). The data coverage is from 08/2017 to 01/2018, collected from monthly praying posts.
 
