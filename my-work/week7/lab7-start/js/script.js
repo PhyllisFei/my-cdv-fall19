@@ -159,7 +159,7 @@ document.getElementById("buttonD").addEventListener("click", sortData);
 function shuffleData(){
   shuffleDatapoints();
 }
-document.getElementById("buttonE").addEventListener("click", sortData);
+document.getElementById("buttonE").addEventListener("click", shuffleData);
 
 
 // global variables that we need at various spots:
