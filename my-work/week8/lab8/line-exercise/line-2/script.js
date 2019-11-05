@@ -14,20 +14,15 @@ let viz = d3.select("#container")
 
 
 function gotData(incomingData){
-  // the following function is defined below
-  // it allows for us to NOT WORRY about parsing
-  // time strings and creating JS date objects
-  // in the following script
   incomingData = fixJSDateObjects(incomingData);
   console.log(incomingData);
 
-  // initital data - USA or CHN
-  let data = incomingData[1];
-  console.log(data);
+  let data1 = incomingData[0];
+  let data2 = incomingData[1];
+  // console.log(data1);
+  // console.log(data2);
 
-  // we can use a  time scale because our data expresses
-  // years in the form of JS date objects
-  let xDomain = d3.extent(data, function(d){ return d.year });
+  let xDomain = d3.extent(data1, function(d){ return d.year });
   let xScale = d3.scaleTime().domain(xDomain).range([xpadding, w-xpadding]);
   let xAxis = d3.axisBottom(xScale);
   let xAxisGroup = viz.append("g")
@@ -36,7 +31,7 @@ function gotData(incomingData){
   ;
   xAxisGroup.call(xAxis);
 
-  let yMax = d3.max(data, function(d){
+  let yMax = d3.max(data2, function(d){
     return d.birthsPerThousand;
   })
   let yDomain = [0, yMax];
@@ -62,17 +57,20 @@ function gotData(incomingData){
                       .y(getY)
   ;
 
-  let thisSituation = viz.datum(data);
-  thisSituation.append("path")
+  let thisSituation1 = viz.datum(data1);
+
+  thisSituation1.append("path")
                 .attr("d", lineMaker)
                 .attr("fill", "none")
                 .attr("stroke", "blue")
   ;
 
-  document.getElementById("US").addEventListener("click", function(){
-    
-  } )
-
+  let thisSituation2 = viz.datum(data2);
+  thisSituation2.append("path")
+                .attr("d", lineMaker)
+                .attr("fill", "none")
+                .attr("stroke", "red")
+  ;
 }
 
 // function that turns all datapoints year values
