@@ -1,6 +1,6 @@
 ### Critical Data & Visualization Fall 2019
 
-Hi! My name is [Phyllis] and in this repository I will develop [my work](my-work) for [CDV](https://github.com/leoneckert/cdv-fall19) that I am taking in the Fall Semester 2019.
+Hi! My name is Phyllis and in this repository I will develop [my work](https://github.com/PhyllisFei/my-cdv-fall19) for [CDV](https://github.com/leoneckert/cdv-fall19) that I am taking in the Fall Semester 2019.
 
 
 ###### Notes:
