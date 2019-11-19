@@ -13,3 +13,6 @@ button{
     stroke-dashoffset: -50;
   }
 }
+
+.liquidFillGaugeText { font-family: Helvetica; font-weight: bold; }
+ 
