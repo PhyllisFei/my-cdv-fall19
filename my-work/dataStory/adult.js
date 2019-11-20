@@ -1,9 +1,8 @@
-// d3.json("adults.json").then(gotData);
+d3.json("adults.json").then(gotData);
+
 let w = 1500;
 let h = 900;
 let col = 50;
-
-let humanFigureData = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
 
 let viz = d3.select("#container")
   .append("svg")
@@ -11,6 +10,9 @@ let viz = d3.select("#container")
     .style("height", h)
     .style("outline", "solid black")
 ;
+
+//place 100 human figures
+let humanFigureData = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
 
 function setX(datapoint,i){
   return 28 * (i % col)  + 50;
@@ -52,13 +54,13 @@ figureGroupElements
     element.select("rect").transition().attr("width", 12).attr("fill","black");
   })
 
+//drag the human figure
 var dragger = d3.drag()
   .on("drag", function () {
         d3.select(this)
             .attr("x", d3.event.x)
             .attr("y", d3.event.y);
     });
-
 dragger(figureGroupElements.selectAll("rect"));
 
 
@@ -80,18 +82,18 @@ dragger(figureGroupElements.selectAll("rect"));
 //         }
 // }
 
-// function gotData(incomingData){
-//   incomingData = fixJSDateObjects(incomingData);
-//   // console.log(incomingData);
-//
-//   let adultsData = incomingData[0];
+function gotData(incomingData){
+  incomingData = fixJSDateObjects(incomingData);
+  console.log(incomingData);
+
+  let adultsData = incomingData[0];
 //   let menData = incomingData[1];
 //   let womenData = incomingData[2];
 //   // console.log(menData);
-//
-//   let data = adultsData;
-//
-//   let xDomain = d3.extent(adultsData, function(d){ return d.year });
+
+  let data = adultsData;
+
+  let xDomain = d3.extent(adultsData, function(d){ return d.year });
 //   let xScale = d3.scaleTime().domain(xDomain).range([xpadding, w-xpadding]);
 //   let xAxis = d3.axisBottom(xScale);
 //   let xAxisGroup = viz.append("g")
@@ -123,7 +125,34 @@ dragger(figureGroupElements.selectAll("rect"));
 //     function getY(d){
 //       return yScale(d.share);
 //     }
-//
+
+//year slider
+  var slider = d3
+    .sliderBottom()
+    .min(d3.min(xDomain))
+    .max(d3.max(xDomain))
+    .step(1000 * 60 * 60 * 24 * 365)
+    .width(900)
+    .tickFormat(d3.timeFormat('%Y'))
+    .tickValues(xDomain)
+    // .default(new Date(1975, 10, 3))
+    .on('onchange', val => {
+      d3.select('p#value-time').text(d3.timeFormat('%Y')(val));
+    });
+
+  var gTime = d3
+    .select("div#slider")
+    .append("svg")
+    .attr("width", 1000)
+    .attr("height", 100)
+    .append("g")
+    .attr('transform', 'translate(20,20)');
+  ;
+  gTime.call(slider);
+
+  // d3.select('p#value-time').text(d3.timeFormat('%Y')(sliderTime.value()));
+
+
 //     let lineMaker = d3.line()
 //                         .x(getX)
 //                         .y(getY)
@@ -169,17 +198,17 @@ dragger(figureGroupElements.selectAll("rect"));
 //     update(womenData);
 //   });
 //
-// }
-//
-// function fixJSDateObjects(dataToFix){
-//   let timeParse = d3.timeParse("%Y");
-//   return dataToFix.map(function(data){
-//     return data.map(function(d){
-//       return {
-//         "entity": d.Entity,
-//         "year": timeParse(d.Year),
-//         "share": d.Share
-//       }
-//     })
-//   });
-// }
+}
+
+function fixJSDateObjects(dataToFix){
+  let timeParse = d3.timeParse("%Y");
+  return dataToFix.map(function(data){
+    return data.map(function(d){
+      return {
+        "entity": d.Entity,
+        "year": timeParse(d.Year),
+        "share": d.Share
+      }
+    })
+  });
+}
