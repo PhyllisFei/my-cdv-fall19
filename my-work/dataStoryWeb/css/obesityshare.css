@@ -1,0 +1,54 @@
+body,html{
+	margin:0;
+	height: 100%;
+	width: 100%;
+  background-size: cover;
+}
+
+#textboxes {
+  width: 80%;
+  margin-left: 10%;
+  margin-top: 2%;
+  border: solid black 3px;
+  height: 100vh;
+  overflow: scroll;
+}
+
+.box{
+  margin-bottom: 60vh;
+  padding:30px;
+  border-top: 1px black solid;
+}
+
+#slider{
+  margin-left: 20%;
+}
+
+#graphtitle1{
+  left: 40%;
+  top: 20%;
+  font-size: 2.5em;
+  font-family: 'Mukta', sans-serif;
+  position: relative;
+}
+#graphtitle2{
+  left: 37%;
+  top: 20%;
+  font-size: 2.5em;
+  font-family: 'Mukta', sans-serif;
+  position: relative;
+}
+#graphtitle3{
+  left: 38%;
+  top: 20%;
+  font-size: 2.5em;
+  font-family: 'Mukta', sans-serif;
+  position: relative;
+}
+
+#btn{
+  width: 3.5%;
+  left: 85%;
+  top: 98%;
+  position: absolute;
+}
