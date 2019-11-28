@@ -1,265 +1,271 @@
-d3.json("json/adults.json").then(gotData1);
-d3.json("json/dietcomp.json").then(gotData2);
+d3.json("json/milktea.json").then(gotData1);
 
 let w = 1500;
-let h = 900;
+let h = 800;
+let padding = 30;
+let heightRatio = 0.8;
 let col = 50;
 
 function gotData1(incomingData){
-  incomingData = fixJSDateObjects1(incomingData);
-  console.log(incomingData);
-  let adultsData = incomingData[0];
-  let data = adultsData;
+  let milkteaData = incomingData;
+  console.log(milkteaData);
+  let allBrands = milkteaData.map(function(d){return d.Brand});
 
-  let xDomain = d3.extent(adultsData, function(d){ return d.year });
-
-  //here I place 100 humans
-  let humanFigureData = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
-
-  function setX(datapoint,i){
-    return 28 * (i % col)  + 50;
-  }
-
-  function setY(datapoint,i){
-    if(i == 0){
-      y = 0;
-    }
-    if (i % col == 0){
-      y++;
-    }
-    return h - 150 * y;
-  }
-
-  let figureGroupElements = d3.select("#visualization1").append("svg")
-                                .attr("width", w)
-                                .attr("height", h)
-                                .selectAll(".figuregroup").data(humanFigureData)
-                                .enter()
-                                .append("g")
-                                .attr("class", "figuregroup")
+  let viz1 = d3.select("#visualization1")
+    .append("svg")
+      .style("width", w)
+      .style("height", h)
   ;
 
-  figureGroupElements.append("rect")
-    .attr("x", setX)
-    .attr("y", setY)
-    .attr("width", 12)
-    .attr("height", 40)
-    .attr("stroke", "black")
-    .attr("fill", "white")
+  //here we draw the xAxis
+  let xScale = d3.scaleBand()
+      .domain(allBrands)
+      .range([padding, w-padding])
+      .paddingInner(0.1)
+  ;
+  let xAxis = d3.axisBottom(xScale);
+  // xAxis.tickFormat(d=>{return milkteaData.filter(dd=>dd.Brand==d)[0].Product;});
+  let xAxisGroup1 = viz1.append("g").classed("xAxis", true);
+  xAxisGroup1.call(xAxis);
+  xAxisGroup1.selectAll("text").attr("font-size", 24).attr("y", 9);
+  xAxisGroup1.selectAll("line").remove();
+  xAxisGroup1.attr("transform", "translate(0,"+ (h-padding) +")");
+
+  //here we draw the yAxis
+  let yMax1 = d3.max(milkteaData, function(d){return d.SugarS});
+  let yDomain1 = [0, yMax1];
+  let yScale1 = d3.scaleLinear().domain(yDomain1).range([0, h-padding*2]);
+  let graphGroup1 = viz1.append("g").classed("graphGroup", true)
+                      .selectAll(".datapoint").data(milkteaData, function(d){return d.Brand;})
+                      .enter()
+                        .append("g").classed("datapoint", true)
+                        .attr("transform", function(d, i){
+                          return "translate("+ xScale(d.Brand)+ "," + (h - padding) + ")"
+                        })
+                          .append("rect")
+                            .attr("fill", "lightblue")
+                            .attr("opacity", "1")
+                            .attr("width", function(){
+                              return xScale.bandwidth();
+                            })
+                            .attr("height", function(d, i){
+                              return yScale1(d.SugarS);
+                            })
+                            .attr("y", function(d,i){
+                              return -yScale1(d.SugarS);
+                            })
+                        ;
+ // hide detailed info box
+  let detailBox = d3.select("#visualization1").append("div").attr("class", "detailBox")
+     .attr("class", "detailBox")
+     .style("opacity", 0)
   ;
 
-  // scale width according to share
-  let xScale = d3.scaleLinear().domain(0, 7).range([12, 20]);
+  graphGroup1
+    .on("mouseover", function(d){
+      console.log("hovering");
+      let element = d3.select(this);
+      element.select("rect").transition().duration(100).attr("opacity", 0);
 
-  //this is a year slider
-  var slider = d3
-    .sliderBottom()
-    .min(d3.min(xDomain))
-    .max(d3.max(xDomain))
-    .step(1000 * 60 * 60 * 24 * 365)
-    .width(900)
-    .tickFormat(d3.timeFormat('%Y'))
-    .tickValues(xDomain)
-    .on('onchange', val => {
-      d3.select('p#value-time').text(d3.timeFormat('%Y')(val));
-      // console.log(val);
-      // console.log(val.getTime());
+      // show detailed info box on hover
+      detailBox.transition()
+                 .duration(50)
+                 .style("opacity", .9)
+      ;
 
-      let match = incomingData[0].find(d=>{
-        //here
-        if (val.getFullYear() == d.year.getFullYear()){
-          // console.log(val.getTime() );
-          // console.log( d.year.getTime() ) ;
-          // console.log("_");
-          return true;
-        }else {
-          // console.log("nomatch");
-          return false;
-        }
-      })
+      //POSITION not changing???
+      detailBox.html(d.Product + "<br/>" + d.NetWeight + "mL")
+                   .style("left", (d3.event.pageX) + "px")
+                   .style("top", (d3.event.pageY) + "px")
+     ;
 
-      let matchShare = match.share;
-      console.log(matchShare%1);
+   })
 
-      figureGroupElements.select("rect").attr("fill", function(d,i){
-        // console.log(i);
-        if(i+1 <= matchShare){
-          return "red"
-      }
-      });
+    .on("mouseout", function(){
+      let element = d3.select(this);
+      element.select("rect").transition().duration("100").attr("opacity", 1);
 
-
-      //figure change size while sliding
-      newSize = this.size;
-      figureGroupElements.attr("width", newSize);
-      // console.log(newSize);
+      detailBox.transition()
+                 .duration(50)
+                 .style("opacity", 0);
     });
 
-  var gTime = d3
-    .select("div#slider")
-    .append("svg")
-    .attr("width", 1000)
-    .attr("height", 100)
-    .append("g")
-    .attr('transform', 'translate(20,20)');
-  ;
-  gTime.call(slider);
+  let checkState1 = d3.extent(milkteaData, function(d){return d.WithSugar});
+  console.log(checkState1);
 
+  // if (checkState1.yes){
+  //   graphGroup1.attr("fill", "lightblue");
+  //   console.log("yes");
+  // }else{
+  //   graphGroup1.attr("fill", "red");
+  //   console.log("no");
+  // }
+
+
+  //here we discuss about coffein
+  let viz2 = d3.select("#visualization2")
+    .append("svg")
+      .style("width", w)
+      .style("height", h)
+  ;
+
+  let xAxisGroup2 = viz2.append("g").classed("xAxis", true);
+  xAxisGroup2.call(xAxis);
+  xAxisGroup2.selectAll("text").attr("font-size", 24).attr("y", 9);
+  xAxisGroup2.selectAll("line").remove();
+  xAxisGroup2.attr("transform", "translate(0,"+ (h-padding) +")");
+
+  //here we draw the xAxis
+  let yMax2 = d3.max(milkteaData, function(d){return d.CoffeinS});
+  let yDomain2 = [0, yMax2];
+  let yScale2 = d3.scaleLinear().domain(yDomain2).range([0, h-padding*2]);
+  let graphGroup2 = viz2.append("g").classed("graphGroup2", true)
+                      .selectAll(".datapoint").data(milkteaData, function(d){return d.Brand;})
+                      .enter()
+                        .append("g").classed("datapoint", true)
+                        .attr("transform", function(d, i){
+                          return "translate("+ xScale(d.Brand)+ "," + (h - padding) + ")"
+                        })
+                          .append("rect")
+                            .attr("width", function(){
+                              return xScale.bandwidth();
+                            })
+                            .attr("height", function(d, i){
+                              return yScale2(d.CoffeinS);
+                            })
+                            .attr("y", function(d,i){
+                              return -yScale2(d.CoffeinS);
+                            })
+                        ;
 
 }
 
-// viz % of carb, protein, Fat
-function gotData2(incomingData){
-  incomingData = fixJSDateObjects2(incomingData);
-
-  let percentageData = calcShare(incomingData);
-
-  console.log(percentageData);
-
-  let viz = d3.select("#visualization2")
-    .append("svg")
-      .attr("width", w)
-      .attr("height", h)
-  ;
-
-  //Circle viz for carbs in 1961
-  let datapoint1 = viz.selectAll(".groups").data(percentageData.carbs).enter()
-    .append("g")
-      .attr("class", "groups")
-  ;
-  let carbsCircle = datapoint1.append("circle")
-      .attr("r", 10)
-      .attr("cx", 100)
-      .attr("cy", 500)
-      .attr("fill", "red")
-  ;
-
-
-
-  // //Circle viz for protein in 2013
-  // let datapoint2 = viz.selectAll(".groups").data(percentageData.protein).enter()
-  //   .append("g")
-  //     .attr("class", "groups")
-  // ;
-  // let proteinCircle = datapoint2.append("circle")
-  //   .attr("r", 10)
-  //   .attr("cx", 200)
-  //   .attr("cy", 500)
-  //   .attr("fill", "green")
-  //   ;
+  // //here I place 100 humans
+  // let humanFigureData = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
   //
-  //   //Circle viz for fat in 2013
-  // let datapoint3 = viz.selectAll(".groups").data(percentageData.fat).enter()
-  //   .append("g")
-  //     .attr("class", "groups")
+  // function setX(datapoint,i){
+  //   return 28 * (i % col)  + 50;
+  // }
+  //
+  // function setY(datapoint,i){
+  //   if(i == 0){
+  //     y = 0;
+  //   }
+  //   if (i % col == 0){
+  //     y++;
+  //   }
+  //   return h - 150 * y;
+  // }
+  //
+  // let figureGroupElements = d3.select("#visualization1").append("svg")
+  //                               .attr("width", w)
+  //                               .attr("height", h)
+  //                               .selectAll(".figuregroup").data(humanFigureData)
+  //                               .enter()
+  //                               .append("g")
+  //                               .attr("class", "figuregroup")
   // ;
-  // let fatCircle = datapoint3.append("circle")
-  //     .attr("r", 10)
-  //     .attr("cx", 300)
-  //     .attr("cy", 500)
-  //     .attr("fill", "blue")
+  //
+  // figureGroupElements.append("rect")
+  //   .attr("x", setX)
+  //   .attr("y", setY)
+  //   .attr("width", 12)
+  //   .attr("height", 40)
+  //   .attr("stroke", "black")
+  //   .attr("fill", "white")
   // ;
-}
 
-// //Liquid Fill Gauge graph
-// var gauge1 = loadLiquidFillGauge("fillgauge1", 55);
-//     var config1 = liquidFillGaugeDefaultSettings();
-//     config1.circleColor = "#FF7777";
-//     config1.textColor = "#FF4444";
-//     config1.waveTextColor = "#FFAAAA";
-//     config1.waveColor = "#FFDDDD";
-//     config1.circleThickness = 0.2;
-//     config1.textVertPosition = 0.2;
-//     config1.waveAnimateTime = 1000;
+  // scale width according to share
+  // let xScale = d3.scaleLinear().domain(0, 7).range([12, 20]);
+
+//   //this is a year slider
+//   var slider = d3
+//     .sliderBottom()
+//     .min(d3.min(xDomain))
+//     .max(d3.max(xDomain))
+//     .step(1000 * 60 * 60 * 24 * 365)
+//     .width(900)
+//     .tickFormat(d3.timeFormat('%Y'))
+//     .tickValues(xDomain)
+//     .on('onchange', val => {
+//       d3.select('p#value-time').text(d3.timeFormat('%Y')(val));
+//       // console.log(val);
+//       // console.log(val.getTime());
 //
-// function NewValue(){
-//     if(Math.random() > .5){
-//         return Math.round(Math.random()*100);
-//     } else {
-//         return (Math.random()*100).toFixed(1);
-//     }
+//       let match = incomingData[0].find(d=>{
+//         //here
+//         if (val.getFullYear() == d.year.getFullYear()){
+//           // console.log(val.getTime() );
+//           // console.log( d.year.getTime() ) ;
+//           // console.log("_");
+//           return true;
+//         }else {
+//           // console.log("nomatch");
+//           return false;
+//         }
+//       })
+//
+//       let matchShare = match.share;
+//       console.log(matchShare%1);
+//
+//       figureGroupElements.select("rect").attr("fill", function(d,i){
+//         // console.log(i);
+//         if(i+1 <= matchShare){
+//           return "red"
+//       }
+//       });
+//
+//
+//       //figure change size while sliding
+//       newSize = this.size;
+//       figureGroupElements.attr("width", newSize);
+//       // console.log(newSize);
+//     });
+//
+//   var gTime = d3
+//     .select("div#slider")
+//     .append("svg")
+//     .attr("width", 1000)
+//     .attr("height", 100)
+//     .append("g")
+//     .attr('transform', 'translate(20,20)');
+//   ;
+//   gTime.call(slider);
+//
+//
 // }
-
-
-//calculate percentage of carb, fat, protein
-function calcShare(data){
-  // here we create a place to store the calculated data
-  let output = {
-    carbs: [],
-    fat: [],
-    protein: []
-  }
-
-  let carbs = data.map(function(d){
-    const total = parseInt(d.total);
-    const carbs = parseInt(d.carbs);
-    return (carbs/total)*100;
-  });
-  // console.log(carb); //Max: 1961
-
-  let fat = data.map(function(d){
-    const total = parseInt(d.total);
-    const fat = parseInt(d.fat);
-    return (fat/total)*100;
-  });
-  // console.log(fat); //Max: 2013
-
-  let protein = data.map(function(d){
-    const total = parseInt(d.total);
-    const proteinA = parseInt(d.proteinA);
-    const proteinP = parseInt (d.proteinP);
-    const protein = proteinA + proteinP;
-    return (protein/total)*100;
-  })
-  // console.log(protein); //Max: 2013
-
-  //here we update the calculated data
-  output = {
-    carbs: carbs,
-    fat: fat,
-    protein: protein
-  };
-  return output;
-}
-
-
-function fixJSDateObjects1(dataToFix){
-  let timeParse = d3.timeParse("%Y");
-  return dataToFix.map(function(data){
-    return data.map(function(d){
-      return {
-        "entity": d.Entity,
-        "year": timeParse(d.Year),
-        "share": d.Share
-      }
-    })
-  });
-}
-
-function fixJSDateObjects2(dataToFix){
-  let timeParse = d3.timeParse("%Y");
-  // console.log(dataToFix);
-  return dataToFix.map(function(data){
-      return {
-        "entity": data.Entity,
-        "year": data.Year,
-        "proteinA": data.ProteinA,
-        "proteinP": data.ProteinP,
-        "fat": data.Fat,
-        "carbs": data.Carbohydrates,
-        "total": data.Total
-      }
-  });
-}
-
-
+//
+// // viz % of carb, protein, Fat
+// function gotData2(incomingData){
+//   incomingData = fixJSDateObjects2(incomingData);
+//
+//   let percentageData = calcShare(incomingData);
+//
+//   console.log(percentageData);
+//
+//   let viz = d3.select("#visualization2")
+//     .append("svg")
+//       .attr("width", w)
+//       .attr("height", h)
+//   ;
+//
+//   //Circle viz for carbs in 1961
+//   let datapoint1 = viz.selectAll(".groups").data(percentageData.carbs).enter()
+//     .append("g")
+//       .attr("class", "groups")
+//   ;
+//   let carbsCircle = datapoint1.append("circle")
+//       .attr("r", 10)
+//       .attr("cx", 100)
+//       .attr("cy", 500)
+//       .attr("fill", "red")
+//   ;
+// }
 
 
 // here is the scrolling event listener
 let previousSection;
 d3.select("#textboxes").on("scroll", function(){
-  // the currentBox function is imported on the
-  // very fist line of this script
   currentBox(function(box){
     console.log(box.id);
 
@@ -277,7 +283,7 @@ function currentBox(cb){
   let scrollTop = event.target.scrollTop;
   let targetRec = event.target.getBoundingClientRect();
   let firstBoxRec = boxes[0].getBoundingClientRect();
-  let midpoint = scrollTop + targetRec.height/2;
+  let midpoint = scrollTop;// + targetRec.height/2;
 
   let closestBox = boxes.reduce(function(closest, box){
     box.style.color = "black";
@@ -300,14 +306,19 @@ function currentBox(cb){
 // function to adjust viz height dynamically
 // in order to keep the heightRatio at any given
 // width of the browser window
-// function adjustVizHeight(){
-//   viz.style("height", function(){
-//     w = parseInt(viz.style("width"), 10);
-//     h = w*heightRatio;
-//     return h;
-//   })
-// }
-// function resized(){
-//   adjustVizHeight()
-// }
-// window.addEventListener("resize", resized);
+function adjustVizHeight(){
+  let viz = d3.select("#container")
+      .style("width", w)
+      .style("height", h)
+  ;
+
+  viz.style("height", function(){
+    w = parseInt(viz.style("width"), 10);
+    h = w*heightRatio;
+    return h;
+  })
+}
+function resized(){
+  adjustVizHeight()
+}
+window.addEventListener("resize", resized);

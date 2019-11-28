@@ -8,6 +8,8 @@ console.log("data:", typeof data!=='undefined'?data:"nothing here");
 console.log(typeof data!=='undefined'?"seems like it ;-) it comes from the dataManager.js script.":"...damnit! let's see what is going wrong in the dataManager.js script.");
 
 function hi(){
+  console.log(data);
+  
   allNames = data.map(function(d){return d.key});
 
   theSituation = graphGroup.selectAll(".datapoint").data(data, function(d){return d.key;});

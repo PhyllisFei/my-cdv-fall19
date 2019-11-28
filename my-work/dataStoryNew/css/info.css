@@ -15,7 +15,7 @@ body,html{
 }
 
 .box{
-  margin-bottom: 60vh;
+  margin-bottom: 10vh;
   padding:30px;
   border-top: 1px black solid;
 }
@@ -25,14 +25,14 @@ body,html{
 }
 
 #graphtitle1{
-  left: 40%;
+  left: 20%;
   top: 20%;
   font-size: 2.5em;
   font-family: 'Mukta', sans-serif;
   position: relative;
 }
 #graphtitle2{
-  left: 37%;
+  left: 40%;
   top: 20%;
   font-size: 2.5em;
   font-family: 'Mukta', sans-serif;
