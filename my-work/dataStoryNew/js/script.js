@@ -215,7 +215,6 @@ function gotData1(incomingData){
 //       }
 //       });
 //
-//
 //       //figure change size while sliding
 //       newSize = this.size;
 //       figureGroupElements.attr("width", newSize);
@@ -231,8 +230,6 @@ function gotData1(incomingData){
 //     .attr('transform', 'translate(20,20)');
 //   ;
 //   gTime.call(slider);
-//
-//
 // }
 //
 // // viz % of carb, protein, Fat
@@ -242,24 +239,7 @@ function gotData1(incomingData){
 //   let percentageData = calcShare(incomingData);
 //
 //   console.log(percentageData);
-//
-//   let viz = d3.select("#visualization2")
-//     .append("svg")
-//       .attr("width", w)
-//       .attr("height", h)
-//   ;
-//
-//   //Circle viz for carbs in 1961
-//   let datapoint1 = viz.selectAll(".groups").data(percentageData.carbs).enter()
-//     .append("g")
-//       .attr("class", "groups")
-//   ;
-//   let carbsCircle = datapoint1.append("circle")
-//       .attr("r", 10)
-//       .attr("cx", 100)
-//       .attr("cy", 500)
-//       .attr("fill", "red")
-//   ;
+
 // }
 
 
