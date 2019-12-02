@@ -55,13 +55,20 @@ function gotData1(incomingData){
     graphGroup1.html(svgRedbull)
                 .selectAll("path").attr("transform", "scale(0.4)")
   ;
-
-  // if (numofCubeSugar[0]==true){
-  //   graphGroup1.attr("x", "0")
-  //               .attr("y", "0")
-  // ;
-  // }
 }
+
+//??????
+  let randomX = 0;
+  let randomY = 0;
+  graphGroup1.foreach(function(randomPos){
+                        randomX += Math.random()*10;
+                        randomY += Math.random()*6;
+                                graphGroup1
+                                  .attr("transform", function(d,i){
+                                    return "translate( "+ randomX + ","+ randomY +" )"
+                                  })
+                                });
+
 
  // hide detailed info box
   let detailBox1 = d3.select("#visualization1").append("div")
@@ -72,20 +79,15 @@ function gotData1(incomingData){
   graphGroup1
     .on("mousemove", function(d){
       console.log("hovering");
-      // show detailed info box and img box on hover
       detailBox1.transition()
                  .duration(50)
                  .style("opacity", .9)
       ;
 
-      //POSITION not changing???
       detailBox1.html(d.Product + " (" + d.NetWeight + "mL)" + "<br/>" + d.SugarS + " g/serving")
                    .style("left", (d3.event.pageX) + "px")
                    .style("top", (d3.event.pageY) - 60 + "px")
      ;
-
-     //here is for img boxes
-
    })
 
     .on("mouseout", function(){
@@ -97,10 +99,10 @@ function gotData1(incomingData){
       ;
     });
 
-// display different color for different suger proportion: normal/no sugar
-  let checkState1 = d3.extent(milkteaData, function(d){return d.WithSugar});
-  console.log(checkState1);
-// ----------- ????? color not changing----------------
+// // display different color for different suger proportion: normal/no sugar
+//   let checkState1 = d3.extent(milkteaData, function(d){return d.WithSugar});
+//   console.log(checkState1);
+//  // ----------- ????? color not changing----------------
   // if (checkState1.yes){
   //   graphGroup1.attr("fill", "lightblue");
   //   console.log("yes");
