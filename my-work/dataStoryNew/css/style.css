@@ -4,11 +4,16 @@ body,html{
 	width: 100%;
   /* background-size: cover; */
 }
-#title1,#title2,#title3,#title4,#detailBox {
+#title1,#title2,#title3,#title4{
   margin: 0;
   font-family: 'Mukta', sans-serif;
   position: absolute;
 }
+/* .detailBox {
+  margin: 0;
+  font-family: 'Mukta', sans-serif;
+  position: absolute;
+} */
 #title1{
   left: 45%;
   top: 30%;
@@ -86,7 +91,7 @@ body,html{
   position: absolute;
 }
 
-#detailBox{
+/* .detailBox{
 	text-align: center;
 	padding: .5rem;
 	background: #FFFFFF;
@@ -94,8 +99,8 @@ body,html{
 	border: 1px solid #313639;
 	border-radius: 8px;
 	pointer-events: none;
-	font-size: 2rem; */
-}
+	font-size: 2rem;
+}  */
 
 /* close popup window */
 .popup .close {
