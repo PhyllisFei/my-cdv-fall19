@@ -1,5 +1,3 @@
-d3.json("json/milktea.json").then(gotData1);
-
 let w = 1500;
 let h = 800;
 let padding = 30;
@@ -9,226 +7,351 @@ let col = 50;
 function gotData1(incomingData){
   let milkteaData = incomingData;
   console.log(milkteaData);
-  let allBrands = milkteaData.map(function(d){return d.Brand});
+
+  //----- NEW SUGAR ARRAY -----//
+  milkteaData.forEach(function(d){
+    // map sugar value to number of cube sugar (4g)
+    const total = parseInt(d.SugarS);
+    const sugarunits = total/4;
+    d.sugarunits = sugarunits;
+  })
+  let sugarArray = [];
+  //resturcture dataset: datapoints == sugar units
+  milkteaData.forEach(function(d){
+    let number = d.sugarunits;
+    for(var i=0; i<number; i++){
+      var sugarObject = new Object();
+      sugarObject.brand = d.Brand;
+      sugarObject.product = d.Product;
+      sugarObject.withSugar = d.WithSugar;
+      sugarObject.sugar = d.SugarS;
+      sugarObject.netWeight = d.NetWeight;
+
+      sugarArray.push(sugarObject);
+    }
+  })
+  // console.log(sugarArray);
+
+//----- NEW AMERICANO ARRAY -----//
+  milkteaData.forEach(function(d){
+    // map coffein value to cups of Americano (108mg)
+    const total = parseInt(d.CoffeinS);
+    const americanounits = total/108;
+    d.americanounits = americanounits;
+  })
+  let americanoArray = [];
+  //resturcture dataset: datapoints == americano units
+  milkteaData.forEach(function(d){
+    let number = d.americanounits;
+    for(var i=0; i<number; i++){
+      var americanoObject = new Object();
+      americanoObject.brand = d.Brand;
+      americanoObject.product = d.Product;
+      americanoObject.withSugar = d.WithSugar;
+      americanoObject.coffein = d.CoffeinS;
+      americanoObject.netWeight = d.NetWeight;
+
+      americanoArray.push(americanoObject);
+    }
+  })
+    // console.log(americanoArray);
+
+  //----- NEW Redbull ARRAY -----//
+  milkteaData.forEach(function(d){
+    // map coffein value to cups of Redbull (50mg)
+    const total = parseInt(d.CoffeinS);
+    const redbullunits = total/50;
+    d.redbullunits = redbullunits;
+  })
+  let redbullArray = [];
+  //resturcture dataset: datapoints == americano units
+  milkteaData.forEach(function(d){
+    let number = d.redbullunits;
+    for(var i=0; i<number; i++){
+      var redbullObject = new Object();
+      redbullObject.brand = d.Brand;
+      redbullObject.product = d.Product;
+      redbullObject.withSugar = d.WithSugar;
+      redbullObject.coffein = d.CoffeinS;
+      redbullObject.netWeight = d.NetWeight;
+
+      redbullArray.push(redbullObject);
+    }
+  })
+    // console.log(redbullArray);
 
   let viz1 = d3.select("#visualization1")
     .append("svg")
       .style("width", w)
       .style("height", h)
   ;
+  let viz2 = d3.select("#visualization2")
+    .append("svg")
+      .style("width", w)
+      .style("height", h)
+  ;
+  let viz3 = d3.select("#visualization3")
+    .append("svg")
+      .style("width", w)
+      .style("height", h)
+  ;
 
-//---------------- Visualization1 --------------------
-  //here we draw the xAxis
+  let allBrands = milkteaData.map(function(d){return d.Brand});
   let xScale = d3.scaleBand()
       .domain(allBrands)
       .range([padding, w-padding])
       .paddingInner(0.1)
   ;
   let xAxis = d3.axisBottom(xScale);
-  // xAxis.tickFormat(d=>{return milkteaData.filter(dd=>dd.Brand==d)[0].Product;});
+
+//---- Viz 1: vertical bar----//
   let xAxisGroup1 = viz1.append("g").classed("xAxis", true);
   xAxisGroup1.call(xAxis);
   xAxisGroup1.selectAll("text").attr("font-size", 24).attr("y", 9);
   xAxisGroup1.selectAll("line").remove();
   xAxisGroup1.attr("transform", "translate(0,"+ (h-padding) +")");
+
+//---- Viz 2: horizontal bar----//
+  let yScale2 = d3.scaleBand()
+      .domain(allBrands)
+      .range([0, h])
+      .paddingInner(0.1)
+  ;
+  let yAxis2 = d3.axisLeft(yScale2);
+  let yAxisGroup2 = viz2.append("g").classed("yAxis", true);
+  yAxisGroup2.call(yAxis2);
+  yAxisGroup2.selectAll("text").attr("font-size", 24).attr("x", 180);
+  yAxisGroup2.selectAll("line").remove();
+  yAxisGroup2.attr("transform", "translate(0,0)");
+
+//---- Viz 3: vertical bar----//
+  let xAxisGroup3 = viz3.append("g").classed("xAxis", true);
+  xAxisGroup3.call(xAxis);
+  xAxisGroup3.selectAll("text").attr("font-size", 24).attr("y", 9);
+  xAxisGroup3.selectAll("line").remove();
+  xAxisGroup3.attr("transform", "translate(0,"+ (h-padding) +")");
+
   //here we draw the yAxis
   let yMax1 = d3.max(milkteaData, function(d){return d.SugarS});
   let yDomain1 = [0, yMax1];
   let yScale1 = d3.scaleLinear().domain(yDomain1).range([0, h-padding*2]);
+
+  let xMax2 = d3.max(milkteaData, function(d){return d.CoffeinS});
+  let xDomain2 = [0, xMax2];
+  let xScale2 = d3.scaleLinear().domain(xDomain2).range(0, w);
+
+  let yMax3 = d3.max(milkteaData, function(d){return d.CoffeinS});
+  let yDomain3 = [0, yMax3];
+  let yScale3 = d3.scaleLinear().domain(yDomain3).range([0, h-padding*2]);
+
+  /*---------------- Visualization1 --------------------*/
   let graphGroup1 = viz1.append("g").classed("graphGroup", true)
-                      .selectAll(".datapoint").data(milkteaData, function(d){return d.Brand;})
+                      .selectAll(".datapoint").data(sugarArray, function(d){return d.Brand;})
                       .enter()
                         .append("g").classed("datapoint", true)
-                        .attr("transform", function(d, i){
-                          return "translate("+ xScale(d.Brand)+ "," + (h - padding * 3) + ")"
+                        .attr("transform", function(d, i, datapoints){
+
+                          let brand = d.brand;
+                          let cansseenbefore = datapoints.slice(0, i);
+
+                          function checkBrand(datapointFromTheLeft) {
+                            let datapointFromTheLeftssBrand = datapointFromTheLeft.__data__.brand;
+                            return datapointFromTheLeftssBrand == brand;
+                          }
+                          let samebranditems = cansseenbefore.filter(checkBrand);
+
+                          // console.log("placing itme number", i, ". The brand is", brand, ". already placed these cans:", cansseenbefore);
+                          // console.log(samebranditems.length);
+
+                          let canheight = 25;
+                          let x = xScale(d.brand) + 40 + 10 * Math.random();
+                          let y = (h - padding*3/2) - (canheight * samebranditems.length);
+                          return "translate("+ x + "," + y + ")"
                         })
   ;
 
-  // map sugar value to number of cube sugar (4g)
-  let numofCubeSugar = milkteaData.map(function(d){
-    const total = parseInt(d.SugarS);
-    return (total/4);
-  })
-  console.log(numofCubeSugar);
+  let graphGroup2 = viz2.append("g").classed("graphGroup2", true)
+                      .selectAll(".datapoint").data(americanoArray, function(d){return d.Brand;})
+                      .enter()
+                        .append("g").classed("datapoint", true)
+                        .attr("transform", function(d, i, datapoints){
 
-  for (let i=0; i<numofCubeSugar.length; i++){
-    graphGroup1.html(svgRedbull)
-                .selectAll("path").attr("transform", "scale(0.4)")
+                          let brand = d.brand;
+                          let cansseenbefore = datapoints.slice(0, i);
+
+                          function checkBrand(datapointFromTheLeft) {
+                            let datapointFromTheLeftssBrand = datapointFromTheLeft.__data__.brand;
+                            return datapointFromTheLeftssBrand == brand;
+                          }
+                          let samebranditems = cansseenbefore.filter(checkBrand);
+
+                          let canwidth = 45;
+                          let y = yScale2(d.brand) + padding*2 + 8*Math.random();
+                          let x = padding*9 + (canwidth * samebranditems.length);
+                          return "translate("+ x + "," + y + ")"
+                        })
   ;
-}
 
-//??????
-  let randomX = 0;
-  let randomY = 0;
-  graphGroup1.foreach(function(randomPos){
-                        randomX += Math.random()*10;
-                        randomY += Math.random()*6;
-                                graphGroup1
-                                  .attr("transform", function(d,i){
-                                    return "translate( "+ randomX + ","+ randomY +" )"
-                                  })
-                                });
+ let graphGroup3 = viz3.append("g").classed("graphGroup3", true)
+                     .selectAll(".datapoint").data(redbullArray, function(d){return d.Brand;})
+                     .enter()
+                       .append("g").classed("datapoint", true)
+                       .attr("transform", function(d, i, datapoints){
 
+                         let brand = d.brand;
+                         let cansseenbefore = datapoints.slice(0, i);
 
- // hide detailed info box
+                         function checkBrand(datapointFromTheLeft) {
+                           let datapointFromTheLeftssBrand = datapointFromTheLeft.__data__.brand;
+                           return datapointFromTheLeftssBrand == brand;
+                         }
+                         let samebranditems = cansseenbefore.filter(checkBrand);
+
+                         let canheight = 53;
+                         let x = xScale(d.brand) + 40 + 15 * Math.random();
+                         let y = (h - padding * 10/3) - (canheight * samebranditems.length);
+                         return "translate("+ x + "," + y + ")"
+                       })
+  ;
+
+ //hide detailed info box
   let detailBox1 = d3.select("#visualization1").append("div")
+     .attr("class", "detailBox")
+     .style("opacity", 0)
+  ;
+  let detailBox2 = d3.select("#visualization2").append("div").attr("class", "detailBox")
+     .attr("class", "detailBox")
+     .style("opacity", 0)
+  ;
+  let detailBox3 = d3.select("#visualization3").append("div").attr("class", "detailBox")
      .attr("class", "detailBox")
      .style("opacity", 0)
   ;
 
   graphGroup1
     .on("mousemove", function(d){
-      console.log("hovering");
+      // console.log("hovering");
       detailBox1.transition()
                  .duration(50)
                  .style("opacity", .9)
       ;
 
-      detailBox1.html(d.Product + " (" + d.NetWeight + "mL)" + "<br/>" + d.SugarS + " g/serving")
+      detailBox1.html(d.product + " (" + d.netWeight + "mL)" + "<br/>" + d.sugar + " g/serving")
                    .style("left", (d3.event.pageX) + "px")
                    .style("top", (d3.event.pageY) - 60 + "px")
      ;
    })
-
     .on("mouseout", function(){
-      console.log('out');
-
+      // console.log('out');
       detailBox1.transition()
                  .duration(50)
                  .style("opacity", 0)
       ;
+    })
+  ;
+
+/*---------------- Visualization2: Americano Coffein --------------------*/
+ graphGroup2
+   .on("mouseover", function(d){
+     console.log("hovering");
+     detailBox2.transition()
+                .duration(50)
+                .style("opacity", .9)
+     ;
+     detailBox2.html(d.product + " (" + d.netWeight + "mL)" + "<br/>" + d.coffeinS + " mg/serving")
+                  .style("left", (d3.event.pageX) + "px")
+                  .style("top", (d3.event.pageY) + "px")
+    ;
+  })
+
+   .on("mouseout", function(){
+     let element = d3.select(this);
+     element.select("rect").transition().duration("100").attr("opacity", 1);
+
+     detailBox2.transition()
+                .duration(50)
+                .style("opacity", 0);
+   });
+
+ /*---------------- Visualization3: Redbull Coffein --------------------*/
+  graphGroup3
+    .on("mouseover", function(d){
+      console.log("hovering");
+      // show detailed info box and img box on hover
+      detailBox3.transition()
+                 .duration(50)
+                 .style("opacity", .9)
+      ;
+      detailBox3.html(d.product + " (" + d.netWeight + "mL)" + "<br/>" + d.coffeinS + " mg/serving")
+                   .style("left", (d3.event.pageX) + "px")
+                   .style("top", (d3.event.pageY) + "px")
+     ;
+   })
+
+    .on("mouseout", function(){
+      let element = d3.select(this);
+      element.select("rect").transition().duration("100").attr("opacity", 1);
+
+      detailBox3.transition()
+                 .duration(50)
+                 .style("opacity", 0);
     });
 
-// // display different color for different suger proportion: normal/no sugar
-//   let checkState1 = d3.extent(milkteaData, function(d){return d.WithSugar});
-//   console.log(checkState1);
-//  // ----------- ????? color not changing----------------
-  // if (checkState1.yes){
-  //   graphGroup1.attr("fill", "lightblue");
-  //   console.log("yes");
-  // }else{
-  //   graphGroup1.attr("fill", "red");
-  //   console.log("no");
-  // }
-
-// // Here I draw a standard LINE --
-// // According to the Dietary Guidelines for Chinese Residents:
-// // <= 25g/day is suggested, not exceed 50g/day
-//
-// let lineData = [ { "x": 0,   "y": 20},  { "x": 2000,  "y": 20}];
-//
-// let lineMaker = d3.line()
-//                     .x(function(d){ return d.x})
-//                     .y(function(d){ return d.y})
-//                 ;
-// viz1.datum(lineData)
-//                 .append("path")
-//                 .attr("d", lineMaker)
-//                 .attr("fill", "none")
-//                 .attr("stroke", "black")
-//                 .attr("transform", function(d, i){
-//                   return "translate("+ xScale(d.Brand)+ "," + (h - padding) + ")"
-//                 })
-// ;
-
-
-
-//---------------- Visualization2 --------------------
-  //here we discuss about coffein
-  let viz2 = d3.select("#visualization2")
-    .append("svg")
-      .style("width", w)
-      .style("height", h)
+//here I append svgs
+  graphGroup1.html(svgSugar)
+            .selectAll("path")
+              .attr("transform", "scale(0.02)")
+  ;
+  graphGroup2.html(svgAmericano)
+              .selectAll("path").attr("transform", "scale(0.02)")
+  ;
+  graphGroup3.html(svgRedbull)
+             .selectAll("path").attr("transform", "scale(0.4)")
   ;
 
-  let xAxisGroup2 = viz2.append("g").classed("xAxis", true);
-  xAxisGroup2.call(xAxis);
-  xAxisGroup2.selectAll("text").attr("font-size", 24).attr("y", 9);
-  xAxisGroup2.selectAll("line").remove();
-  xAxisGroup2.attr("transform", "translate(0,"+ (h-padding) +")");
 
-  //here we draw the xAxis
-  let yMax2 = d3.max(milkteaData, function(d){return d.CoffeinS});
-  let yDomain2 = [0, yMax2];
-  let yScale2 = d3.scaleLinear().domain(yDomain2).range([0, h-padding*2]);
-  let graphGroup2 = viz2.append("g").classed("graphGroup2", true)
-                      .selectAll(".datapoint").data(milkteaData, function(d){return d.Brand;})
-                      .enter()
-                        .append("g").classed("datapoint", true)
-                        .attr("transform", function(d, i){
-                          return "translate("+ xScale(d.Brand)+ "," + (h - padding*3) + ")"
-                        })
-  ;
+/*------ Visualization 5: Official Standardization Line -----*/
 
-  // map coffein value to cups of large Americano (108mg)
-  let numofAmericano = milkteaData.map(function(d){
-    const total = parseInt(d.CoffeinS);
-    return (Math.round(total/108));
-  })
-  console.log(numofAmericano);
-
-  for (let j=0; j<numofAmericano.length; j++){
-    graphGroup2.html(svgRedbull)
-                .selectAll("path").attr("transform", "scale(0.4)")
-  ;
-}
-
-  // hide detailed info box
-   let detailBox2 = d3.select("#visualization2").append("div").attr("class", "detailBox")
-      .attr("class", "detailBox")
-      .style("opacity", 0)
-   ;
-
-   // map coffein value to cups of Redbull (50mg)
-   let numofRedbull = milkteaData.map(function(d){
-     const total = parseInt(d.CoffeinS);
-     return (total/50);
-   })
-   console.log(numofRedbull);
-
-
-   graphGroup2
-     .on("mouseover", function(d){
-       console.log("hovering");
-       // show detailed info box and img box on hover
-       detailBox2.transition()
-                  .duration(50)
-                  .style("opacity", .9)
-       ;
-       //POSITION not changing???
-       detailBox2.html(d.Product + " (" + d.NetWeight + "mL)" + "<br/>" + d.CoffeinS + " mg/serving")
-                    .style("left", (d3.event.pageX) + "px")
-                    .style("top", (d3.event.pageY) + "px")
-      ;
-
-
-      //here is for img boxes: compare to coffein in Americano
-
-
-
-
-      //here is for img boxes: compare to coffein in Redbull
-
-
-
-
-    })
-
-     .on("mouseout", function(){
-       let element = d3.select(this);
-       element.select("rect").transition().duration("100").attr("opacity", 1);
-
-       detailBox2.transition()
-                  .duration(50)
-                  .style("opacity", 0);
-     });
-
-
-
-     // Here is a a graphic equation of coffein (pick the one that has the most)
+     //------ Here is a a graphic equation of coffein (pick the one that has the most) ------//
      // 1 milktea = XX Americano == XX Redbull
-}
 
+
+
+     // // display different color for different suger proportion: normal/no sugar
+     //   let checkState1 = d3.extent(milkteaData, function(d){return d.WithSugar});
+     //   console.log(checkState1);
+     //  // ----------- ????? color not changing----------------
+       // if (checkState1.yes){
+       //   graphGroup1.attr("fill", "lightblue");
+       //   console.log("yes");
+       // }else{
+       //   graphGroup1.attr("fill", "red");
+       //   console.log("no");
+       // }
+
+     // // Here I draw a standard LINE --
+     // // According to the Dietary Guidelines for Chinese Residents:
+     // // <= 25g/day is suggested, not exceed 50g/day
+     //
+     // let lineData = [ { "x": 0,   "y": 20},  { "x": 2000,  "y": 20}];
+     //
+     // let lineMaker = d3.line()
+     //                     .x(function(d){ return d.x})
+     //                     .y(function(d){ return d.y})
+     //                 ;
+     // viz1.datum(lineData)
+     //                 .append("path")
+     //                 .attr("d", lineMaker)
+     //                 .attr("fill", "none")
+     //                 .attr("stroke", "black")
+     //                 .attr("transform", function(d, i){
+     //                   return "translate("+ xScale(d.Brand)+ "," + (h - padding) + ")"
+     //                 })
+     // ;
+
+
+
+}
 
 
 
@@ -295,6 +418,67 @@ function resized(){
 window.addEventListener("resize", resized);
 
 
+let svgSugar = `<g transform="rotate(270)">
+    <path d="M1495 1681 c-11 -5 -40 -9 -65 -9 -25 -1 -75 -8 -110 -17 -88 -22
+    -500 -34 -535 -15 -42 22 -73 3 -199 -123 -145 -145 -286 -302 -286 -316 0 -5
+    6 -14 14 -18 24 -14 38 -162 45 -496 5 -287 8 -320 24 -331 9 -7 17 -20 17
+    -29 0 -10 12 -18 33 -21 61 -10 402 -13 482 -5 44 5 142 9 217 10 l137 3 71
+    57 c125 102 225 168 246 163 12 -3 27 3 38 15 17 19 18 43 13 448 -5 411 -14
+    527 -41 571 -4 7 -2 26 4 43 25 59 -35 98 -105 70z m-140 -215 c-163 -156
+    -113 -140 -465 -156 -124 -6 -268 -14 -320 -19 -52 -4 -96 -7 -98 -5 -2 1 55
+    62 126 136 l130 133 235 2 c163 1 263 6 328 18 51 8 95 18 98 20 2 3 27 5 55
+    5 l51 -1 -140 -133z m203 -455 c-4 -349 -5 -375 -22 -385 -10 -6 -68 -51 -130
+    -99 l-111 -88 -6 43 c-4 24 -10 192 -14 373 -4 182 -11 347 -15 368 l-8 37
+    119 113 c80 75 126 111 138 109 11 -2 23 3 27 10 18 28 25 -122 22 -481z
+    m-368 -173 c5 -205 10 -387 10 -405 l0 -31 -112 -6 c-62 -3 -219 -10 -348 -15
+    -129 -6 -248 -13 -265 -16 l-30 -6 -3 188 c-4 249 -18 470 -37 567 -10 57 -12
+    82 -4 87 20 12 162 21 451 28 158 3 290 10 294 14 4 4 13 -2 21 -12 10 -15 15
+    -109 23 -393z"/>
+  </g>`
+
+let svgAmericano = `<g transform="rotate(180)">
+    <path d="M790 2779 c-48 -7 -104 -22 -281 -74 -25 -7 -74 -27 -108 -44 -71
+    -36 -86 -61 -76 -132 6 -44 -11 -165 -24 -173 -13 -8 -112 14 -127 28 -8 9
+    -22 16 -29 16 -16 0 -55 -51 -55 -72 0 -8 -7 -23 -15 -34 -8 -10 -15 -31 -15
+    -46 0 -23 9 -33 53 -58 28 -17 63 -33 77 -36 14 -3 39 -12 57 -20 17 -8 38
+    -14 46 -14 22 0 33 -19 50 -90 19 -75 92 -506 102 -595 13 -119 56 -384 94
+    -585 22 -113 50 -259 61 -325 26 -142 49 -235 61 -235 4 0 11 -15 14 -33 4
+    -21 17 -39 37 -52 97 -62 125 -75 168 -75 25 0 68 -7 95 -16 30 -9 66 -13 90
+    -9 22 3 72 1 110 -5 59 -8 84 -6 160 11 131 29 153 37 223 80 35 21 69 39 77
+    39 22 0 33 29 44 121 12 91 37 362 46 499 9 124 32 381 60 650 22 211 30 312
+    51 617 5 80 8 92 26 96 11 3 30 1 43 -5 36 -16 115 32 115 71 0 23 -78 139
+    -106 158 -15 9 -42 13 -79 11 l-57 -3 -28 84 c-21 63 -26 90 -19 103 15 27 2
+    70 -26 91 -14 10 -73 27 -132 38 -92 18 -153 21 -418 24 -171 1 -335 -2 -365
+    -6z m710 -97 c19 -6 57 -13 84 -17 27 -4 45 -10 40 -15 -12 -12 -227 -71 -289
+    -80 -27 -4 -95 -14 -150 -23 -148 -23 -378 -30 -440 -13 l-50 14 76 1 c85 1
+    113 18 102 59 -10 38 -48 50 -135 41 -42 -4 -82 -10 -88 -14 -5 -3 -10 -25
+    -10 -47 l0 -41 -86 7 c-48 3 -95 13 -106 20 -20 14 -19 15 18 31 22 9 50 19
+    64 21 14 3 37 9 51 15 14 5 66 21 115 34 87 24 95 24 429 20 187 -2 356 -8
+    375 -13z m158 -149 c25 -67 40 -123 34 -126 -14 -8 -68 -19 -142 -28 -41 -6
+    -100 -14 -130 -19 -128 -21 -438 -43 -615 -45 -148 -2 -411 10 -422 19 -1 0 5
+    31 14 67 14 63 16 67 46 72 39 6 226 -9 284 -23 80 -19 312 -12 496 15 95 14
+    195 32 222 40 100 29 190 53 196 54 4 1 11 -11 17 -26z m221 -190 c7 -14 0
+    -22 -48 -45 -31 -16 -75 -40 -99 -54 -32 -18 -78 -31 -170 -45 -70 -11 -138
+    -22 -152 -24 -60 -10 -335 -28 -440 -28 -179 -2 -500 13 -553 25 -27 6 -51 16
+    -54 24 -3 8 -20 13 -46 12 -55 -1 -167 31 -167 48 0 7 3 19 6 28 7 17 3 18
+    134 -13 117 -28 271 -40 495 -41 224 -1 373 9 655 45 19 2 77 9 128 15 51 6
+    135 24 185 40 110 34 113 35 126 13z m-144 -516 c-8 -77 -15 -143 -15 -148 0
+    -5 -4 -9 -9 -9 -5 0 -51 -25 -102 -55 -52 -31 -123 -65 -159 -76 -90 -28 -254
+    -35 -516 -19 -184 10 -227 16 -287 37 -136 47 -145 56 -163 156 -21 114 -62
+    301 -74 331 -15 41 -13 45 28 35 20 -4 102 -8 182 -8 80 0 188 -6 241 -12 73
+    -9 116 -9 173 0 42 6 120 11 173 11 53 0 123 5 157 10 33 6 122 19 198 30 75
+    11 147 24 160 29 23 8 23 8 26 -82 1 -49 -4 -153 -13 -230z m-30 -289 c-5 -27
+    -30 -251 -50 -463 -17 -175 -21 -195 -38 -195 -7 0 -29 -16 -48 -36 -45 -47
+    -90 -69 -201 -99 -78 -21 -115 -25 -235 -25 -79 0 -162 4 -185 10 -24 5 -68
+    14 -98 20 -43 8 -72 25 -141 77 -100 76 -96 68 -129 276 -10 67 -29 184 -41
+    260 -12 75 -20 140 -16 143 3 3 43 -9 89 -26 89 -35 134 -40 518 -56 235 -11
+    366 16 509 102 66 40 73 41 66 12z m-853 -879 c203 -44 401 -43 568 4 94 26
+    118 37 169 75 l33 25 -5 -74 c-2 -41 -10 -142 -17 -225 -12 -144 -14 -152 -38
+    -166 -22 -14 -28 -14 -54 1 -25 14 -29 14 -38 1 -6 -9 -6 -18 0 -24 30 -30 1
+    -45 -140 -75 -72 -15 -105 -17 -215 -10 -191 13 -277 24 -302 40 -24 14 -30
+    29 -13 29 16 0 11 47 -6 54 -8 3 -24 1 -34 -4 -31 -17 -40 -12 -40 23 0 17
+    -13 100 -29 182 -16 83 -32 174 -36 204 l-7 55 55 -48 c50 -42 65 -49 149 -67z"/>
+</g>`
 
 let svgRedbull = `<g>
     <path class="cls-1" d="M3.22,132.77c-1.32.69-2.83,1.75-3.06-.9a16.94,16.94,0,0,1,0-5c1.25-5.78.73-11.62.9-17.44C1.71,88,1.93,66.5,2.29,45c.13-8,.7-15.93.89-23.91.11-4.34,1.91-7.7,5.75-10.67C19.51,2.26,31.67.38,44.33.25,55,.14,65.63-.48,76.26.78a99.23,99.23,0,0,1,25.61,6.8c6.07,2.45,11.66,5.19,15.85,10.34.62.75,2,1.68,1.18,2.37-2.75,2.31-.64,4.94-.7,7.31-.33,14.62-1.15,29.22-1.83,43.83-.84,17.94-3.05,35.85-2.17,53.85.2,4-1.37,7.82-1.1,11.87.16,2.39-2.27,3.39-4,4.68-7.46,5.65-16.25,7.54-25.22,9-7.94,1.33-15.65.62-23.62-.58s-16.37-2.56-24.68-2.43c-9.52.14-18.09-2.8-26.09-7.8a14.65,14.65,0,0,1-6.37-7.33c1.3-2.32,2.63-2.39,4.65-.54,7.69,7,16.85,10.05,27.28,10.4a267.83,267.83,0,0,1,29.72,3.12,63.15,63.15,0,0,0,37.34-5.83c4.56-2.2,7.1-5.27,6.79-10.43,1.75-7.8.25-15.7.72-23.54.33-18.25,1.94-36.43,2.84-54.65.32-6.46,0-12.95,1.06-19.38.23-1.39.67-3.25-.7-4.19s-2.77.55-4,1.27c-12,7.32-25.16,11-39.13,12a13,13,0,0,1-3.47-.13c-3.55-1.13-7.22-.42-10.82-.73-8.06-1-16-2.56-23.94-4.29C24,34.21,16.79,32,10.92,26.68c-.71-.64-1.54-1.61-2.54-1.26-1.45.49-.85,2-.9,3-.18,4.13.3,8.28-.55,12.39-.94,9.32-.26,18.65-.4,28-.12,7.83,0,15.66,0,23.5A13.31,13.31,0,0,1,6.16,96c-1.47,7.56-.11,15.19-.53,22.78-.1,1.82,0,3.64,0,5.47A14.18,14.18,0,0,1,3.22,132.77Z"/>
@@ -340,3 +524,5 @@ let svgRedbull = `<g>
     <path class="cls-40" d="M92.89,126.28c-.51,1.14-1.07,1.67-2,1.68-1.59,0-1.83-1-1.79-2.29,0-.85.21-1.89,1.21-1.68C91.57,124.26,91.19,126.38,92.89,126.28Z"/>
     <path class="cls-41" d="M16.12,123.86a4.39,4.39,0,0,0,.72-1.27c.25-1.45.22-3.25,2.43-2.67,1.17.31.86,1.61.73,2.54-.35,2.4-1.79,2.19-3.45,1.35a1.13,1.13,0,0,0-.49,0Z"/>
   </g>`
+
+d3.json("json/milktea.json").then(gotData1);

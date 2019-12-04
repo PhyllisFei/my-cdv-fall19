@@ -6,15 +6,6 @@ body,html{
 	position: absolute;
 }
 
-#textboxes {
-  width: 80%;
-  margin-left: 10%;
-  margin-top: 2%;
-  border: solid black 3px;
-  height: 100vh;
-  overflow: scroll;
-}
-
 .detailBox{
 	position: absolute;
 	margin: 0;
@@ -27,10 +18,21 @@ body,html{
   border-top: 1px black solid;
 }
 
-#slider{
-  margin-left: 20%;
+#btn{
+  width: 3.5%;
+  left: 85%;
+  top: 98%;
+  position: absolute;
 }
 
+#textboxes {
+  width: 80%;
+  margin-left: 10%;
+  margin-top: 2%;
+  border: solid black 3px;
+  height: 100vh;
+  overflow: scroll;
+}
 #graphtitle1{
   left: 20%;
   top: 20%;
@@ -51,13 +53,6 @@ body,html{
   font-size: 2.5em;
   font-family: 'Mukta', sans-serif;
   position: relative;
-}
-
-#btn{
-  width: 3.5%;
-  left: 85%;
-  top: 98%;
-  position: absolute;
 }
 
 .cls-1 {
