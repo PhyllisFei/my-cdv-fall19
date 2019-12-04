@@ -3,6 +3,24 @@ let h = 680;
 let padding = 30;
 let heightRatio = 0.8;
 
+
+let viz1 = d3.select("#visualization1")
+  .append("svg")
+    .style("width", w)
+    .style("height", h)
+;
+let viz2 = d3.select("#visualization2")
+  .append("svg")
+    .style("width", w)
+    .style("height", h)
+;
+let viz3 = d3.select("#visualization3")
+  .append("svg")
+    .style("width", w)
+    .style("height", h)
+;
+
+
 function gotData1(incomingData){
   let milkteaData = incomingData;
   console.log(milkteaData);
@@ -77,22 +95,6 @@ function gotData1(incomingData){
   })
     // console.log(redbullArray);
 
-  let viz1 = d3.select("#visualization1")
-    .append("svg")
-      .style("width", w)
-      .style("height", h)
-  ;
-  let viz2 = d3.select("#visualization2")
-    .append("svg")
-      .style("width", w)
-      .style("height", h)
-  ;
-  let viz3 = d3.select("#visualization3")
-    .append("svg")
-      .style("width", w)
-      .style("height", h)
-  ;
-
   let allBrands = milkteaData.map(function(d){return d.Brand});
   let xScale = d3.scaleBand()
       .domain(allBrands)
@@ -100,6 +102,8 @@ function gotData1(incomingData){
       .paddingInner(0.1)
   ;
   let xAxis = d3.axisBottom(xScale);
+
+  // function
 
 //---- Viz 1: vertical bar----//
   let xAxisGroup1 = viz1.append("g").classed("xAxis", true);
@@ -146,28 +150,48 @@ function gotData1(incomingData){
                       .selectAll(".datapoint").data(sugarArray, function(d){return d.Brand;})
                       .enter()
                         .append("g").classed("datapoint", true)
-                        .attr("transform", function(d, i, datapoints){
-                          let brand = d.brand;
-                          let cansseenbefore = datapoints.slice(0, i);
+                        .attr("transform", "translate(  "+ w/2 +", 0)")
+                          // "translate( "+ function(d, i){
+                          //                 return i* Math.random()
+                          //               } + ",  50)")
+                        ;
+  graphGroup1
+        .transition()
+        .duration(2000)
+        .delay(function(d,i){
+          // i+=1;
+          return i*10 //Math.random()*5
+        })
+        .attr("transform", function(d, i, datapoints){
+          let brand = d.brand;
+          let cansseenbefore = datapoints.slice(0, i);
 
-                          function checkBrand(datapointFromTheLeft) {
-                            let datapointFromTheLeftssBrand = datapointFromTheLeft.__data__.brand;
-                            return datapointFromTheLeftssBrand == brand;
-                          }
-                          let samebranditems = cansseenbefore.filter(checkBrand);
-                          // console.log("placing itme number", i, ". The brand is", brand, ". already placed these cans:", cansseenbefore);
-                          // console.log(samebranditems.length);
-                          let canheight = 25;
-                          let x = xScale(d.brand) + 40 + 10 * Math.random();
-                          let y = (h - padding*3/2) - (canheight * samebranditems.length);
-                          return "translate("+ x + "," + y + ")"
-                        })
+          function checkBrand(datapointFromTheLeft) {
+            let datapointFromTheLeftssBrand = datapointFromTheLeft.__data__.brand;
+            return datapointFromTheLeftssBrand == brand;
+          }
+          let samebranditems = cansseenbefore.filter(checkBrand);
+          // console.log("placing itme number", i, ". The brand is", brand, ". already placed these cans:", cansseenbefore);
+          // console.log(samebranditems.length);
+          let canheight = 25;
+          let x = xScale(d.brand) + 40 + 10 * Math.random();
+          let y = (h - padding*3/2) - (canheight * samebranditems.length);
+          return "translate("+ x + "," + y + ")"
+        })
   ;
   /*---------------- Visualization1 --------------------*/
   let graphGroup2 = viz2.append("g").classed("graphGroup2", true)
                       .selectAll(".datapoint").data(americanoArray, function(d){return d.Brand;})
                       .enter()
                         .append("g").classed("datapoint", true)
+                        .attr("transform", "translate(  "+ w/2 +", 0)")
+  ;
+  graphGroup2
+        .transition()
+        .duration(2000)
+        .delay(function(d,i){
+          return i*10 //Math.random()*5
+        })
                         .attr("transform", function(d, i, datapoints){
                           let brand = d.brand;
                           let cansseenbefore = datapoints.slice(0, i);
@@ -189,6 +213,14 @@ function gotData1(incomingData){
                      .selectAll(".datapoint").data(redbullArray, function(d){return d.Brand;})
                      .enter()
                        .append("g").classed("datapoint", true)
+                       .attr("transform", "translate(  "+ w/2 +", 0)")
+                  ;
+ graphGroup3
+       .transition()
+       .duration(2000)
+       .delay(function(d,i){
+         return i*10 //Math.random()*5
+       })
                        .attr("transform", function(d, i, datapoints){
                          let brand = d.brand;
                          let cansseenbefore = datapoints.slice(0, i);
@@ -227,8 +259,8 @@ function gotData1(incomingData){
                  .style("opacity", .9)
       ;
       detailBox1.html(d.product + " (" + d.netWeight + "mL)" + "<br/>" + d.sugar + " g/serving")
-                   .style("left", (d3.event.pageX) + "px")
-                   .style("top", (d3.event.pageY) - 60 + "px")
+                   .style("left", (d3.event.pageX) - 270 + "px")
+                   .style("top", (d3.event.pageY) - 150 + "px")
      ;
    })
    //hide detailed info box
@@ -250,8 +282,8 @@ function gotData1(incomingData){
                 .style("opacity", .9)
      ;
      detailBox2.html(d.product + " (" + d.netWeight + "mL)" + "<br/>" + d.coffein + " mg/serving")
-                  .style("left", (d3.event.pageX) + "px")
-                  .style("top", (d3.event.pageY) + "px")
+                  .style("left", (d3.event.pageX) - 270 + "px")
+                  .style("top", (d3.event.pageY) - 150 + "px")
     ;
   })
    .on("mouseout", function(){
@@ -270,8 +302,8 @@ function gotData1(incomingData){
                  .style("opacity", .9)
       ;
       detailBox3.html(d.product + " (" + d.netWeight + "mL)" + "<br/>" + d.coffein + " mg/serving")
-                   .style("left", (d3.event.pageX) + "px")
-                   .style("top", (d3.event.pageY) + "px")
+                   .style("left", (d3.event.pageX) - 270 + "px")
+                   .style("top", (d3.event.pageY) - 150 + "px")
      ;
    })
     .on("mouseout", function(){
@@ -311,32 +343,31 @@ function gotData1(incomingData){
        //   graphGroup1.attr("fill", "red");
        //   console.log("no");
        // }
-
-     // // Here I draw a standard LINE --
-     // // According to the Dietary Guidelines for Chinese Residents:
-     // // <= 25g/day is suggested, not exceed 50g/day
-     //
-     // let lineData = [ { "x": 0,   "y": 20},  { "x": 2000,  "y": 20}];
-     //
-     // let lineMaker = d3.line()
-     //                     .x(function(d){ return d.x})
-     //                     .y(function(d){ return d.y})
-     //                 ;
-     // viz1.datum(lineData)
-     //                 .append("path")
-     //                 .attr("d", lineMaker)
-     //                 .attr("fill", "none")
-     //                 .attr("stroke", "black")
-     //                 .attr("transform", function(d, i){
-     //                   return "translate("+ xScale(d.Brand)+ "," + (h - padding) + ")"
-     //                 })
-     // ;
-
-
-
 }
 
+  // Here I draw a standard LINE --
+  // According to the Dietary Guidelines for Chinese Residents:
+  // <= 25g/day is suggested, not exceed 50g/day
+  function showLine(){
+    let lineData = [ { "x": 0,   "y": 20},  { "x": 1380,  "y": 20}];
 
+    let lineMaker = d3.line()
+                        .x(function(d){ return d.x})
+                        .y(function(d){ return d.y})
+                    ;
+    viz1.datum(lineData)
+          .append("path")
+          .attr("d", lineMaker)
+          .attr("fill", "none")
+          .attr("stroke", "lightgray")
+          .attr("stroke-width", 4)
+          .attr("opacity", .5)
+          .attr("transform", function(d, i){
+            return " translate( " + 60 +" , " + ( h - 25*7) + ") "
+          })
+
+    ;
+  }
 
 
 
@@ -346,12 +377,20 @@ d3.select("#textboxes").on("scroll", function(){
   currentBox(function(box){
     console.log(box.id);
 
+/* Interaction 1: appear Recommended Daily Sugar Intake Line*/
+    if (box.id == "zero"){
+      showLine();
+    }
+
+
     if(box.id=="two" && box.id!=previousSection){
       console.log("changing viz");
       // trigger a new transition
       previousSection = box.id;
     }
   })
+
+
 })
 
 function currentBox(cb){
