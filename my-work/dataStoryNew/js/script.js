@@ -1,8 +1,7 @@
 let w = 1500;
-let h = 800;
+let h = 680;
 let padding = 30;
 let heightRatio = 0.8;
-let col = 50;
 
 function gotData1(incomingData){
   let milkteaData = incomingData;
@@ -15,8 +14,8 @@ function gotData1(incomingData){
     const sugarunits = total/4;
     d.sugarunits = sugarunits;
   })
-  let sugarArray = [];
   //resturcture dataset: datapoints == sugar units
+  let sugarArray = [];
   milkteaData.forEach(function(d){
     let number = d.sugarunits;
     for(var i=0; i<number; i++){
@@ -40,7 +39,6 @@ function gotData1(incomingData){
     d.americanounits = americanounits;
   })
   let americanoArray = [];
-  //resturcture dataset: datapoints == americano units
   milkteaData.forEach(function(d){
     let number = d.americanounits;
     for(var i=0; i<number; i++){
@@ -64,7 +62,6 @@ function gotData1(incomingData){
     d.redbullunits = redbullunits;
   })
   let redbullArray = [];
-  //resturcture dataset: datapoints == americano units
   milkteaData.forEach(function(d){
     let number = d.redbullunits;
     for(var i=0; i<number; i++){
@@ -150,7 +147,6 @@ function gotData1(incomingData){
                       .enter()
                         .append("g").classed("datapoint", true)
                         .attr("transform", function(d, i, datapoints){
-
                           let brand = d.brand;
                           let cansseenbefore = datapoints.slice(0, i);
 
@@ -159,23 +155,20 @@ function gotData1(incomingData){
                             return datapointFromTheLeftssBrand == brand;
                           }
                           let samebranditems = cansseenbefore.filter(checkBrand);
-
                           // console.log("placing itme number", i, ". The brand is", brand, ". already placed these cans:", cansseenbefore);
                           // console.log(samebranditems.length);
-
                           let canheight = 25;
                           let x = xScale(d.brand) + 40 + 10 * Math.random();
                           let y = (h - padding*3/2) - (canheight * samebranditems.length);
                           return "translate("+ x + "," + y + ")"
                         })
   ;
-
+  /*---------------- Visualization1 --------------------*/
   let graphGroup2 = viz2.append("g").classed("graphGroup2", true)
                       .selectAll(".datapoint").data(americanoArray, function(d){return d.Brand;})
                       .enter()
                         .append("g").classed("datapoint", true)
                         .attr("transform", function(d, i, datapoints){
-
                           let brand = d.brand;
                           let cansseenbefore = datapoints.slice(0, i);
 
@@ -191,13 +184,12 @@ function gotData1(incomingData){
                           return "translate("+ x + "," + y + ")"
                         })
   ;
-
+  /*---------------- Visualization1 --------------------*/
  let graphGroup3 = viz3.append("g").classed("graphGroup3", true)
                      .selectAll(".datapoint").data(redbullArray, function(d){return d.Brand;})
                      .enter()
                        .append("g").classed("datapoint", true)
                        .attr("transform", function(d, i, datapoints){
-
                          let brand = d.brand;
                          let cansseenbefore = datapoints.slice(0, i);
 
@@ -214,7 +206,6 @@ function gotData1(incomingData){
                        })
   ;
 
- //hide detailed info box
   let detailBox1 = d3.select("#visualization1").append("div")
      .attr("class", "detailBox")
      .style("opacity", 0)
@@ -229,18 +220,18 @@ function gotData1(incomingData){
   ;
 
   graphGroup1
-    .on("mousemove", function(d){
+    .on("mouseover", function(d){
       // console.log("hovering");
       detailBox1.transition()
                  .duration(50)
                  .style("opacity", .9)
       ;
-
       detailBox1.html(d.product + " (" + d.netWeight + "mL)" + "<br/>" + d.sugar + " g/serving")
                    .style("left", (d3.event.pageX) + "px")
                    .style("top", (d3.event.pageY) - 60 + "px")
      ;
    })
+   //hide detailed info box
     .on("mouseout", function(){
       // console.log('out');
       detailBox1.transition()
@@ -258,16 +249,12 @@ function gotData1(incomingData){
                 .duration(50)
                 .style("opacity", .9)
      ;
-     detailBox2.html(d.product + " (" + d.netWeight + "mL)" + "<br/>" + d.coffeinS + " mg/serving")
+     detailBox2.html(d.product + " (" + d.netWeight + "mL)" + "<br/>" + d.coffein + " mg/serving")
                   .style("left", (d3.event.pageX) + "px")
                   .style("top", (d3.event.pageY) + "px")
     ;
   })
-
    .on("mouseout", function(){
-     let element = d3.select(this);
-     element.select("rect").transition().duration("100").attr("opacity", 1);
-
      detailBox2.transition()
                 .duration(50)
                 .style("opacity", 0);
@@ -282,16 +269,12 @@ function gotData1(incomingData){
                  .duration(50)
                  .style("opacity", .9)
       ;
-      detailBox3.html(d.product + " (" + d.netWeight + "mL)" + "<br/>" + d.coffeinS + " mg/serving")
+      detailBox3.html(d.product + " (" + d.netWeight + "mL)" + "<br/>" + d.coffein + " mg/serving")
                    .style("left", (d3.event.pageX) + "px")
                    .style("top", (d3.event.pageY) + "px")
      ;
    })
-
     .on("mouseout", function(){
-      let element = d3.select(this);
-      element.select("rect").transition().duration("100").attr("opacity", 1);
-
       detailBox3.transition()
                  .duration(50)
                  .style("opacity", 0);
@@ -377,10 +360,10 @@ function currentBox(cb){
   let scrollTop = event.target.scrollTop;
   let targetRec = event.target.getBoundingClientRect();
   let firstBoxRec = boxes[0].getBoundingClientRect();
-  let midpoint = scrollTop;// + targetRec.height/2;
+  let midpoint =  targetRec.height/2;
 
   let closestBox = boxes.reduce(function(closest, box){
-    box.style.color = "black";
+    // box.style.color = "black";
     let preMid = closest.getBoundingClientRect().top+closest.getBoundingClientRect().height/2;
     let preOffset = preMid - firstBoxRec.top;
     let preDist = Math.abs(preOffset - midpoint);

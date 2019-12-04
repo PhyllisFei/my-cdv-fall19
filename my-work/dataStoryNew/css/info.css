@@ -8,51 +8,53 @@ body,html{
 
 .detailBox{
 	position: absolute;
-	margin: 0;
+	padding: 1vh;
 	font-family: 'Mukta', sans-serif;
+	font-size: 1.5em;
 	position: absolute;
+	border-radius: 5px;
+	background-color: white;
+	opacity: .4;
 }
+
 .box{
-  margin-bottom: 10vh;
+  margin-bottom: 5vh;
+	margin-top: 10vh;
   padding:30px;
-  border-top: 1px black solid;
+	position: relative;
 }
 
 #btn{
-  width: 3.5%;
+  width: 5vh;
   left: 85%;
   top: 98%;
   position: absolute;
 }
 
 #textboxes {
-  width: 80%;
-  margin-left: 10%;
-  margin-top: 2%;
-  border: solid black 3px;
+  width: 100vw;
+  margin-left: 25vh;
+  margin-top: 2.5vh;
   height: 100vh;
   overflow: scroll;
 }
+
+#graphtitle1,#graphtitle2,#graphtitle3{
+	font-size: 2.5em;
+	font-family: 'Mukta', sans-serif;
+	position: relative;
+}
 #graphtitle1{
-  left: 20%;
+  left: 13%;
   top: 20%;
-  font-size: 2.5em;
-  font-family: 'Mukta', sans-serif;
-  position: relative;
 }
 #graphtitle2{
-  left: 40%;
+  left: 25%;
   top: 20%;
-  font-size: 2.5em;
-  font-family: 'Mukta', sans-serif;
-  position: relative;
 }
 #graphtitle3{
-  left: 38%;
+  left: 25%;
   top: 20%;
-  font-size: 2.5em;
-  font-family: 'Mukta', sans-serif;
-  position: relative;
 }
 
 .cls-1 {
