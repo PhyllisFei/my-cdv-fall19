@@ -1,0 +1,365 @@
+body,html{
+	margin:0;
+	height: 100%;
+	width: 100%;
+  background-size: cover;
+	position: absolute;
+	overflow-x: hidden;
+}
+
+.detailBox{
+	position: absolute;
+	padding: 1vh;
+	font-family: 'Mukta', sans-serif;
+	font-size: 1.5em;
+	border-radius: 5px;
+	background-color: white;
+	opacity: .4;
+}
+
+.container{
+	position: relative;
+}
+
+#graphtitle4{
+	font-family: 'Mukta', sans-serif;
+	font-size: 2em;
+	top: 3vh;
+	position: absolute;
+	border-radius: 5px;
+	height: 80px;
+	line-height: 8px;
+	background-color: white;
+	box-shadow: 0 0 3px 3px lightgray;
+	opacity: .5;
+}
+
+#info{
+  margin-top: 20vh;
+	margin-bottom: 0vh;
+	position: relative;
+	opacity: .8;
+}
+
+#three p{
+	font-family: 'Mukta', sans-serif;
+	font-size: 2em;
+	margin-top: 3vh;
+	margin-left: 0vw;
+	position: relative;
+}
+
+
+#zero, #one, #two{
+	margin-bottom: 5vh;
+	margin-top: 50vh;
+	padding:30px;
+	position: sticky;
+}
+
+#btnFullSugar, #btnNoSugar{
+	display: flex;
+	flex-grow:1;
+	position: absolute;
+	display: inline-block;
+	text-align: center;
+	margin: 10px;
+	width: 120px;
+	height: 40px;
+	line-height: 2px;
+	background-color: white;
+	opacity: .6;
+  box-shadow: 0 0 3px 3px lightgray;
+	border-radius: 3px;
+	cursor: pointer;
+}
+#btnFullSugar{
+	margin-left: 57%;
+}
+#btnNoSugar{
+	margin-left: 64%;
+}
+#btnNoSugar p, #btnFullSugar p{
+	font-family: 'Mukta', sans-serif;
+  pointer-events: none;
+  color: black;
+  font-weight: bold;
+	font-size: 1.5em;
+	text-align: center;
+}
+
+#textboxes {
+  width: 100vw;
+  margin-left: 25vh;
+  margin-top: 2.5vh;
+  height: 100vh;
+  overflow: scroll;
+}
+
+/* #graphtitle4{
+	font-size: 2.3em;
+	font-family: 'Mukta', sans-serif;
+	position: relative;
+} */
+
+#graphtitle1,#graphtitle2,#graphtitle3{
+	font-size: 2.3em;
+	font-family: 'Mukta', sans-serif;
+	position: relative;
+}
+#graphtitle1{
+	left:0;
+  top: 15%;
+	margin-top: 1vh;
+	margin-bottom: 3vh;
+}
+#graphtitle2{
+	left:0;
+  top: 20%;
+	margin-bottom: 4vh;
+}
+#graphtitle3{
+	left:0;
+  top: 20%;
+}
+
+.imgs{
+	opacity: .2;
+}
+
+#cgl{
+	width:10%;
+	left:23%;
+	top:65%;
+	position: absolute;
+}
+#coco{
+	width:15%;
+	left:48%;
+	top:10%;
+	position: absolute;
+}
+#gc{
+	width:8%;
+	left:32%;
+	top:10%;
+	position: absolute;
+}
+#gyp{
+	width:10%;
+	left:67%;
+	top:63%;
+	position: absolute;
+}
+#klnm{
+	width:8%;
+	left:55%;
+	top:68%;
+	position: absolute;
+}
+#llc{
+	width:11%;
+	left:12%;
+	top:43%;
+	position: absolute;
+}
+#ln{
+	width:18%;
+	left:35%;
+	top:78%;
+	position: absolute;
+}
+#tp{
+	width:10%;
+	left:68%;
+	top:20%;
+	position: absolute;
+}
+#xc{
+	width:15%;
+	left:75%;
+	top:40%;
+	position: absolute;
+}
+#ydd{
+	width:15%;
+	left:13%;
+	top:20%;
+	position: absolute;
+}
+
+.line{
+	z-index: -1000;
+	stroke-dasharray: 30;
+	animation: dash .1s linear;
+}
+
+@keyframes dash {
+  to {
+    stroke-dashoffset: -50;
+  }
+}
+
+.cls-1 {
+			 fill: #100e0c;
+		 }
+
+.cls-2 {
+ fill: #fcc013;
+}
+
+.cls-3 {
+ fill: #e6e6e5;
+}
+
+.cls-4 {
+ fill: #255228;
+}
+
+.cls-5 {
+ fill: #f8c017;
+}
+
+.cls-6 {
+ fill: #c2bb80;
+}
+
+.cls-7 {
+ fill: #d2b27d;
+}
+
+.cls-8 {
+ fill: #295428;
+}
+
+.cls-9 {
+ fill: #de2826;
+}
+
+.cls-10 {
+ fill: #295328;
+}
+
+.cls-11 {
+ fill: #dc2c26;
+}
+
+.cls-12 {
+ fill: #2e5428;
+}
+
+.cls-13 {
+ fill: #e0c426;
+}
+
+.cls-14 {
+ fill: #335628;
+}
+
+.cls-15 {
+ fill: #3a5f2c;
+}
+
+.cls-16 {
+ fill: #2f5327;
+}
+
+.cls-17 {
+ fill: #dcc128;
+}
+
+.cls-18 {
+ fill: #324f24;
+}
+
+.cls-19 {
+ fill: #b7bb33;
+}
+
+.cls-20 {
+ fill: #cb5426;
+}
+
+.cls-21 {
+ fill: #c9c12f;
+}
+
+.cls-22 {
+ fill: #afb93e;
+}
+
+.cls-23 {
+ fill: #c45227;
+}
+
+.cls-24 {
+ fill: #bb5b27;
+}
+
+.cls-25 {
+ fill: #98bb54;
+}
+
+.cls-26 {
+ fill: #bf4427;
+}
+
+.cls-27 {
+ fill: #4e6d2f;
+}
+
+.cls-28 {
+ fill: #9ebc4c;
+}
+
+.cls-29 {
+ fill: #eb8e2e;
+}
+
+.cls-30 {
+ fill: #161616;
+}
+
+.cls-31 {
+ fill: #c7c133;
+}
+
+.cls-32 {
+ fill: #bbc036;
+}
+
+.cls-33 {
+ fill: #b5b636;
+}
+
+.cls-34 {
+ fill: #f8ba1b;
+}
+
+.cls-35 {
+ fill: #c6c440;
+}
+
+.cls-36 {
+ fill: #9bc058;
+}
+
+.cls-37 {
+ fill: #f58349;
+}
+
+.cls-38 {
+ fill: #d6d6d6;
+}
+
+.cls-39 {
+ fill: #36582a;
+}
+
+.cls-40 {
+ fill: #305327;
+}
+
+.cls-41 {
+ fill: #355528;
+}

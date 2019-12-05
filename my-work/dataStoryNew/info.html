@@ -5,67 +5,75 @@
     <title>Milk Tea</title>
 
     <link href="https://fonts.googleapis.com/css?family=Mukta&display=swap" rel="stylesheet">
-
-    <link rel="stylesheet" href="css/info.css">
-
-    <!-- d3 library -->
+    <link rel="stylesheet" href="info.css">
     <script src="https://d3js.org/d3.v5.min.js"></script>
-    <!-- liquidFillGauge library -->
-    <!-- <script src="liquidFillGauge.js"></script> -->
-
-    <!-- <script src="https://unpkg.com/d3-simple-slider"></script> -->
 
   </head>
   <body>
-    <div>
-      <a href="author'snotes.html"> <img id="btn" src="images/btn.png"> </a>
-    </div>
-
       <div id="container">
 
           <div id="textboxes">
+
+            <div class="box" id="three">
+              <div id="graphtitle4">
+                <h1> Hi! Welcome to the-era-of-milk-tea!</h1>
+              </div>
+                <br></br>
+                <div id="info">
+                  <p>According to <span style="color:darkblue">iiMedia Research</span>, the number of existing beverage outlets in China has exceeded <span style="color:darkred">450 THOUSAND</span> in 2018.</p>
+                  <p>The size of this new Chinese-style tea market in 2018 is <span style="color:darkred"> over 90 BILLION</span> yuan (WOOOOW).</p>
+                  <p><span style="color:darkblue">Meituan</span>, one of China's most popular online-delivery service companies,
+                    delivered <span style="color:darkred">2.1 HUNDRED MILLION</span> orders all over the country in 2018.</p>
+                  <p>As milk tea culture is flourishing, more query regarding <span style="color:gray">"whether milk tea is healthy"</span> has been raised among nutritionists.</p>
+                  <br></br>
+                  <p>In 2017, Shanghai Consumers Council conducted comparative tests on milk tea <span style="color:darkgreen">ingredients</span> among several popular beverage shops in Shanghai.</p>
+                  <p>[I know. They tastes GOOD.]</p>
+                  <p>Let's take a look at what have been found out!</p>
+              </div>
+
+              <div class="imgs">
+                <img id="cgl" src="images/cgl.png">
+                <img id="coco" src="images/coco.png">
+                <img id="gc" src="images/gc.png">
+                <img id="gyp" src="images/gyp.png">
+                <img id="klnm" src="images/klnm.png">
+                <img id="llc" src="images/llc.png">
+                <img id="ln" src="images/ln.png">
+                <img id="tp" src="images/tp.png">
+                <img id="xc" src="images/xc.png">
+                <img id="ydd" src="images/ydd.png">
+              </div>
+            </div>
+
             <div class="box" id="zero">
               <div id="graphtitle1">How much sugar do you think is added in ONE serving of milk tea?</div>
-              <div class="col-sm"> <div id="slider"></div> </div>
-              <div id="visualization1">
 
+              <div id="visualization1">
+                  <div id="btnFullSugar">  <p>100% Sugar</p>  </div>
+                  <div id="btnNoSugar"> <p>0% Sugar</p>  </div>
               </div>
             </div>
 
             <div class="box" id="one">
               <div id="graphtitle2">Coffein in Milk tea V.S. Coffein in Americano</div>
               <div id="visualization2">
-
+                <div id="btnFullSugar">  <p>100% Sugar</p>  </div>
+                <div id="btnNoSugar"> <p>0% Sugar</p>  </div>
               </div>
             </div>
 
             <div class="box" id="two">
               <div id="graphtitle3">Coffein in Milk tea V.S. Coffein in Redbull </div>
               <div id="visualization3">
-
-              </div>
-            </div>
-
-            <div class="box" id="three">
-              <div id="graphtitle4">   </div>
-              <div id="visualization4">
-
+                <div id="btnFullSugar">  <p>100% Sugar</p>  </div>
+                <div id="btnNoSugar"> <p>0% Sugar</p>  </div>
               </div>
             </div>
           </div>
 
-        <!-- <div class="row align-items-center"> -->
-        <!-- <div class="col-sm-2"><p id="value-time"></p></div> -->
+          <i class="fas fa-angle-up"></i>
     </div>
 
-    <!-- <button id="data1button">Share of Adults Obesity</button>
-    <button id="data2button">Share of Men Obesity</button>
-    <button id="data3button">Share of Women Obesity</button> -->
-
-    <!-- <svg id="fillgauge1" width="97%" height="250" onclick="gauge1.update(NewValue());"></svg> -->
-
-    <!-- our main script: -->
-    <script type="text/javascript" src="js/script.js"></script>
-
+    <script type="text/javascript" src="script.js"></script>
   </body>
 </html>
