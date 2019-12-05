@@ -1,0 +1,1069 @@
+[
+  [
+    {
+      "Entity": "China",
+      "Year": "1975",
+      "Share": "0.5"
+    },
+    {
+      "Entity": "China",
+      "Year": "1976",
+      "Share": "0.5"
+    },
+    {
+      "Entity": "China",
+      "Year": "1977",
+      "Share": "0.5"
+    },
+    {
+      "Entity": "China",
+      "Year": "1978",
+      "Share": "0.6"
+    },
+    {
+      "Entity": "China",
+      "Year": "1979",
+      "Share": "0.6"
+    },
+    {
+      "Entity": "China",
+      "Year": "1980",
+      "Share": "0.6"
+    },
+    {
+      "Entity": "China",
+      "Year": "1981",
+      "Share": "0.7"
+    },
+    {
+      "Entity": "China",
+      "Year": "1982",
+      "Share": "0.7"
+    },
+    {
+      "Entity": "China",
+      "Year": "1983",
+      "Share": "0.8"
+    },
+    {
+      "Entity": "China",
+      "Year": "1984",
+      "Share": "0.8"
+    },
+    {
+      "Entity": "China",
+      "Year": "1985",
+      "Share": "0.9"
+    },
+    {
+      "Entity": "China",
+      "Year": "1986",
+      "Share": "0.9"
+    },
+    {
+      "Entity": "China",
+      "Year": "1987",
+      "Share": "1"
+    },
+    {
+      "Entity": "China",
+      "Year": "1988",
+      "Share": "1.1"
+    },
+    {
+      "Entity": "China",
+      "Year": "1989",
+      "Share": "1.2"
+    },
+    {
+      "Entity": "China",
+      "Year": "1990",
+      "Share": "1.2"
+    },
+    {
+      "Entity": "China",
+      "Year": "1991",
+      "Share": "1.3"
+    },
+    {
+      "Entity": "China",
+      "Year": "1992",
+      "Share": "1.4"
+    },
+    {
+      "Entity": "China",
+      "Year": "1993",
+      "Share": "1.5"
+    },
+    {
+      "Entity": "China",
+      "Year": "1994",
+      "Share": "1.6"
+    },
+    {
+      "Entity": "China",
+      "Year": "1995",
+      "Share": "1.7"
+    },
+    {
+      "Entity": "China",
+      "Year": "1996",
+      "Share": "1.8"
+    },
+    {
+      "Entity": "China",
+      "Year": "1997",
+      "Share": "1.9"
+    },
+    {
+      "Entity": "China",
+      "Year": "1998",
+      "Share": "2.1"
+    },
+    {
+      "Entity": "China",
+      "Year": "1999",
+      "Share": "2.2"
+    },
+    {
+      "Entity": "China",
+      "Year": "2000",
+      "Share": "2.4"
+    },
+    {
+      "Entity": "China",
+      "Year": "2001",
+      "Share": "2.5"
+    },
+    {
+      "Entity": "China",
+      "Year": "2002",
+      "Share": "2.7"
+    },
+    {
+      "Entity": "China",
+      "Year": "2003",
+      "Share": "2.8"
+    },
+    {
+      "Entity": "China",
+      "Year": "2004",
+      "Share": "3"
+    },
+    {
+      "Entity": "China",
+      "Year": "2005",
+      "Share": "3.2"
+    },
+    {
+      "Entity": "China",
+      "Year": "2006",
+      "Share": "3.4"
+    },
+    {
+      "Entity": "China",
+      "Year": "2007",
+      "Share": "3.7"
+    },
+    {
+      "Entity": "China",
+      "Year": "2008",
+      "Share": "3.9"
+    },
+    {
+      "Entity": "China",
+      "Year": "2009",
+      "Share": "4.1"
+    },
+    {
+      "Entity": "China",
+      "Year": "2010",
+      "Share": "4.4"
+    },
+    {
+      "Entity": "China",
+      "Year": "2011",
+      "Share": "4.7"
+    },
+    {
+      "Entity": "China",
+      "Year": "2012",
+      "Share": "5"
+    },
+    {
+      "Entity": "China",
+      "Year": "2013",
+      "Share": "5.2"
+    },
+    {
+      "Entity": "China",
+      "Year": "2014",
+      "Share": "5.5"
+    },
+    {
+      "Entity": "China",
+      "Year": "2015",
+      "Share": "5.9"
+    },
+    {
+      "Entity": "China",
+      "Year": "2016",
+      "Share": "6.2"
+    }
+  ],
+  [
+    {
+      "Entity": "China",
+
+      "Year": "1975",
+      "Share": "0.2"
+    },
+    {
+      "Entity": "China",
+
+      "Year": "1976",
+      "Share": "0.2"
+    },
+    {
+      "Entity": "China",
+      "Year": "1977",
+      "Share": "0.3"
+    },
+    {
+      "Entity": "China",
+      "Year": "1978",
+      "Share": "0.3"
+    },
+    {
+      "Entity": "China",
+      "Year": "1979",
+      "Share": "0.3"
+    },
+    {
+      "Entity": "China",
+      "Year": "1980",
+      "Share": "0.3"
+    },
+    {
+      "Entity": "China",
+      "Year": "1981",
+      "Share": "0.4"
+    },
+    {
+      "Entity": "China",
+      "Year": "1982",
+      "Share": "0.4"
+    },
+    {
+      "Entity": "China",
+      "Year": "1983",
+      "Share": "0.4"
+    },
+    {
+      "Entity": "China",
+      "Year": "1984",
+      "Share": "0.5"
+    },
+    {
+      "Entity": "China",
+      "Year": "1985",
+      "Share": "0.5"
+    },
+    {
+      "Entity": "China",
+      "Year": "1986",
+      "Share": "0.5"
+    },
+    {
+      "Entity": "China",
+      "Year": "1987",
+      "Share": "0.6"
+    },
+    {
+      "Entity": "China",
+      "Year": "1988",
+      "Share": "0.6"
+    },
+    {
+      "Entity": "China",
+      "Year": "1989",
+      "Share": "0.7"
+    },
+    {
+      "Entity": "China",
+      "Year": "1990",
+      "Share": "0.8"
+    },
+    {
+      "Entity": "China",
+      "Year": "1991",
+      "Share": "0.8"
+    },
+    {
+      "Entity": "China",
+      "Year": "1992",
+      "Share": "0.9"
+    },
+    {
+      "Entity": "China",
+      "Year": "1993",
+      "Share": "1"
+    },
+    {
+      "Entity": "China",
+      "Year": "1994",
+      "Share": "1.1"
+    },
+    {
+      "Entity": "China",
+      "Year": "1995",
+      "Share": "1.2"
+    },
+    {
+      "Entity": "China",
+      "Year": "1996",
+      "Share": "1.3"
+    },
+    {
+      "Entity": "China",
+      "Year": "1997",
+      "Share": "1.4"
+    },
+    {
+      "Entity": "China",
+      "Year": "1998",
+      "Share": "1.5"
+    },
+    {
+      "Entity": "China",
+      "Year": "1999",
+      "Share": "1.6"
+    },
+    {
+      "Entity": "China",
+      "Year": "2000",
+      "Share": "1.8"
+    },
+    {
+      "Entity": "China",
+      "Year": "2001",
+      "Share": "1.9"
+    },
+    {
+      "Entity": "China",
+      "Year": "2002",
+      "Share": "2.1"
+    },
+    {
+      "Entity": "China",
+      "Year": "2003",
+      "Share": "2.3"
+    },
+    {
+      "Entity": "China",
+      "Year": "2004",
+      "Share": "2.4"
+    },
+    {
+      "Entity": "China",
+      "Year": "2005",
+      "Share": "2.6"
+    },
+    {
+      "Entity": "China",
+      "Year": "2006",
+      "Share": "2.9"
+    },
+    {
+      "Entity": "China",
+      "Year": "2007",
+      "Share": "3.1"
+    },
+    {
+      "Entity": "China",
+      "Year": "2008",
+      "Share": "3.3"
+    },
+    {
+      "Entity": "China",
+      "Year": "2009",
+      "Share": "3.6"
+    },
+    {
+      "Entity": "China",
+      "Year": "2010",
+      "Share": "3.9"
+    },
+    {
+      "Entity": "China",
+      "Year": "2011",
+      "Share": "4.2"
+    },
+    {
+      "Entity": "China",
+      "Year": "2012",
+      "Share": "4.5"
+    },
+    {
+      "Entity": "China",
+      "Year": "2013",
+      "Share": "4.8"
+    },
+    {
+      "Entity": "China",
+      "Year": "2014",
+      "Share": "5.1"
+    },
+    {
+      "Entity": "China",
+      "Year": "2015",
+      "Share": "5.5"
+    },
+    {
+      "Entity": "China",
+      "Year": "2016",
+      "Share": "5.9"
+    }
+  ],
+
+  [
+    {
+      "Entity": "China",
+      "Year": "1975",
+      "Share": "0.7"
+    },
+    {
+      "Entity": "China",
+      "Year": "1976",
+      "Share": "0.8"
+    },
+    {
+      "Entity": "China",
+      "Year": "1977",
+      "Share": "0.8"
+    },
+    {
+      "Entity": "China",
+      "Year": "1978",
+      "Share": "0.9"
+    },
+    {
+      "Entity": "China",
+      "Year": "1979",
+      "Share": "0.9"
+    },
+    {
+      "Entity": "China",
+      "Year": "1980",
+      "Share": "1"
+    },
+    {
+      "Entity": "China",
+      "Year": "1981",
+      "Share": "1"
+    },
+    {
+      "Entity": "China",
+      "Year": "1982",
+      "Share": "1.1"
+    },
+    {
+      "Entity": "China",
+      "Year": "1983",
+      "Share": "1.1"
+    },
+    {
+      "Entity": "China",
+      "Year": "1984",
+      "Share": "1.2"
+    },
+    {
+      "Entity": "China",
+      "Year": "1985",
+      "Share": "1.3"
+    },
+    {
+      "Entity": "China",
+      "Year": "1986",
+      "Share": "1.4"
+    },
+    {
+      "Entity": "China",
+      "Year": "1987",
+      "Share": "1.4"
+    },
+    {
+      "Entity": "China",
+      "Year": "1988",
+      "Share": "1.5"
+    },
+    {
+      "Entity": "China",
+      "Year": "1989",
+      "Share": "1.6"
+    },
+    {
+      "Entity": "China",
+      "Year": "1990",
+      "Share": "1.7"
+    },
+    {
+      "Entity": "China",
+      "Year": "1991",
+      "Share": "1.8"
+    },
+    {
+      "Entity": "China",
+      "Year": "1992",
+      "Share": "1.9"
+    },
+    {
+      "Entity": "China",
+      "Year": "1993",
+      "Share": "2"
+    },
+    {
+      "Entity": "China",
+      "Year": "1994",
+      "Share": "2.1"
+    },
+    {
+      "Entity": "China",
+      "Year": "1995",
+      "Share": "2.3"
+    },
+    {
+      "Entity": "China",
+      "Year": "1996",
+      "Share": "2.4"
+    },
+    {
+      "Entity": "China",
+      "Year": "1997",
+      "Share": "2.5"
+    },
+    {
+      "Entity": "China",
+      "Year": "1998",
+      "Share": "2.7"
+    },
+    {
+      "Entity": "China",
+      "Year": "1999",
+      "Share": "2.8"
+    },
+    {
+      "Entity": "China",
+      "Year": "2000",
+      "Share": "2.9"
+    },
+    {
+      "Entity": "China",
+      "Year": "2001",
+      "Share": "3.1"
+    },
+    {
+      "Entity": "China",
+      "Year": "2002",
+      "Share": "3.3"
+    },
+    {
+      "Entity": "China",
+      "Year": "2003",
+      "Share": "3.5"
+    },
+    {
+      "Entity": "China",
+      "Year": "2004",
+      "Share": "3.6"
+    },
+    {
+      "Entity": "China",
+      "Year": "2005",
+      "Share": "3.8"
+    },
+    {
+      "Entity": "China",
+      "Year": "2006",
+      "Share": "4"
+    },
+    {
+      "Entity": "China",
+      "Year": "2007",
+      "Share": "4.3"
+    },
+    {
+      "Entity": "China",
+      "Year": "2008",
+      "Share": "4.5"
+    },
+    {
+      "Entity": "China",
+      "Year": "2009",
+      "Share": "4.7"
+    },
+    {
+      "Entity": "China",
+      "Year": "2010",
+      "Share": "5"
+    },
+    {
+      "Entity": "China",
+      "Year": "2011",
+      "Share": "5.2"
+    },
+    {
+      "Entity": "China",
+      "Year": "2012",
+      "Share": "5.5"
+    },
+    {
+      "Entity": "China",
+      "Year": "2013",
+      "Share": "5.7"
+    },
+    {
+      "Entity": "China",
+      "Year": "2014",
+      "Share": "6"
+    },
+    {
+      "Entity": "China",
+      "Year": "2015",
+      "Share": "6.2"
+    },
+    {
+      "Entity": "China",
+      "Year": "2016",
+      "Share": "6.5"
+    }
+  ],
+
+
+  [
+    {
+    "Entity": "China",
+    "Year": 1961,
+    "Animal protein (kilocalories per person per day)": 14.12,
+    "Plant protein (kilocalories per person per day)": 143.88,
+    "Fat (kilocalories per person per day)": 137.52,
+    "Carbohydrates (kilocalories per person per day)": 1143.48
+  },
+  {
+    "Entity": "China",
+    "Year": 1962,
+    "Animal protein (kilocalories per person per day)": 16.52,
+    "Plant protein (kilocalories per person per day)": 155,
+    "Fat (kilocalories per person per day)": 149.04,
+    "Carbohydrates (kilocalories per person per day)": 1226.44
+  },
+  {
+    "Entity": "China",
+    "Year": 1963,
+    "Animal protein (kilocalories per person per day)": 19.6,
+    "Plant protein (kilocalories per person per day)": 156.68,
+    "Fat (kilocalories per person per day)": 177.3,
+    "Carbohydrates (kilocalories per person per day)": 1260.42
+  },
+  {
+    "Entity": "China",
+    "Year": 1964,
+    "Animal protein (kilocalories per person per day)": 21.88,
+    "Plant protein (kilocalories per person per day)": 161.96,
+    "Fat (kilocalories per person per day)": 201.51,
+    "Carbohydrates (kilocalories per person per day)": 1299.65
+  },
+  {
+    "Entity": "China"
+    "Year": 1965,
+    "Animal protein (kilocalories per person per day)": 23.36,
+    "Plant protein (kilocalories per person per day)": 166.64,
+    "Fat (kilocalories per person per day)": 213.12,
+    "Carbohydrates (kilocalories per person per day)": 1409.88
+  },
+  {
+    "Entity": "China",
+    "Year": 1966,
+    "Animal protein (kilocalories per person per day)": 24.08,
+    "Plant protein (kilocalories per person per day)": 169.8,
+    "Fat (kilocalories per person per day)": 225.27,
+    "Carbohydrates (kilocalories per person per day)": 1460.85
+  },
+  {
+    "Entity": "China",
+    "Year": 1967,
+    "Animal protein (kilocalories per person per day)": 24.28,
+    "Plant protein (kilocalories per person per day)": 165.32,
+    "Fat (kilocalories per person per day)": 227.43,
+    "Carbohydrates (kilocalories per person per day)": 1415.97
+  },
+  {
+    "Entity": "China",
+    "Year": 1968,
+    "Animal protein (kilocalories per person per day)": 23.92,
+    "Plant protein (kilocalories per person per day)": 158.04,
+    "Fat (kilocalories per person per day)": 218.7,
+    "Carbohydrates (kilocalories per person per day)": 1375.34
+  },
+  {
+    "Entity": "China"
+    "Year": 1969,
+    "Animal protein (kilocalories per person per day)": 22.88,
+    "Plant protein (kilocalories per person per day)": 153.84,
+    "Fat (kilocalories per person per day)": 211.86,
+    "Carbohydrates (kilocalories per person per day)": 1362.42
+  },
+  {
+    "Entity": "China",
+    "Year": 1970,
+    "Animal protein (kilocalories per person per day)": 22.16,
+    "Plant protein (kilocalories per person per day)": 162.56,
+    "Fat (kilocalories per person per day)": 217.17,
+    "Carbohydrates (kilocalories per person per day)": 1457.11
+  },
+  {
+    "Entity": "China",
+    "Year": 1971,
+    "Animal protein (kilocalories per person per day)": 23.96,
+    "Plant protein (kilocalories per person per day)": 163.96,
+    "Fat (kilocalories per person per day)": 227.25,
+    "Carbohydrates (kilocalories per person per day)": 1447.83
+  },
+  {
+    "Entity": "China",
+    "Year": 1972,
+    "Animal protein (kilocalories per person per day)": 25.2,
+    "Plant protein (kilocalories per person per day)": 160.32,
+    "Fat (kilocalories per person per day)": 230.58,
+    "Carbohydrates (kilocalories per person per day)": 1431.9
+  },
+  {
+    "Entity": "China",
+    "Year": 1973,
+    "Animal protein (kilocalories per person per day)": 25.16,
+    "Plant protein (kilocalories per person per day)": 165.48,
+    "Fat (kilocalories per person per day)": 232.92,
+    "Carbohydrates (kilocalories per person per day)": 1493.44
+  },
+  {
+    "Entity": "China",
+    "Year": 1974,
+    "Animal protein (kilocalories per person per day)": 25.6,
+    "Plant protein (kilocalories per person per day)": 165.04,
+    "Fat (kilocalories per person per day)": 233.01,
+    "Carbohydrates (kilocalories per person per day)": 1489.35
+  },
+  {
+    "Entity": "China",
+    "Year": 1975,
+    "Animal protein (kilocalories per person per day)": 26.08,
+    "Plant protein (kilocalories per person per day)": 165.88,
+    "Fat (kilocalories per person per day)": 235.62,
+    "Carbohydrates (kilocalories per person per day)": 1501.42
+  },
+  {
+    "Entity": "China",
+    "Year": 1976,
+    "Animal protein (kilocalories per person per day)": 24.44,
+    "Plant protein (kilocalories per person per day)": 164.4,
+    "Fat (kilocalories per person per day)": 227.97,
+    "Carbohydrates (kilocalories per person per day)": 1479.19
+  },
+  {
+    "Entity": "China",
+    "Year": 1977,
+    "Animal protein (kilocalories per person per day)": 24.8,
+    "Plant protein (kilocalories per person per day)": 165.88,
+    "Fat (kilocalories per person per day)": 235.44,
+    "Carbohydrates (kilocalories per person per day)": 1507.88
+  },
+  {
+    "Entity": "China",
+    "Year": 1978,
+    "Animal protein (kilocalories per person per day)": 25.92,
+    "Plant protein (kilocalories per person per day)": 179.84,
+    "Fat (kilocalories per person per day)": 255.33,
+    "Carbohydrates (kilocalories per person per day)": 1618.91
+  },
+  {
+    "Entity": "China",
+    "Year": 1979,
+    "Animal protein (kilocalories per person per day)": 28.32,
+    "Plant protein (kilocalories per person per day)": 180.76,
+    "Fat (kilocalories per person per day)": 279.72,
+    "Carbohydrates (kilocalories per person per day)": 1606.2
+  },
+  {
+    "Entity": "China",
+    "Year": 1980,
+    "Animal protein (kilocalories per person per day)": 30.16,
+    "Plant protein (kilocalories per person per day)": 185.88,
+    "Fat (kilocalories per person per day)": 309.24,
+    "Carbohydrates (kilocalories per person per day)": 1635.72
+  },
+  {
+    "Entity": "China",
+    "Year": 1981,
+    "Animal protein (kilocalories per person per day)": 30.72,
+    "Plant protein (kilocalories per person per day)": 190.2,
+    "Fat (kilocalories per person per day)": 321.12,
+    "Carbohydrates (kilocalories per person per day)": 1635.96
+  },
+  {
+    "Entity": "China",
+    "Year": 1982,
+    "Animal protein (kilocalories per person per day)": 32.68,
+    "Plant protein (kilocalories per person per day)": 200,
+    "Fat (kilocalories per person per day)": 343.26,
+    "Carbohydrates (kilocalories per person per day)": 1763.06
+  },
+  {
+    "Entity": "China",
+    "Year": 1983,
+    "Animal protein (kilocalories per person per day)": 33.44,
+    "Plant protein (kilocalories per person per day)": 206.44,
+    "Fat (kilocalories per person per day)": 351.72,
+    "Carbohydrates (kilocalories per person per day)": 1815.4
+  },
+  {
+    "Entity": "China",
+    "Year": 1984,
+    "Animal protein (kilocalories per person per day)": 36.8,
+    "Plant protein (kilocalories per person per day)": 208.48,
+    "Fat (kilocalories per person per day)": 375.93,
+    "Carbohydrates (kilocalories per person per day)": 1818.79
+  },
+  {
+    "Entity": "China",
+    "Year": 1985,
+    "Animal protein (kilocalories per person per day)": 41.16,
+    "Plant protein (kilocalories per person per day)": 206.96,
+    "Fat (kilocalories per person per day)": 399.78,
+    "Carbohydrates (kilocalories per person per day)": 1789.1
+  },
+  {
+    "Entity": "China",
+    "Year": 1986,
+    "Animal protein (kilocalories per person per day)": 43.4,
+    "Plant protein (kilocalories per person per day)": 207,
+    "Fat (kilocalories per person per day)": 409.23,
+    "Carbohydrates (kilocalories per person per day)": 1773.37
+  },
+  {
+    "Entity": "China",
+    "Year": 1987,
+    "Animal protein (kilocalories per person per day)": 46.68,
+    "Plant protein (kilocalories per person per day)": 205.4,
+    "Fat (kilocalories per person per day)": 425.34,
+    "Carbohydrates (kilocalories per person per day)": 1770.58
+  },
+  {
+    "Entity": "China",
+    "Year": 1988,
+    "Animal protein (kilocalories per person per day)": 50.68,
+    "Plant protein (kilocalories per person per day)": 202.4,
+    "Fat (kilocalories per person per day)": 433.89,
+    "Carbohydrates (kilocalories per person per day)": 1740.03
+  },
+  {
+    "Entity": "China",
+    "Year": 1989,
+    "Animal protein (kilocalories per person per day)": 52.48,
+    "Plant protein (kilocalories per person per day)": 199.4,
+    "Fat (kilocalories per person per day)": 452.79,
+    "Carbohydrates (kilocalories per person per day)": 1712.33
+  },
+  {
+    "Entity": "China",
+    "Year": 1990,
+    "Animal protein (kilocalories per person per day)": 55.4,
+    "Plant protein (kilocalories per person per day)": 204.72,
+    "Fat (kilocalories per person per day)": 484.74,
+    "Carbohydrates (kilocalories per person per day)": 1770.14
+  },
+  {
+    "Entity": "China",
+    "Year": 1991,
+    "Animal protein (kilocalories per person per day)": 59.8,
+    "Plant protein (kilocalories per person per day)": 195.2,
+    "Fat (kilocalories per person per day)": 494.73,
+    "Carbohydrates (kilocalories per person per day)": 1694.27
+  },
+  {
+    "Entity": "China",
+    "Year": 1992,
+    "Animal protein (kilocalories per person per day)": 64.8,
+    "Plant protein (kilocalories per person per day)": 198.24,
+    "Fat (kilocalories per person per day)": 504.45,
+    "Carbohydrates (kilocalories per person per day)": 1700.51
+  },
+  {
+    "Entity": "China",
+    "Year": 1993,
+    "Animal protein (kilocalories per person per day)": 70.96,
+    "Plant protein (kilocalories per person per day)": 209.36,
+    "Fat (kilocalories per person per day)": 534.96,
+    "Carbohydrates (kilocalories per person per day)": 1734.72
+  },
+  {
+    "Entity": "China",
+    "Year": 1994,
+    "Animal protein (kilocalories per person per day)": 79.84,
+    "Plant protein (kilocalories per person per day)": 213.88,
+    "Fat (kilocalories per person per day)": 574.92,
+    "Carbohydrates (kilocalories per person per day)": 1745.36
+  },
+  {
+    "Entity": "China",
+    "Year": 1995,
+    "Animal protein (kilocalories per person per day)": 87.68,
+    "Plant protein (kilocalories per person per day)": 215.56,
+    "Fat (kilocalories per person per day)": 596.25,
+    "Carbohydrates (kilocalories per person per day)": 1801.51
+  },
+  {
+    "Entity": "China",
+    "Year": 1996,
+    "Animal protein (kilocalories per person per day)": 92.88,
+    "Plant protein (kilocalories per person per day)": 217.28,
+    "Fat (kilocalories per person per day)": 594.99,
+    "Carbohydrates (kilocalories per person per day)": 1798.85
+  },
+  {
+    "Entity": "China",
+    "Year": 1997,
+    "Animal protein (kilocalories per person per day)": 96.04,
+    "Plant protein (kilocalories per person per day)": 221.56,
+    "Fat (kilocalories per person per day)": 610.38,
+    "Carbohydrates (kilocalories per person per day)": 1806.02
+  },
+  {
+    "Entity": "China",
+    "Year": 1998,
+    "Animal protein (kilocalories per person per day)": 101.72,
+    "Plant protein (kilocalories per person per day)": 221.56,
+    "Fat (kilocalories per person per day)": 640.98,
+    "Carbohydrates (kilocalories per person per day)": 1811.74
+  },
+  {
+    "Entity": "China",
+    "Year": 1999,
+    "Animal protein (kilocalories per person per day)": 105.8,
+    "Plant protein (kilocalories per person per day)": 218.4,
+    "Fat (kilocalories per person per day)": 653.94,
+    "Carbohydrates (kilocalories per person per day)": 1791.86
+  },
+  {
+    "Entity": "China",
+    "Year": 2000,
+    "Animal protein (kilocalories per person per day)": 110.84,
+    "Plant protein (kilocalories per person per day)": 225.04,
+    "Fat (kilocalories per person per day)": 683.91,
+    "Carbohydrates (kilocalories per person per day)": 1794.21
+  },
+  {
+    "Entity": "China",
+    "Year": 2001,
+    "Animal protein (kilocalories per person per day)": 110.8,
+    "Plant protein (kilocalories per person per day)": 223.6,
+    "Fat (kilocalories per person per day)": 682.92,
+    "Carbohydrates (kilocalories per person per day)": 1803.68
+  },
+  {
+    "Entity": "China",
+    "Year": 2002,
+    "Animal protein (kilocalories per person per day)": 113.96,
+    "Plant protein (kilocalories per person per day)": 223.6,
+    "Fat (kilocalories per person per day)": 698.58,
+    "Carbohydrates (kilocalories per person per day)": 1799.86
+  },
+  {
+    "Entity": "China",
+    "Year": 2003,
+    "Animal protein (kilocalories per person per day)": 119.44,
+    "Plant protein (kilocalories per person per day)": 220.44,
+    "Fat (kilocalories per person per day)": 714.69,
+    "Carbohydrates (kilocalories per person per day)": 1783.43
+  },
+  {
+    "Entity": "China",
+    "Year": 2004,
+    "Animal protein (kilocalories per person per day)": 122.76,
+    "Plant protein (kilocalories per person per day)": 221.44,
+    "Fat (kilocalories per person per day)": 724.14,
+    "Carbohydrates (kilocalories per person per day)": 1792.66
+  },
+  {
+    "Entity": "China",
+    "Year": 2005,
+    "Animal protein (kilocalories per person per day)": 126.88,
+    "Plant protein (kilocalories per person per day)": 221.4,
+    "Fat (kilocalories per person per day)": 742.05,
+    "Carbohydrates (kilocalories per person per day)": 1792.67
+  },
+  {
+    "Entity": "China",
+    "Year": 2006,
+    "Animal protein (kilocalories per person per day)": 130.68,
+    "Plant protein (kilocalories per person per day)": 218.28,
+    "Fat (kilocalories per person per day)": 768.42,
+    "Carbohydrates (kilocalories per person per day)": 1768.62
+  },
+  {
+    "Entity": "China",
+    "Year": 2007,
+    "Animal protein (kilocalories per person per day)": 135.84,
+    "Plant protein (kilocalories per person per day)": 221.36,
+    "Fat (kilocalories per person per day)": 787.68,
+    "Carbohydrates (kilocalories per person per day)": 1776.12
+  },
+  {
+    "Entity": "China",
+    "Year": 2008,
+    "Animal protein (kilocalories per person per day)": 142,
+    "Plant protein (kilocalories per person per day)": 225.92,
+    "Fat (kilocalories per person per day)": 801.36,
+    "Carbohydrates (kilocalories per person per day)": 1807.72
+  },
+  {
+    "Entity": "China",
+    "Year": 2009,
+    "Animal protein (kilocalories per person per day)": 145.84,
+    "Plant protein (kilocalories per person per day)": 225.04,
+    "Fat (kilocalories per person per day)": 827.82,
+    "Carbohydrates (kilocalories per person per day)": 1796.3
+  },
+  {
+    "Entity": "China",
+    "Year": 2010,
+    "Animal protein (kilocalories per person per day)": 149.76,
+    "Plant protein (kilocalories per person per day)": 230.16,
+    "Fat (kilocalories per person per day)": 845.37,
+    "Carbohydrates (kilocalories per person per day)": 1818.71
+  },
+  {
+    "Entity": "China",
+    "Year": 2011,
+    "Animal protein (kilocalories per person per day)": 151.32,
+    "Plant protein (kilocalories per person per day)": 231.4,
+    "Fat (kilocalories per person per day)": 845.55,
+    "Carbohydrates (kilocalories per person per day)": 1851.73
+  },
+  {
+    "Entity": "China",
+    "Year": 2012,
+    "Animal protein (kilocalories per person per day)": 156.84,
+    "Plant protein (kilocalories per person per day)": 232.68,
+    "Fat (kilocalories per person per day)": 859.77,
+    "Carbohydrates (kilocalories per person per day)": 1848.71
+  },
+  {
+    "Entity": "China",
+    "Year": 2013,
+    "Animal protein (kilocalories per person per day)": 158.56,
+    "Plant protein (kilocalories per person per day)": 233.6,
+    "Fat (kilocalories per person per day)": 862.83,
+    "Carbohydrates (kilocalories per person per day)": 1853.01
+  }
+  ]
+]
