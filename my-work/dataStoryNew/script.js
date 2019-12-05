@@ -1,5 +1,7 @@
 let w = 1500;
-let h = 900;
+let h1 = 700;
+let h2 = 900;
+let h3 = 750;
 let padding = 30;
 let heightRatio = 0.8;
 
@@ -8,17 +10,17 @@ let heightRatio = 0.8;
 let viz1 = d3.select("#visualization1")
   .append("svg")
     .style("width", w)
-    .style("height", h)
+    .style("height", h1)
 ;
 let viz2 = d3.select("#visualization2")
   .append("svg")
     .style("width", w)
-    .style("height", h)
+    .style("height", h2)
 ;
 let viz3 = d3.select("#visualization3")
   .append("svg")
     .style("width", w)
-    .style("height", h)
+    .style("height", h3)
 ;
 let detailBox1 = d3.select("#visualization1").append("div")
    .attr("class", "detailBox")
@@ -40,7 +42,6 @@ let detailBox3 = d3.select("#visualization3").append("div").attr("class", "detai
 
 function gotData1(incomingData){
   let milkteaData = incomingData;
-  // console.log(milkteaData);
 
   let allBrands = milkteaData.map(function(d){return d.Brand});
   let xScale = d3.scaleBand()
@@ -84,17 +85,21 @@ function gotData1(incomingData){
     xAxisGroup1.call(xAxis);
     xAxisGroup1.selectAll("text").attr("font-size", 24).attr("y", 9);
     xAxisGroup1.selectAll("line").remove();
-    xAxisGroup1.attr("transform", "translate(0,"+ (h-padding) +")");
+    xAxisGroup1.attr("transform", "translate(0,"+ (h1-padding) +")");
 
     let yMax1 = d3.max(milkteaData, function(d){return d.SugarS});
     let yDomain1 = [0, yMax1];
-    let yScale1 = d3.scaleLinear().domain(yDomain1).range([0, h-padding*2]);
+    let yScale1 = d3.scaleLinear().domain(yDomain1).range([0, h1-padding*2]);
 
     let graphGroup1 = viz1.append("g").classed("graphGroup", true)
                         .selectAll(".datapoint").data(sugarArray, function(d){return d.Brand;})
                         .enter()
                           .append("g").classed("datapoint", true)
-                          .attr("transform", "translate("+ (xScale(sugarArray.brand)) +",0)")
+                          .attr("transform", function(d, i, datapoints){
+                            let x = xScale(d.brand) + 40 + 10 * Math.random();
+                            let y = 0;
+                            return "translate("+ x + "," + y + ")"
+                          })
     ;
 
     graphGroup1
@@ -114,6 +119,7 @@ function gotData1(incomingData){
           .duration(2000)
           .attr("transform", function(d, i, datapoints){
             let brand = d.brand;
+            let withSugar = d.withSugar;
             let cansseenbefore = datapoints.slice(0, i);
 
             function checkBrand(datapointFromTheLeft) {
@@ -123,16 +129,44 @@ function gotData1(incomingData){
             let samebranditems = cansseenbefore.filter(checkBrand);
             // console.log("placing itme number", i, ". The brand is", brand, ". already placed these cans:", cansseenbefore);
             // console.log(samebranditems.length);
+
+            function checkSugar(datapointFromTheLeft){
+              let datapointFromTheLeftSugar = datapointFromTheLeft.__data__.withSugar;
+              return datapointFromTheLeftSugar == withSugar;
+            }
+            let yesnosugar = samebranditems.filter(checkSugar);
+
             let canheight = 41;
-            let x = xScale(d.brand) + 40 + 10 * Math.random();
-            let y = (h - padding*3/2) - (canheight * samebranditems.length);
+            let x;
+            let y;
+            let svgWidth = 50; //we measured this
+            let xmiddle = xScale(d.brand) + xScale.bandwidth()/2 - svgWidth/2;
+
+            if(d.withSugar=="yes"){
+              x = xmiddle - svgWidth/2; //+ 40 + 10 * Math.random();
+            }
+            if(d.withSugar=="no"){
+              x = xmiddle + svgWidth/2; // + 100 + 10 * Math.random();
+            }
+
+            y = (h1 - padding*3/2) - (canheight * yesnosugar.length);
             return "translate("+ x + "," + y + ")"
           })
     ;
 
+    document.getElementById("btnFullSugar").showFullSugar();
+    document.getElementById("btnNoSugar").showNoSugar();
+
+    function showFullSugar(){
+
+    }
+
+    function showNoSugar(){
+      
+    }
+
     graphGroup1
       .on("mouseover", function(d){
-        // console.log("hovering");
         detailBox1.transition()
                    .duration(50)
                    .style("opacity", .9)
@@ -144,13 +178,15 @@ function gotData1(incomingData){
      })
      //hide detailed info box
       .on("mouseout", function(){
-        // console.log('out');
         detailBox1.transition()
                    .duration(50)
                    .style("opacity", 0)
         ;
       })
     ;
+
+
+
     // let previousSection;
     d3.select("#textboxes").on("scroll", function(){
     //    // event.preventDefault()
@@ -196,7 +232,7 @@ function gotData1(incomingData){
 
     let yScale2 = d3.scaleBand()
         .domain(allBrands)
-        .range([0, h])
+        .range([0, h2])
         .paddingInner(0.1)
     ;
     let yAxis2 = d3.axisLeft(yScale2);
@@ -300,11 +336,11 @@ function gotData1(incomingData){
     xAxisGroup3.call(xAxis);
     xAxisGroup3.selectAll("text").attr("font-size", 24).attr("y", 9);
     xAxisGroup3.selectAll("line").remove();
-    xAxisGroup3.attr("transform", "translate(0,"+ (h-padding) +")");
+    xAxisGroup3.attr("transform", "translate(0,"+ (h3-padding) +")");
 
     let yMax3 = d3.max(milkteaData, function(d){return d.CoffeinS});
     let yDomain3 = [0, yMax3];
-    let yScale3 = d3.scaleLinear().domain(yDomain3).range([0, h-padding*2]);
+    let yScale3 = d3.scaleLinear().domain(yDomain3).range([0, h3-padding*2]);
 
     let graphGroup3 = viz3.append("g").classed("graphGroup3", true)
                          .selectAll(".datapoint").data(redbullArray, function(d){return d.Brand;})
@@ -330,7 +366,7 @@ function gotData1(incomingData){
 
          let canheight = 75;
          let x = xScale(d.brand) + 20 + 15 * Math.random();
-         let y = (h - padding * 4.5) - (canheight * samebranditems.length);
+         let y = (h3 - padding * 4.5) - (canheight * samebranditems.length);
          return "translate("+ x + "," + y + ")"
        })
   ;
@@ -358,9 +394,6 @@ function gotData1(incomingData){
              .selectAll("path").attr("transform", "scale(0.6)")
   ;
 }
-
-
-
  //------ Here is a a graphic equation of coffein (pick the one that has the most) ------//
  // 1 milktea = XX Americano == XX Redbull
 }
@@ -384,7 +417,7 @@ function showLine(){
                     // .attr("stroke-dasharray", ("20,10"))
                     .attr("stroke-width", 4)
                     .attr("transform", function(d, i){
-                      return " translate( " + 60 +" , " + ( h - 41*8.2) + ") "
+                      return " translate( " + 60 +" , " + ( h1 - 41*8.2) + ") "
                     })
   ;
 
