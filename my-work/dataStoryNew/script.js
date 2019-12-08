@@ -1,7 +1,7 @@
 let w = window.innerWidth * .8;
 let h1 = 700;
 let h2 = 900;
-let h3 = 1500; //750;
+let h3 = 700;
 let padding = 30;
 let heightRatio = 0.8;
 // adjustVizHeight();
@@ -153,7 +153,7 @@ function gotData1(incomingData){
 
     document.getElementById("btnFullSugar").addEventListener('click', () => {
       // console.log(graphGroup1.selectAll('.yes'))
-      d3.selectAll(".yes")
+      viz1.selectAll(".yes")
           .transition()
           .duration(1000)
           .delay(function(d,i){
@@ -201,7 +201,7 @@ function gotData1(incomingData){
     });
 
     document.getElementById("btnNoSugar").addEventListener('click', () => {
-      d3.selectAll('.no')
+      viz1.selectAll('.no')
           .transition()
           .duration(1000)
           .delay(function(d,i){
@@ -247,7 +247,7 @@ function gotData1(incomingData){
     });
 
     document.getElementById("btnClear").addEventListener('click', () => {
-      d3.selectAll(".yes")
+      viz1.selectAll(".yes")
           .transition()
           .duration(1000)
           .delay(function(d,i){
@@ -291,7 +291,7 @@ function gotData1(incomingData){
             return "translate("+ x + "," + 0 + ")"
           })
 
-      d3.selectAll('.no')
+      viz1.selectAll('.no')
           .transition()
           .duration(1000)
           .delay(function(d,i){
@@ -357,12 +357,20 @@ function gotData1(incomingData){
     ;
 
 
-    d3.select("#container").on("scroll", function(){
+    d3.select("body").on("scroll", function(){
       currentBox(function(box){
         console.log(box.id);
     /* Interaction: appear Recommended Daily Sugar Intake Line*/
         if(box.id=="zero" ){
-          showLine();
+          showLine1();
+          ;
+        }
+        if(box.id=="one" ){
+          showLine2();
+          ;
+        }
+        if(box.id=="two" ){
+          showLine3();
           ;
         }
       })
@@ -416,7 +424,7 @@ function gotData1(incomingData){
                         .enter()
                         .append("g").classed("datapoint", true)
                           .attr('class', function(d){
-                            let classname = "datapoint ";
+                            let classname = "datapoint " + d.brand + ' ';
                             if (d.withSugar === "yes") {
                               classname += "yes";
                             } else {
@@ -436,7 +444,7 @@ function gotData1(incomingData){
     ;
 
     document.getElementById("btnclick1").addEventListener('click', () => {
-      d3.selectAll(".yes")
+      viz2.selectAll(".yes")
           .transition()
           .duration(200)
           .delay(function(d,i){
@@ -449,6 +457,7 @@ function gotData1(incomingData){
           .attr("transform", function(d, i, datapoints){
             datapoints = Array.from(datapoints)
             let brand = d.brand;
+            let withSugar = d.withSugar;
             let cansseenbefore = datapoints.slice(0, i);
 
             function checkBrand(datapointFromTheLeft) {
@@ -457,13 +466,20 @@ function gotData1(incomingData){
             }
             let samebranditems = cansseenbefore.filter(checkBrand);
 
+
+            function checkSugar(datapointFromTheLeft){
+              let datapointFromTheLeftSugar = datapointFromTheLeft.__data__.withSugar;
+              return datapointFromTheLeftSugar == withSugar;
+            }
+            let yesnosugar = samebranditems.filter(checkSugar);
             let canwidth = 60;
-            let x = (canwidth * samebranditems.length);// + padding*10;
+            let x = (canwidth * yesnosugar.length) + padding*10;
             let y = yScale2(d.brand) + padding*2.7;// + 8*Math.random();
             return "translate("+ x + "," + y + ")"
           })
         })
     ;
+
     graphGroup2
       .on("mouseover", function(d){
         console.log("hovering");
@@ -534,7 +550,7 @@ function gotData1(incomingData){
                            })
                            .attr("transform", function(d, i, datapoints){
                              let x = xScale(d.brand) + 20 + 15 * Math.random();
-                             let y = 0;
+                             let y = -100;
                              return "translate("+ x + "," + y + ")"
                            })
     ;
@@ -544,7 +560,7 @@ function gotData1(incomingData){
     ;
 
     document.getElementById("btnclick2").addEventListener('click', () => {
-      d3.selectAll(".yes")
+      viz3.selectAll(".yes")
           .transition()
           .duration(1000)
           .delay(function(d,i){
@@ -606,9 +622,9 @@ function gotData1(incomingData){
 /*------------ Visualization 5: Recommended Daily Sugar Intake Line -----------*/
 // According to the Dietary Guidelines for Chinese Residents:
 // => 25g/day suggested, not exceed 50g/day
-function showLine(){
+function showLine1(){
   // console.log("yes!!!");
-  let lineData = [ { "x": 0,   "y": 20},  { "x": 1450,  "y": 20}];
+  let lineData = [ { "x": 0,   "y": 20},  { "x": w,  "y": 20}];
 
   let lineMaker = d3.line()
                       .x(function(d){ return d.x})
@@ -620,16 +636,93 @@ function showLine(){
                     .attr("d", lineMaker)
                     .attr("fill", "none")
                     .attr("stroke", "lightgray")
-                    // .attr("stroke-dasharray", ("20,10"))
                     .attr("stroke-width", 4)
                     .attr("transform", function(d, i){
                       return " translate( " + 60 +" , " + ( h1 - 41*8.2) + ") "
                     })
+  let text = viz1.append("text")
+                    .text("25g")
+                    .attr("x", w*.48)
+                    .attr("y", 390)
+                    .attr("font-size", 25)
+                    .attr("font-family", 'Mukta')
+                    .attr("fill", "gray")
+  ;
+
+  line.transition()
+      .duration(10)
+      // .attr("opacity", 0)
+  ;
+}
+
+function showLine2(){
+  // console.log("yes!!!");
+  let lineData = [ { "x": 20,   "y": 0},  { "x": 20,  "y": h2}];
+
+  let lineMaker = d3.line()
+                      .x(function(d){ return d.x})
+                      .y(function(d){ return d.y})
+                  ;
+  let line = viz2.datum(lineData)
+                    .append("path")
+                    .attr("class", "line")
+                    .attr("d", lineMaker)
+                    .attr("fill", "none")
+                    .attr("stroke", "lightgray")
+                    .attr("stroke-width", 4)
+                    .attr("transform", function(d, i){
+                      return " translate( " + 350 +" , " + ( h1 - 100*7) + ") "
+                    })
+                    .append("text")
+                      .text("200mg/day")
+  ;
+  let text = viz2.append("text")
+                    .text("200mg/day")
+                    .attr("x", w*.18)
+                    .attr("y", 18)
+                    .attr("font-size", 25)
+                    .attr("font-family", 'Mukta')
+                    .attr("fill", "gray")
+  ;
+  line.transition()
+      .duration(100)
+      .attr("opacity", 0)
+  ;
+}
+
+function showLine3(){
+  // console.log("yes!!!");
+  let lineData = [ { "x": 0,   "y": 20},  { "x": w,  "y": 20}];
+
+  let lineMaker = d3.line()
+                      .x(function(d){ return d.x})
+                      .y(function(d){ return d.y})
+                  ;
+  let line = viz3.datum(lineData)
+                    .append("path")
+                    .attr("class", "line")
+                    .attr("d", lineMaker)
+                    .attr("fill", "none")
+                    .attr("stroke", "lightgray")
+                    .attr("stroke-width", 4)
+                    .attr("transform", function(d, i){
+                      return " translate( " + 60 +" , " + ( h1 - 41*8.2) + ") "
+                    })
+                    .append("text")
+                      .text("200mg/day")
+  ;
+  let text = viz3.append("text")
+                    .text("200mg/day")
+                    .attr("x", w*.9)
+                    .attr("y", 390)
+                    .attr("font-size", 25)
+                    .attr("font-family", 'Mukta')
+                    .attr("fill", "gray")
   ;
 
   line.transition()
       .duration(100)
-      .attr("opacity", 1)
+      .attr("opacity", 0)
   ;
 }
 
