@@ -196,7 +196,7 @@ function gotData1(incomingData){
               x = xmiddle + svgWidth/2; // + 100 + 10 * Math.random();
             }
             y = (h1 - padding*3/2) - (canheight * yesnosugar.length);
-            return "translate("+ x + "," + y + ")"
+            return "translate("+ (x + 2*Math.random() )+ "," + y + ")"
           })
     });
 
@@ -615,6 +615,7 @@ function gotData1(incomingData){
     });
   }
 
+
  //------ Here is a a graphic equation of coffein (pick the one that has the most) ------//
  // 1 milktea = XX Americano == XX Redbull
 }
@@ -638,7 +639,7 @@ function showLine1(){
                     .attr("stroke", "lightgray")
                     .attr("stroke-width", 4)
                     .attr("transform", function(d, i){
-                      return " translate( " + 60 +" , " + ( h1 - 41*8.2) + ") "
+                      return " translate( " + (w*.01) +" , " + ( h1*.52) + ") "
                     })
   let text = viz1.append("text")
                     .text("25g")
@@ -656,7 +657,6 @@ function showLine1(){
 }
 
 function showLine2(){
-  // console.log("yes!!!");
   let lineData = [ { "x": 20,   "y": 0},  { "x": 20,  "y": h2}];
 
   let lineMaker = d3.line()
@@ -671,7 +671,7 @@ function showLine2(){
                     .attr("stroke", "lightgray")
                     .attr("stroke-width", 4)
                     .attr("transform", function(d, i){
-                      return " translate( " + 350 +" , " + ( h1 - 100*7) + ") "
+                      return " translate( " + (w*.2) +" , " + (h2*.02) + ") "
                     })
                     .append("text")
                       .text("200mg/day")
@@ -691,7 +691,6 @@ function showLine2(){
 }
 
 function showLine3(){
-  // console.log("yes!!!");
   let lineData = [ { "x": 0,   "y": 20},  { "x": w,  "y": 20}];
 
   let lineMaker = d3.line()
@@ -706,7 +705,7 @@ function showLine3(){
                     .attr("stroke", "lightgray")
                     .attr("stroke-width", 4)
                     .attr("transform", function(d, i){
-                      return " translate( " + 60 +" , " + ( h1 - 41*8.2) + ") "
+                      return " translate( " + (w*.025) +" , " + ( h3 *.45) + ") "
                     })
                     .append("text")
                       .text("200mg/day")
@@ -714,7 +713,7 @@ function showLine3(){
   let text = viz3.append("text")
                     .text("200mg/day")
                     .attr("x", w*.45)
-                    .attr("y", h3*.54)
+                    .attr("y", h3*.47)
                     .attr("font-size", 25)
                     .attr("font-family", 'Mukta')
                     .attr("fill", "gray")
