@@ -5,78 +5,124 @@
     <title>Milk Tea</title>
 
     <link href="https://fonts.googleapis.com/css?family=Mukta&display=swap" rel="stylesheet">
+
+    <!-- <link href="/https://fontawesome.com/icons/chevron-down?style=solid" rel="stylesheet"> -->
     <link rel="stylesheet" href="info.css">
     <script src="https://d3js.org/d3.v5.min.js"></script>
 
   </head>
+
   <body>
-      <div id="container">
+      <div id="container" style="position: absolute; width: 100%; height: 100%;">
+          <div class="imgs">
+            <img id="cgl" src="images/cgl.png">
+            <img id="coco" src="images/coco.png">
+            <img id="gc" src="images/gc.png">
+            <img id="gyp" src="images/gyp.png">
+            <img id="klnm" src="images/klnm.png">
+            <img id="llc" src="images/llc.png">
+            <img id="ln" src="images/ln.png">
+            <img id="tp" src="images/tp.png">
+            <img id="xc" src="images/xc.png">
+            <img id="ydd" src="images/ydd.png">
+          </div>
 
-          <div id="textboxes">
 
-            <div class="box" id="three">
-              <div id="graphtitle4">
-                <h1> Hi! Welcome to the Era-of-Milk-Tea!</h1>
-              </div>
-                <br></br>
-                <div id="info">
+            <div id="title">
+              <h1> Hi! Welcome to the Era-of-Milk-Tea!</h1>
+            </div>
+
+            <div class="box" id="info">
+              <div id="info-container">
+                <div id="info1">
+                  <!-- <div> -->
                   <p>According to <span style="color:darkblue">iiMedia Research</span>,
-                    the number of existing beverage outlets in China has exceeded
+                    the number of existing <span style="color:darkred">beverage outlets</span> in China has exceeded
                     <span style="color:darkred">450 THOUSAND</span> in 2018.</p>
-                  <p>The size of this new Chinese-style tea market in 2018 is
+                  <p>The <span style="color:darkred">size</span> of this new Chinese-style tea market in 2018 is
                     <span style="color:darkred"> over 90 BILLION</span> yuan (WOOOOW).</p>
                   <p><span style="color:darkblue">Meituan</span>, one of China's most popular online-delivery service companies,
                     delivered <span style="color:darkred">2.1 HUNDRED MILLION</span> orders all over the country in 2018.</p>
+                </div>
+
+                <div id="info2">
                   <p>As milk tea culture is flourishing, more query regarding
                     <span style="color:gray">"whether milk tea is healthy"</span> has been raised among nutritionists.</p>
-                  <br></br>
-                  <p>In 2017, Shanghai Consumers Council conducted comparative tests on milk tea
+
+                  <p>In 2017, <span style="color:darkblue">Shanghai Consumers Council</span> conducted comparative tests on milk tea
                     <span style="color:darkgreen">ingredients</span> among several popular beverage shops in Shanghai.</p>
-                  <p>[I know. They tastes GOOD.]</p>
+                  <p>Researchers picked <span style="color:darkgreen"> 1 kind </span> of milk tea <span style="color:darkgreen">from each</span> brand and tested them out.</p>
+                </div>
+              </div>
+              <br></br>
+              <div id="pcontainer">
                   <p>Let's take a look at what have been found out!</p>
               </div>
-
-              <div class="imgs">
-                <img id="cgl" src="images/cgl.png">
-                <img id="coco" src="images/coco.png">
-                <img id="gc" src="images/gc.png">
-                <img id="gyp" src="images/gyp.png">
-                <img id="klnm" src="images/klnm.png">
-                <img id="llc" src="images/llc.png">
-                <img id="ln" src="images/ln.png">
-                <img id="tp" src="images/tp.png">
-                <img id="xc" src="images/xc.png">
-                <img id="ydd" src="images/ydd.png">
+              <div id="button-container">
+                <div id="btnjumpto"> <a href="#zero"> ⬇︎ </a> </div>
               </div>
             </div>
 
+
             <div class="box" id="zero">
-              <div id="graphtitle1">How much sugar do you think is added in ONE serving of milk tea?</div>
+              <div id="graphtitle1">How much sugar do you think is added in <span style="color:darkred">ONE</span> serving of milk tea? <span style="color:gray"> [1 cube sugar = 4g] </span></div>
 
               <div id="visualization1">
-                  <div id="btnFullSugar">  <p>100% Sugar</p>  </div>
-                  <div id="btnNoSugar"> <p>0% Sugar</p>  </div>
+                <div id="btns-container">
+                  <div id="btnFullSugar"> <p>100% Sugar</p> </div>
+                  <div id="btnNoSugar"> <p>0% Sugar</p> </div>
+                  <div id="btnClear"> <p>Clear</p> </div>
+                </div>
+                <div id="svg-container1"></div>
               </div>
+            </div>
+            <div id="ex1">
+              <p><span style="color:darkblue">The Dietary Guidelines for Chinese Residents (2016)</span> suggests a daily sugar intake of <span style="color:darkred">25~50g per person</span>.</p>
+              <p>However, most tested beverages with regular (100%) sugar <span style="color:darkred">exceeded</span> the recommended daily intake.</p>
+              <p>Meituan's <span style="color:darkblue">2018 Milk Tea Consumption Resport</span> finds out that most customers choose "no-sugar" option in their beverage </p>
+              <p>whereas only 7% choose the option of "regular (100%) sugar."</p>
+              <p>More surprisingly, there is still quite a lot of sugar in our drinks even though we choose the "no-sugar" option!</p>
+            </div>
+            <div id="button-container">
+              <div id="btnjumpto"> <a href="#one"> ⬇︎ </a> </div>
             </div>
 
             <div class="box" id="one">
-              <div id="graphtitle2">Coffein in Milk tea V.S. Coffein in Americano</div>
+              <div id="graphtitle2">Coffein in Milk Tea V.S. Americano <span style="color:gray"> [1 Large Americano has 108mg coffein] </span></div>
               <div id="visualization2">
-                <div id="btnFullSugar">  <p>100% Sugar</p>  </div>
-                <div id="btnNoSugar"> <p>0% Sugar</p>  </div>
-              </div>
+                <div id="btns-container">
+                  <div id="btnclick1">  <p>Click Me</p>  </div>
+                </div>
+                <div id="svg-container2"></div>
+                <div id="button-container">
+                  <div id="btnjumpto"> <a href="#two"> ⬇︎ </a> </div>
+                </div>
+                </div>
             </div>
 
             <div class="box" id="two">
-              <div id="graphtitle3">Coffein in Milk tea V.S. Coffein in Redbull </div>
+              <div id="graphtitle3">Coffein in Milk Tea V.S. Redbull <span style="color:gray"> [1 Redbull has 50mg coffein] </span></div>
               <div id="visualization3">
-                <div id="btnFullSugar">  <p>100% Sugar</p>  </div>
-                <div id="btnNoSugar"> <p>0% Sugar</p>  </div>
+                <div id="btns-container">
+                  <div id="btnclick2">  <p>Click Me</p>  </div>
+                </div>
+                <div id="svg-container3">
+                </div>
+              </div>
+              <div id="ex1">
+                <p>Coffein is often found in beverages such as coffee and tea.</p>
+                <p>Recommended daily coffein intake for an healthy aldult <span style="color:darkred">should not exceed 200mg</span>.</p>
+                <p>Mlik tea tastes good -- but imagining coffein from <span style="color:darkred">1 </span> milk tea <span style="color:darkred"> >= </span> coffein from <span style="color:darkred">4</span> Redbulls <span style="color:darkred">(or even more)</span> is... unbelievable...</p>
+              </div>
+              <div id="ex1">
+                <p>Author's Notes: The result might seem suprising, but please do enjoy life and don't be too strict with yourself!</p>
+                <p>And... pick the healthier option if you can!</p>
+              </div>
+              <div id="button-container">
+                <div id="btnjumpto"> <a href="#container"> ⬆︎ </a> </div>
               </div>
             </div>
-          </div>
 
-          <i class="fas fa-angle-up"></i>
     </div>
 
     <script type="text/javascript" src="script.js"></script>

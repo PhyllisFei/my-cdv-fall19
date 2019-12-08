@@ -1,43 +1,41 @@
-let w = 1500;
+let w = window.innerWidth * .8;
 let h1 = 700;
 let h2 = 900;
-let h3 = 750;
+let h3 = 1500; //750;
 let padding = 30;
 let heightRatio = 0.8;
-
 // adjustVizHeight();
 
-let viz1 = d3.select("#visualization1")
+let viz1 = d3.select("#svg-container1")
   .append("svg")
     .style("width", w)
     .style("height", h1)
 ;
-let viz2 = d3.select("#visualization2")
+let viz2 = d3.select("#svg-container2")
   .append("svg")
     .style("width", w)
     .style("height", h2)
 ;
-let viz3 = d3.select("#visualization3")
+let viz3 = d3.select("#svg-container3")
   .append("svg")
     .style("width", w)
     .style("height", h3)
 ;
-let detailBox1 = d3.select("#visualization1").append("div")
+let detailBox1 = d3.select("#svg-container1").append("div")
    .attr("class", "detailBox")
    .style("opacity", 0)
    .style("color", "gray")
 ;
-let detailBox2 = d3.select("#visualization2").append("div").attr("class", "detailBox")
+let detailBox2 = d3.select("#svg-container2").append("div").attr("class", "detailBox")
    .attr("class", "detailBox")
    .style("opacity", 0)
    .style("color", "gray")
 ;
-let detailBox3 = d3.select("#visualization3").append("div").attr("class", "detailBox")
+let detailBox3 = d3.select("#svg-container3").append("div").attr("class", "detailBox")
    .attr("class", "detailBox")
    .style("opacity", 0)
    .style("color", "gray")
 ;
-
 
 
 function gotData1(incomingData){
@@ -94,7 +92,16 @@ function gotData1(incomingData){
     let graphGroup1 = viz1.append("g").classed("graphGroup", true)
                         .selectAll(".datapoint").data(sugarArray, function(d){return d.Brand;})
                         .enter()
-                          .append("g").classed("datapoint", true)
+                        .append("g").classed("datapoint", true)
+                          .attr('class', function(d){
+                            let classname = "datapoint ";
+                            if (d.withSugar === "yes") {
+                              classname += "yes";
+                            } else {
+                              classname += "no";
+                            }
+                            return classname;
+                          })
                           .attr("transform", function(d, i, datapoints){
                             let x = xScale(d.brand) + 40 + 10 * Math.random();
                             let y = 0;
@@ -102,21 +109,11 @@ function gotData1(incomingData){
                           })
     ;
 
+    graphGroup1.html(svgSugar)
+          .selectAll("path")
+          .attr("transform", "scale(0.035)")
+
     graphGroup1
-          .transition()
-          .duration(1000)
-          .delay(function(d,i){
-            i -= 100;
-            return i*10
-          })
-          .transition()
-          .duration(1000)
-          .ease(d3.easeBounce)
-          // .delay(function(d,i){
-          //   // i+=1;
-          //   return i*10 //Math.random()*5
-          // })
-          .duration(2000)
           .attr("transform", function(d, i, datapoints){
             let brand = d.brand;
             let withSugar = d.withSugar;
@@ -148,22 +145,196 @@ function gotData1(incomingData){
             if(d.withSugar=="no"){
               x = xmiddle + svgWidth/2; // + 100 + 10 * Math.random();
             }
-
             y = (h1 - padding*3/2) - (canheight * yesnosugar.length);
-            return "translate("+ x + "," + y + ")"
+            return "translate("+ x + "," + 0 + ")"
           })
     ;
 
-    document.getElementById("btnFullSugar").showFullSugar();
-    document.getElementById("btnNoSugar").showNoSugar();
 
-    function showFullSugar(){
+    document.getElementById("btnFullSugar").addEventListener('click', () => {
+      // console.log(graphGroup1.selectAll('.yes'))
+      d3.selectAll(".yes")
+          .transition()
+          .duration(1000)
+          .delay(function(d,i){
+            i -= 100;
+            return i*10
+          })
+          .transition()
+          .duration(1000)
+          .ease(d3.easeBounce)
+          .attr("transform", function(d, i, datapoints){
+            datapoints = Array.from(datapoints)
+            let brand = d.brand;
+            let withSugar = d.withSugar;
+            let cansseenbefore = datapoints.slice(0, i);
 
-    }
+            function checkBrand(datapointFromTheLeft) {
+              let datapointFromTheLeftssBrand = datapointFromTheLeft.__data__.brand;
+              return datapointFromTheLeftssBrand == brand;
+            }
+            let samebranditems = cansseenbefore.filter(checkBrand);
+            // console.log("placing itme number", i, ". The brand is", brand, ". already placed these cans:", cansseenbefore);
+            // console.log(samebranditems.length);
 
-    function showNoSugar(){
-      
-    }
+            function checkSugar(datapointFromTheLeft){
+              let datapointFromTheLeftSugar = datapointFromTheLeft.__data__.withSugar;
+              return datapointFromTheLeftSugar == withSugar;
+            }
+            let yesnosugar = samebranditems.filter(checkSugar);
+
+            let canheight = 41;
+            let x;
+            let y;
+            let svgWidth = 50; //we measured this
+            let xmiddle = xScale(d.brand) + xScale.bandwidth()/2 - svgWidth/2;
+
+            if(d.withSugar=="yes"){
+              x = xmiddle - svgWidth/2; //+ 40 + 10 * Math.random();
+            }
+            if(d.withSugar=="no"){
+              x = xmiddle + svgWidth/2; // + 100 + 10 * Math.random();
+            }
+            y = (h1 - padding*3/2) - (canheight * yesnosugar.length);
+            return "translate("+ x + "," + y + ")"
+          })
+    });
+
+    document.getElementById("btnNoSugar").addEventListener('click', () => {
+      d3.selectAll('.no')
+          .transition()
+          .duration(1000)
+          .delay(function(d,i){
+            i -= 100;
+            return i*10
+          })
+          .transition()
+          .duration(1000)
+          .ease(d3.easeBounce)
+          .attr("transform", function(d, i, datapoints){
+            datapoints = Array.from(datapoints)
+            let brand = d.brand;
+            let withSugar = d.withSugar;
+            let cansseenbefore = datapoints.slice(0, i);
+
+            function checkBrand(datapointFromTheLeft) {
+              let datapointFromTheLeftssBrand = datapointFromTheLeft.__data__.brand;
+              return datapointFromTheLeftssBrand == brand;
+            }
+            let samebranditems = cansseenbefore.filter(checkBrand);
+
+            function checkSugar(datapointFromTheLeft){
+              let datapointFromTheLeftSugar = datapointFromTheLeft.__data__.withSugar;
+              return datapointFromTheLeftSugar == withSugar;
+            }
+            let yesnosugar = samebranditems.filter(checkSugar);
+
+            let canheight = 41;
+            let x;
+            let y;
+            let svgWidth = 50; //we measured this
+            let xmiddle = xScale(d.brand) + xScale.bandwidth()/2 - svgWidth/2;
+
+            if(d.withSugar=="yes"){
+              x = xmiddle - svgWidth/2; //+ 40 + 10 * Math.random();
+            }
+            if(d.withSugar=="no"){
+              x = xmiddle + svgWidth/2; // + 100 + 10 * Math.random();
+            }
+            y = (h1 - padding*3/2) - (canheight * yesnosugar.length);
+            return "translate("+ x + "," + y + ")"
+          })
+    });
+
+    document.getElementById("btnClear").addEventListener('click', () => {
+      d3.selectAll(".yes")
+          .transition()
+          .duration(1000)
+          .delay(function(d,i){
+            i -= 100;
+            return i*10
+          })
+          .transition()
+          .delay(100)
+          .duration(500)
+          .attr("transform", function(d, i, datapoints){
+            datapoints = Array.from(datapoints)
+            let brand = d.brand;
+            let withSugar = d.withSugar;
+            let cansseenbefore = datapoints.slice(0, i);
+
+            function checkBrand(datapointFromTheLeft) {
+              let datapointFromTheLeftssBrand = datapointFromTheLeft.__data__.brand;
+              return datapointFromTheLeftssBrand == brand;
+            }
+            let samebranditems = cansseenbefore.filter(checkBrand);
+
+            function checkSugar(datapointFromTheLeft){
+              let datapointFromTheLeftSugar = datapointFromTheLeft.__data__.withSugar;
+              return datapointFromTheLeftSugar == withSugar;
+            }
+            let yesnosugar = samebranditems.filter(checkSugar);
+
+            let canheight = 41;
+            let x;
+            let y;
+            let svgWidth = 50; //we measured this
+            let xmiddle = xScale(d.brand) + xScale.bandwidth()/2 - svgWidth/2;
+
+            if(d.withSugar=="yes"){
+              x = xmiddle - svgWidth/2; //+ 40 + 10 * Math.random();
+            }
+            if(d.withSugar=="no"){
+              x = xmiddle + svgWidth/2; // + 100 + 10 * Math.random();
+            }
+            y = (h1 - padding*3/2) - (canheight * yesnosugar.length);
+            return "translate("+ x + "," + 0 + ")"
+          })
+
+      d3.selectAll('.no')
+          .transition()
+          .duration(1000)
+          .delay(function(d,i){
+            i -= 100;
+            return i*10
+          })
+          .transition()
+          .delay(100)
+          .duration(500)
+          .attr("transform", function(d, i, datapoints){
+            datapoints = Array.from(datapoints)
+            let brand = d.brand;
+            let withSugar = d.withSugar;
+            let cansseenbefore = datapoints.slice(0, i);
+
+            function checkBrand(datapointFromTheLeft) {
+              let datapointFromTheLeftssBrand = datapointFromTheLeft.__data__.brand;
+              return datapointFromTheLeftssBrand == brand;
+            }
+            let samebranditems = cansseenbefore.filter(checkBrand);
+
+            function checkSugar(datapointFromTheLeft){
+              let datapointFromTheLeftSugar = datapointFromTheLeft.__data__.withSugar;
+              return datapointFromTheLeftSugar == withSugar;
+            }
+            let yesnosugar = samebranditems.filter(checkSugar);
+
+            let canheight = 41;
+            let x;
+            let y;
+            let svgWidth = 50; //we measured this
+            let xmiddle = xScale(d.brand) + xScale.bandwidth()/2 - svgWidth/2;
+
+            if(d.withSugar=="yes"){
+              x = xmiddle - svgWidth/2; //+ 40 + 10 * Math.random();
+            }
+            if(d.withSugar=="no"){
+              x = xmiddle + svgWidth/2; // + 100 + 10 * Math.random();
+            }
+            y = (h1 - padding*3/2) - (canheight * yesnosugar.length);
+            return "translate("+ x + "," + 0 + ")"
+          })
+      });
 
     graphGroup1
       .on("mouseover", function(d){
@@ -172,8 +343,8 @@ function gotData1(incomingData){
                    .style("opacity", .9)
         ;
         detailBox1.html(d.product + " (" + d.netWeight + "mL)" + "<br/>" + d.sugar + " g/serving")
-                     .style("left", (d3.event.pageX) - 270 + "px")
-                     .style("top", (d3.event.pageY) - 150 + "px")
+                     .style("left", (d3.event.pageX) + "px")
+                     .style("top", (d3.event.pageY) + "px")
        ;
      })
      //hide detailed info box
@@ -186,18 +357,12 @@ function gotData1(incomingData){
     ;
 
 
-
-    // let previousSection;
-    d3.select("#textboxes").on("scroll", function(){
-    //    // event.preventDefault()
+    d3.select("#container").on("scroll", function(){
       currentBox(function(box){
         console.log(box.id);
     /* Interaction: appear Recommended Daily Sugar Intake Line*/
         if(box.id=="zero" ){
           showLine();
-          graphGroup1.html(svgSugar)
-                    .selectAll("path")
-                    .attr("transform", "scale(0.035)")
           ;
         }
       })
@@ -249,30 +414,55 @@ function gotData1(incomingData){
     let graphGroup2 = viz2.append("g").classed("graphGroup2", true)
                         .selectAll(".datapoint").data(americanoArray, function(d){return d.Brand;})
                         .enter()
-                          .append("g").classed("datapoint", true)
-                          .attr("transform", "translate(  "+ w/2 +", 0)")
-    ;
-    graphGroup2
-          .transition()
-          .duration(2000)
-          .delay(function(d,i){
-            return i*10 //Math.random()*5
-          })
-                          .attr("transform", function(d, i, datapoints){
-                            let brand = d.brand;
-                            let cansseenbefore = datapoints.slice(0, i);
-
-                            function checkBrand(datapointFromTheLeft) {
-                              let datapointFromTheLeftssBrand = datapointFromTheLeft.__data__.brand;
-                              return datapointFromTheLeftssBrand == brand;
+                        .append("g").classed("datapoint", true)
+                          .attr('class', function(d){
+                            let classname = "datapoint ";
+                            if (d.withSugar === "yes") {
+                              classname += "yes";
+                            } else {
+                              classname += "no";
                             }
-                            let samebranditems = cansseenbefore.filter(checkBrand);
-
-                            let canwidth = 60;
-                            let y = yScale2(d.brand) + padding*2.7 + 8*Math.random();
-                            let x = padding*10 + (canwidth * samebranditems.length);
+                            return classname;
+                          })
+                          .attr("transform", function(d, i, datapoints){
+                            let y = yScale2(d.brand) + padding*2.7;//+ 8*Math.random();
+                            let x = 0;
                             return "translate("+ x + "," + y + ")"
                           })
+    ;
+
+    graphGroup2.html(svgAmericano)
+                .selectAll("path").attr("transform", "scale(0.028)")
+    ;
+
+    document.getElementById("btnclick1").addEventListener('click', () => {
+      d3.selectAll(".yes")
+          .transition()
+          .duration(200)
+          .delay(function(d,i){
+            i -= 100;
+            return i
+          })
+          .transition()
+          .duration(1000)
+          .ease(d3.easeBounce)
+          .attr("transform", function(d, i, datapoints){
+            datapoints = Array.from(datapoints)
+            let brand = d.brand;
+            let cansseenbefore = datapoints.slice(0, i);
+
+            function checkBrand(datapointFromTheLeft) {
+              let datapointFromTheLeftssBrand = datapointFromTheLeft.__data__.brand;
+              return datapointFromTheLeftssBrand == brand;
+            }
+            let samebranditems = cansseenbefore.filter(checkBrand);
+
+            let canwidth = 60;
+            let x = (canwidth * samebranditems.length);// + padding*10;
+            let y = yScale2(d.brand) + padding*2.7;// + 8*Math.random();
+            return "translate("+ x + "," + y + ")"
+          })
+        })
     ;
     graphGroup2
       .on("mouseover", function(d){
@@ -282,8 +472,8 @@ function gotData1(incomingData){
                    .style("opacity", .9)
         ;
         detailBox2.html(d.product + " (" + d.netWeight + "mL)" + "<br/>" + d.coffein + " mg/serving")
-                     .style("left", (d3.event.pageX) - 270 + "px")
-                     .style("top", (d3.event.pageY) - 150 + "px")
+                     .style("left", (d3.event.pageX) + "px")
+                     .style("top", (d3.event.pageY) + "px")
        ;
      })
       .on("mouseout", function(){
@@ -291,19 +481,6 @@ function gotData1(incomingData){
                    .duration(50)
                    .style("opacity", 0);
       });
-
-
-      // d3.select("#textboxes").on("scroll", function(){
-      //   currentBox(function(box){
-      //     console.log(box.id);
-      // /* Interaction: appear Recommended Daily Sugar Intake Line*/
-      //     if(box.id=="one" ){
-            graphGroup2.html(svgAmericano)
-                        .selectAll("path").attr("transform", "scale(0.028)")
-            ;
-      //     }
-      //   })
-      // })
   }
 
 
@@ -346,54 +523,82 @@ function gotData1(incomingData){
                          .selectAll(".datapoint").data(redbullArray, function(d){return d.Brand;})
                          .enter()
                            .append("g").classed("datapoint", true)
-                           .attr("transform", "translate(  "+ w/2 +", 0)")
+                           .attr('class', function(d){
+                             let classname = "datapoint ";
+                             if (d.withSugar == "yes") {
+                               classname += "yes";
+                             } else {
+                               classname += "no";
+                             }
+                             return classname;
+                           })
+                           .attr("transform", function(d, i, datapoints){
+                             let x = xScale(d.brand) + 20 + 15 * Math.random();
+                             let y = 0;
+                             return "translate("+ x + "," + y + ")"
+                           })
     ;
+
+    graphGroup3.html(svgRedbull)
+               .selectAll("path").attr("transform", "scale(0.6)")
+    ;
+
+    document.getElementById("btnclick2").addEventListener('click', () => {
+      d3.selectAll(".yes")
+          .transition()
+          .duration(1000)
+          .delay(function(d,i){
+            i -= 100;
+            return i*10
+          })
+          .transition()
+          .duration(1000)
+          .ease(d3.easeBounce)
+          .attr("transform", function(d, i, datapoints){
+            datapoints = Array.from(datapoints)
+            let brand = d.brand;
+            let withSugar = d.withSugar;
+            let cansseenbefore = datapoints.slice(0, i);
+
+            function checkBrand(datapointFromTheLeft) {
+              let datapointFromTheLeftssBrand = datapointFromTheLeft.__data__.brand;
+              return datapointFromTheLeftssBrand == brand;
+            }
+            let samebranditems = cansseenbefore.filter(checkBrand);
+
+            function checkSugar(datapointFromTheLeft){
+              let datapointFromTheLeftSugar = datapointFromTheLeft.__data__.withSugar;
+              return datapointFromTheLeftSugar == withSugar;
+            }
+            let yesnosugar = samebranditems.filter(checkSugar);
+
+            let canheight = 75;
+            let x = xScale(d.brand) + 20 + 15 * Math.random();
+            let y = (h3 - padding * 4.5) - (canheight * yesnosugar.length);
+            return "translate("+ x + "," + y + ")"
+          })
+    });
+
     graphGroup3
-       .transition()
-       .duration(2000)
-       .delay(function(d,i){
-         return i*10 //Math.random()*5
-       })
-       .attr("transform", function(d, i, datapoints){
-         let brand = d.brand;
-         let cansseenbefore = datapoints.slice(0, i);
-
-         function checkBrand(datapointFromTheLeft) {
-           let datapointFromTheLeftssBrand = datapointFromTheLeft.__data__.brand;
-           return datapointFromTheLeftssBrand == brand;
-         }
-         let samebranditems = cansseenbefore.filter(checkBrand);
-
-         let canheight = 75;
-         let x = xScale(d.brand) + 20 + 15 * Math.random();
-         let y = (h3 - padding * 4.5) - (canheight * samebranditems.length);
-         return "translate("+ x + "," + y + ")"
-       })
-  ;
-
-  graphGroup3
-    .on("mouseover", function(d){
-      console.log("hovering");
-      // show detailed info box and img box on hover
-      detailBox3.transition()
-                 .duration(50)
-                 .style("opacity", .9)
-      ;
-      detailBox3.html(d.product + " (" + d.netWeight + "mL)" + "<br/>" + d.coffein + " mg/serving")
-                   .style("left", (d3.event.pageX) - 270 + "px")
-                   .style("top", (d3.event.pageY) - 150 + "px")
-     ;
-   })
-    .on("mouseout", function(){
+      .on("mouseover", function(d){
+        console.log("hovering");
+        // show detailed info box and img box on hover
+        detailBox3.transition()
+                   .duration(50)
+                   .style("opacity", .9)
+        ;
+        detailBox3.html(d.product + " (" + d.netWeight + "mL)" + "<br/>" + d.coffein + " mg/serving")
+                     .style("left", (d3.event.pageX) + "px")
+                     .style("top", (d3.event.pageY) + "px")
+       ;
+     })
+      .on("mouseout", function(){
       detailBox3.transition()
                  .duration(50)
                  .style("opacity", 0);
     });
+  }
 
-  graphGroup3.html(svgRedbull)
-             .selectAll("path").attr("transform", "scale(0.6)")
-  ;
-}
  //------ Here is a a graphic equation of coffein (pick the one that has the most) ------//
  // 1 milktea = XX Americano == XX Redbull
 }
@@ -402,6 +607,7 @@ function gotData1(incomingData){
 // According to the Dietary Guidelines for Chinese Residents:
 // => 25g/day suggested, not exceed 50g/day
 function showLine(){
+  // console.log("yes!!!");
   let lineData = [ { "x": 0,   "y": 20},  { "x": 1450,  "y": 20}];
 
   let lineMaker = d3.line()
@@ -425,9 +631,7 @@ function showLine(){
       .duration(100)
       .attr("opacity", 1)
   ;
-
 }
-
 
 function currentBox(cb){
   // next line from: https://stackoverflow.com/a/222847
