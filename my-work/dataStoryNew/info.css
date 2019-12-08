@@ -186,60 +186,68 @@ a:visited {
 
 /* imgs */
 .imgs{
-	opacity: .2;
-	position: fixed;
+	opacity: .3;
+	/* position: fixed; */
 }
 #cgl{
 	width:10%;
 	left:23%;
 	top:65%;
-	/* position: absolute; */
+	position: fixed;
 }
 #coco{
 	width:15%;
 	left:48%;
 	top:10%;
-	/* position: absolute; */
+	position: fixed;
 }
 #gc{
-	width:8%;
+	width:3%;
 	left:32%;
 	top:10%;
+	position: fixed;
 }
 #gyp{
 	width:10%;
 	left:67%;
 	top:63%;
+	position: fixed;
 }
 #klnm{
 	width:8%;
 	left:55%;
 	top:68%;
+	position: fixed;
 }
 #llc{
 	width:11%;
 	left:12%;
 	top:43%;
+	position: fixed;
 }
 #ln{
 	width:18%;
 	left:35%;
 	top:78%;
+	position: fixed;
 }
 #tp{
 	width:10%;
 	left:68%;
 	top:20%;
+	position: fixed;
 }
 #xc{
 	width:15%;
 	left:75%;
 	top:40%;
+	position: fixed;
 }
 #ydd{
 	width:15%;
 	left:13%;
 	top:20%;
+	position: fixed;
 }
 
 .line{
