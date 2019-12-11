@@ -8,7 +8,7 @@
   - This is what first appears in this project to show some background information.
     ![](https://github.com/PhyllisFei/my-cdv-fall19/blob/master/my-work/dataStoryNew/screenshots/1.png)
 
-  - Users click on regular sugar/no sugar option to see how much sugar is added in one serving and compare what merchants mean by "regular" and "no" sugar.
+  - Users click on regular sugar/no sugar option to see how much sugar is added in one serving and compare what merchants mean by "regular" and "no" sugar. </br>
     ![1](https://media.giphy.com/media/U85bLH1729B0dCF1II/giphy.gif)
 
   - Here I visualize the correlation of caffeine in milk tea with that in Americano and Redbull.**
