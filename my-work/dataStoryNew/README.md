@@ -1,4 +1,4 @@
-## Welcome to the Era-of-Milk-tea
+## Welcome to the Era-of-Milk-Tea
 > This is a data story that offers some broad information about milk tea culture in China, as well as some facts about sugar and caffeine contents in milk tea (in selected beverages).
 > Dataset used in this project credits to Shanghai Customers Council. Background information credits to iiMedia Research and Meituan.
 
