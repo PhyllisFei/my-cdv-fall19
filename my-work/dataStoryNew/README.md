@@ -9,10 +9,10 @@
     ![](https://github.com/PhyllisFei/my-cdv-fall19/blob/master/my-work/dataStoryNew/screenshots/1.png)
 
   - Users click on regular sugar/no sugar option to see how much sugar is added in one serving and compare what merchants mean by "regular" and "no" sugar. </br>  
-    ![1](https://media.giphy.com/media/U85bLH1729B0dCF1II/giphy.gif)
+    ![1](https://github.com/PhyllisFei/my-cdv-fall19/blob/master/my-work/dataStoryNew/screenshots/1.gif)
 
   - Here I visualize the correlation of caffeine in milk tea with that in Americano and Redbull.**  
-    ![2](https://media.giphy.com/media/YnALWAVj8gH4D9wGdw/giphy.gif)
+    ![2](https://github.com/PhyllisFei/my-cdv-fall19/blob/master/my-work/dataStoryNew/screenshots/2.gif)
 
 - **Process**
   - I originally wanted to visualize "obesity in China," and did find reliable, official data resources online. However, since the dataset itself is not rich in information, I feel constrained in terms of how to make such a broad topic more creative, offering something interesting or new to my audience.
